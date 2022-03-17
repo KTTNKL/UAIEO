@@ -10,16 +10,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UAIEO">
         <activity
-            android:name=".ForgetPasswordActivity"
+            android:name=".activity.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".ProfileActivity"
+            android:name=".activity.ForgetPasswordActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".activity.RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".RegisterActivity"
-            android:exported="false" />
-        <activity
-            android:name=".LoginActivity"
+            android:name=".activity.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

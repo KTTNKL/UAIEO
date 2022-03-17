@@ -1,10 +1,11 @@
-package com.khtn.uaieo
+package com.khtn.uaieo.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
+import com.khtn.uaieo.R
 import kotlinx.android.synthetic.main.activity_forget_password.*
 
 

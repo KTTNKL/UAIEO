@@ -1,4 +1,4 @@
-package com.khtn.uaieo
+package com.khtn.uaieo.activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -6,12 +6,8 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_login.*
-import com.google.android.gms.tasks.OnCompleteListener
-import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.khtn.uaieo.R
 
 class LoginActivity : AppCompatActivity() {
     lateinit var auth: FirebaseAuth
@@ -38,7 +34,7 @@ class LoginActivity : AppCompatActivity() {
 
     private fun forgetPassword() {
         forgetPassTV.setOnClickListener {
-            val intent=Intent(this,ForgetPasswordActivity::class.java)
+            val intent=Intent(this, ForgetPasswordActivity::class.java)
             startActivity(intent)
         }
     }
@@ -47,7 +43,7 @@ class LoginActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         val currentUser=auth.currentUser
         if (currentUser!=null){
-            val intent=Intent(this,ProfileActivity::class.java)
+            val intent=Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()
         }
@@ -60,7 +56,7 @@ class LoginActivity : AppCompatActivity() {
             .addOnCompleteListener {
                 if(it.isSuccessful){
                     //Neu thanh cong --> Chuyen sang man hinh profie
-                    val intent=Intent(this,ProfileActivity::class.java)
+                    val intent=Intent(this, MainActivity::class.java)
                     startActivity(intent)
                     finish()
                     //Ket thuc
