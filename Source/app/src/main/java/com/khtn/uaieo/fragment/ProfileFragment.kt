@@ -42,7 +42,7 @@ class ProfileFragment : Fragment() {
         user= auth.currentUser!!
     }
     fun loadProfile(){
-        val userReference= databaseReference?.child(user?.uid!!)?.child("Email")?.addListenerForSingleValueEvent(
+        val userReference= databaseReference?.child(user?.uid!!)?.child("username")?.addListenerForSingleValueEvent(
             object: ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     infor.text=snapshot.getValue().toString()
