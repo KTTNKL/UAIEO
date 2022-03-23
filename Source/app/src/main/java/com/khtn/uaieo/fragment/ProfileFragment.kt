@@ -45,7 +45,7 @@ class ProfileFragment : Fragment() {
         val userReference= databaseReference?.child(user?.uid!!)?.child("username")?.addListenerForSingleValueEvent(
             object: ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
-                    infor.text=snapshot.getValue().toString()
+                    //infor.text=snapshot.getValue().toString()
                 }
 
                 override fun onCancelled(error: DatabaseError) {
@@ -56,7 +56,7 @@ class ProfileFragment : Fragment() {
 
     }
     fun changePassword(){
-        changePassBT.setOnClickListener{
+        changePasswordBT.setOnClickListener{
             val dialog=LayoutInflater.from(context).inflate(R.layout.change_password_dialog,null)
             val builder= context?.let { it1 -> AlertDialog.Builder(it1).setView(dialog).setTitle("Change Password") }
             val myDialog= builder?.show()
