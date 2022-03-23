@@ -7,4 +7,12 @@
     <string name="password">PASSWORD</string>
     <string name="confirm_password">CONFIRM PASSWORD</string>
     <string name="next">NEXT</string>
+    <string name="forget_password_title">FORGOT PASSWORD</string>
+    <string name="confirm_email">CONFIRM EMAIL</string>
+    <string name="confirm_button">CONFIRM</string>
+    <string name="login">Log in</string>
+    <string name="email">EMAIL</string>
+    <string name="password">PASSWORD</string>
+    <string name="login_cap">LOG IN</string>
+    <string name="forget_password">FORGET PASSWORD?</string>
 </resources>
