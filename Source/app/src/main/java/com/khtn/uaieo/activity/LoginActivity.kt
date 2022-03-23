@@ -18,7 +18,6 @@ class LoginActivity : AppCompatActivity() {
 //            val intent= Intent(this, RegisterActivity::class.java)
 //            startActivity(intent)
 //        }
-        checkIfAlreadyLogin()
         loginBT.setOnClickListener {
             if (TextUtils.isEmpty(emailET.text.toString())){
                 emailET.setError("Please enter email")
@@ -39,15 +38,7 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    fun checkIfAlreadyLogin(){
-        auth = FirebaseAuth.getInstance()
-        val currentUser=auth.currentUser
-        if (currentUser!=null){
-            val intent=Intent(this, MainActivity::class.java)
-            startActivity(intent)
-            finish()
-        }
-    }
+
     fun login(_email:String,_pass:String){
 
         var email=_email.trim { it<= ' ' }

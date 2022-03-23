@@ -27,6 +27,7 @@ class RegisterActivity : AppCompatActivity() {
             }
 
             register(emailRegisterET.text.toString(),passwordET.text.toString())
+            
         }
     }
 
