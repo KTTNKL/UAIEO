@@ -14,10 +14,10 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-        registerTV.setOnClickListener {
-            val intent= Intent(this, RegisterActivity::class.java)
-            startActivity(intent)
-        }
+//        registerTV.setOnClickListener {
+//            val intent= Intent(this, RegisterActivity::class.java)
+//            startActivity(intent)
+//        }
         checkIfAlreadyLogin()
         loginBT.setOnClickListener {
             if (TextUtils.isEmpty(emailET.text.toString())){
