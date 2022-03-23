@@ -18,6 +18,7 @@ class LoginActivity : AppCompatActivity() {
 //            val intent= Intent(this, RegisterActivity::class.java)
 //            startActivity(intent)
 //        }
+        checkIfAlreadyLogin()
         loginBT.setOnClickListener {
             if (TextUtils.isEmpty(emailET.text.toString())){
                 emailET.setError("Please enter email")
@@ -25,12 +26,21 @@ class LoginActivity : AppCompatActivity() {
             } else if (TextUtils.isEmpty(passwordET.text.toString())){
                 passwordET.setError("Please enter password")
                 return@setOnClickListener
-            }
+            }else{
             login(emailET.text.toString(),passwordET.text.toString())
+            }
         }
         forgetPassword()
     }
-
+    fun checkIfAlreadyLogin(){
+        auth = FirebaseAuth.getInstance()
+        val currentUser=auth.currentUser
+        if (currentUser!=null){
+            val intent=Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+    }
     private fun forgetPassword() {
         forgetPassTV.setOnClickListener {
             val intent=Intent(this, ForgetPasswordActivity::class.java)
