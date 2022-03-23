@@ -40,6 +40,8 @@
         android:layout_height="61dp"
         android:layout_marginTop="60dp"
         android:backgroundTint="@color/black"
+        android:background="@drawable/bg_radius_button"
+        android:textColor="@color/white"
         android:text="@string/login_cap"
         app:layout_constraintEnd_toEndOf="@+id/passwordET"
         app:layout_constraintHorizontal_bias="0.471"
