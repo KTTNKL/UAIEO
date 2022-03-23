@@ -13,4 +13,5 @@
     <string name="password">PASSWORD</string>
     <string name="login_cap">LOG IN</string>
     <string name="forget_password">FORGET PASSWORD?</string>
+
 </resources>
