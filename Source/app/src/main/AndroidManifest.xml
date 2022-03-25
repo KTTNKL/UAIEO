@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UAIEO">
         <activity
-            android:name=".activity.personalInformation"
+            android:name=".activity.VietsubActivity"
             android:exported="false" />
         <activity
             android:name=".activity.LogoutAcvitiy"
