@@ -10,7 +10,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.khtn.uaieo.R
 
 class LoginActivity : AppCompatActivity() {
-    lateinit var auth: FirebaseAuth
+    var auth: FirebaseAuth = FirebaseAuth.getInstance()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -33,7 +33,7 @@ class LoginActivity : AppCompatActivity() {
         forgetPassword()
     }
     fun checkIfAlreadyLogin(){
-        auth = FirebaseAuth.getInstance()
+
         val currentUser=auth.currentUser
         if (currentUser!=null){
             val intent=Intent(this, MainActivity::class.java)
