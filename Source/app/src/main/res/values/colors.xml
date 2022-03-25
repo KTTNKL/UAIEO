@@ -8,5 +8,6 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="tabBackGroundColor">#988A8A</color>
+    <color name="quizAnswerColor">#F0F0F0</color>
 
 </resources>
