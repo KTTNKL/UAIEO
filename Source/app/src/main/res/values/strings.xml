@@ -18,6 +18,7 @@
     <string name="profile_notification">Thông báo</string>
     <string name="profile_change_password">Đổi mật khẩu</string>
     <string name="profile_logout">Đăng xuất</string>
+    <string name="news_title">Tin tức</string>
     <string name="vietsub_title">VietSub Bài Đọc</string>
     <string name="vietsub_VI">Bài Đọc Tiếng Việt</string>
     <string name="vietsub_EN">Bài Đọc Tiếng Anh</string>
