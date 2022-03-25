@@ -21,5 +21,7 @@
     <string name="vietsub_title">VietSub Bài Đọc</string>
     <string name="vietsub_VI">Bài Đọc Tiếng Việt</string>
     <string name="vietsub_EN">Bài Đọc Tiếng Anh</string>
-
+    <string name="quiz_title">QUIZ</string>
+    <string name="your_result">KẾT QUẢ CỦA BẠN</string>
+    <string name="ok">OK</string>
 </resources>
