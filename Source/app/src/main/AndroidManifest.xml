@@ -10,8 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UAIEO">
         <activity
-            android:name=".activity.personalInformation"
+            android:name=".activity.QuizResultActivity"
             android:exported="false" />
+        <activity
+            android:name=".activity.QuizActivity"
+            android:exported="false">
+
+        </activity>
         <activity
             android:name=".activity.LogoutAcvitiy"
             android:exported="true">
