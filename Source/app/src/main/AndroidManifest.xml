@@ -11,18 +11,35 @@
         android:theme="@style/Theme.UAIEO">
         <activity
             android:name=".activity.ScheduleScreen"
+            android:exported="false"/>
+     
+
+      <activity
+            android:name=".activity.NewsActivity"
+            android:exported="false" />        
+      <activity
+            android:name=".activity.VietsubActivity"
+            android:exported="false" />  
+  
+      <activity
+            android:name=".activity.QuizResultActivity"
+            android:exported="false" />
+  
+      <activity
+            android:name=".activity.QuizActivity"
+            android:exported="false">
+        </activity>
+
+      
+        <activity
+            android:name=".activity.LogoutAcvitiy"
             android:exported="true">
-        <intent-filter>
+         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
 
             <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-        </activity>
-
-        <activity
-            android:name=".activity.LogoutAcvitiy"
-            android:exported="false">
-
+          </intent-filter>
+          
         </activity>
         <activity
             android:name=".activity.MainActivity"
