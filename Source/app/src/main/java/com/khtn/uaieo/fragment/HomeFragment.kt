@@ -69,7 +69,7 @@ class HomeFragment : Fragment() {
 
                     }
                     3->{
-                        intent= Intent(context,ScheduleScreen::class.java)
+                        intent= Intent(context,TipListActivity::class.java)
 
                     }
                     4->{
