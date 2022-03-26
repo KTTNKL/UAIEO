@@ -19,17 +19,31 @@ class MenuAdapter(var items:ArrayList<itemMenu>?) :
     lateinit var ViewGroup: ViewGroup
 
 
-    class HolderView(itemView: View): RecyclerView.ViewHolder(itemView){
+    class HolderView(itemView: View,listener: onItemClickListener): RecyclerView.ViewHolder(itemView){
 
         var img: ImageView =itemView.findViewById(R.id.item_home_imageView)
         var name: TextView =itemView.findViewById(R.id.feature_textView)
         var description: TextView =itemView.findViewById(R.id.caption_textView)
+        init{
+            itemView.setOnClickListener{
+                listener.onItemClick(adapterPosition)
+            }
+        }
+    }
+    private lateinit var mListenr: onItemClickListener
 
+    interface  onItemClickListener{
+        fun onItemClick(position: Int){
+
+        }
+    }
+    fun setOnItemClickListener(listener: onItemClickListener){
+        mListenr=listener
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MenuAdapter.HolderView {
         val view= LayoutInflater.from(parent.context).inflate(R.layout.item_home,parent,false)
         ViewGroup=parent
-        return MenuAdapter.HolderView(view)
+        return MenuAdapter.HolderView(view,mListenr)
     }
 
 
