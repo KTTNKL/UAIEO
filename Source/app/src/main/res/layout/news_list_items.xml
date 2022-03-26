@@ -3,23 +3,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="170dp">
+    android:layout_height="wrap_content"
+    android:layout_marginTop="0dp"
+    android:layout_marginBottom="20dp">
 
     <ImageView
         android:id="@+id/imageIV"
         android:layout_width="380dp"
         android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="15dp"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/titleTV"
         android:layout_width="380dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="0dp"
+        android:layout_marginTop="2dp"
         android:text="TextView"
-        android:textSize="25dp"
+        android:textSize="18dp"
         app:layout_constraintEnd_toEndOf="@+id/imageIV"
         app:layout_constraintStart_toStartOf="@+id/imageIV"
         app:layout_constraintTop_toBottomOf="@+id/imageIV" />
