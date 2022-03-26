@@ -6,34 +6,48 @@
     android:layout_height="match_parent"
     tools:context=".activity.DictionaryActivity">
 
-    <SearchView
-        android:id="@+id/searchView"
-        android:layout_width="344dp"
-        android:layout_height="52dp"
-        android:layout_marginTop="96dp"
-        android:background="@drawable/bg_quiz_question"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
         android:id="@+id/DicTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginTop="36dp"
         android:text="@string/dictionary"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/searchView"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <WebView
         android:id="@+id/webView"
-        android:layout_width="416dp"
-        android:layout_height="542dp"
-        android:layout_marginTop="39dp"
+        android:layout_width="418dp"
+        android:layout_height="525dp"
+        android:layout_marginTop="76dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchView" />
+        app:layout_constraintTop_toBottomOf="@+id/DicTextView" />
+
+    <EditText
+        android:id="@+id/SearchBar"
+        android:layout_width="389dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/bg_radius_button_2"
+        android:ems="10"
+        android:hint="Tìm kiếm Tiếng Anh"
+        android:inputType="textPersonName"
+        android:padding="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/DicTextView" />
+
+    <Button
+        android:id="@+id/searchButton"
+        android:layout_width="97dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/bg_quiz_question"
+        android:drawableLeft="@android:drawable/ic_menu_search"
+        android:text="@string/SearchBtn"
+        app:layout_constraintEnd_toEndOf="@+id/SearchBar"
+        app:layout_constraintTop_toBottomOf="@+id/DicTextView" />
 </androidx.constraintlayout.widget.ConstraintLayout>

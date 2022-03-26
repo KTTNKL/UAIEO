@@ -15,10 +15,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.khtn.uaieo.R
-import com.khtn.uaieo.activity.NewsActivity
-import com.khtn.uaieo.activity.QuizActivity
-import com.khtn.uaieo.activity.ScheduleScreen
-import com.khtn.uaieo.activity.VietsubActivity
+import com.khtn.uaieo.activity.*
 import com.khtn.uaieo.adapter.MenuAdapter
 import com.khtn.uaieo.model.Vietsub
 import com.khtn.uaieo.model.itemMenu
@@ -79,7 +76,7 @@ class HomeFragment : Fragment() {
                         intent= Intent(context,QuizActivity::class.java)
                     }
                     5->{
-                        intent= Intent(context,ScheduleScreen::class.java)
+                        intent= Intent(context,DictionaryActivity::class.java)
                     }
 
                 }
