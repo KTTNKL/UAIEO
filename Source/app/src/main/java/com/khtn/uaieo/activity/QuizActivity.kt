@@ -63,7 +63,7 @@ class QuizActivity : AppCompatActivity() {
             }
         })
 
-        var isClicked = false
+        var isClicked: Boolean = false
 
         option1Btn.setOnClickListener{
             if(quizArray[questionIndex[questionNumber-1]].option1?.let { it1 -> quizArray[questionIndex[questionNumber-1]].answer?.let { it2 ->
@@ -245,7 +245,13 @@ class QuizActivity : AppCompatActivity() {
             questionNumber ++
         }
 
+
+
         nextBtn.setOnClickListener{
+            if(questionNumber == 5 && isClicked == false){
+                questionNumber ++
+            }
+
             if(questionNumber == 6) {
                 val intent: Intent = Intent(this, QuizResultActivity::class.java)
                 intent.putExtra("Point", point)
