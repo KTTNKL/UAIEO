@@ -15,26 +15,30 @@ class VietsubActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_vietsub)
-//        readingArrayList = arrayListOf<Vietsub>()
-//        val ref= FirebaseDatabase.getInstance().getReference("vietsub")
-//        ref.addValueEventListener(object: ValueEventListener {
-//            override fun onDataChange(snapshot: DataSnapshot) {
-//                //Xoa list trc khi them vao moi lan vao app
-//                //videoArrayList.clear()
-//                for (vietsub in snapshot.children){
-//                    val modelVideo = vietsub.getValue(Vietsub::class.java)
-//                    readingArrayList.add(modelVideo!!)
-//                }
-//
-//            }
-//
-//            override fun onCancelled(error: DatabaseError) {
-//                TODO("Not yet implemented")
-//            }
-//        })
-//
-//        for(i in readingArrayList){
-//            i.title?.let { Log.d("Test", it) }
-//        }
+        readingArrayList = ArrayList<Vietsub>()
+        LoadData()
+        for(i in readingArrayList){
+            Log.d("MyScreen", i.title.toString())
+        }
+    }
+    fun LoadData(){
+        val ref= FirebaseDatabase.getInstance().getReference("vietsub")
+        ref.addListenerForSingleValueEvent(object: ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                //Xoa list trc khi them vao moi lan vao app
+                readingArrayList.clear()
+                for (vietsub in snapshot.children){
+                    val modelVideo = vietsub.getValue(Vietsub::class.java)
+                    readingArrayList.add(modelVideo!!)
+                    Log.d("MyScreen", modelVideo.title.toString())
+                }
+
+
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        })
     }
 }
