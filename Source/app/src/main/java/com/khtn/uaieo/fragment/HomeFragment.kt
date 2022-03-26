@@ -18,6 +18,7 @@ import com.khtn.uaieo.R
 import com.khtn.uaieo.activity.NewsActivity
 import com.khtn.uaieo.activity.QuizActivity
 import com.khtn.uaieo.activity.ScheduleScreen
+import com.khtn.uaieo.activity.VietsubActivity
 import com.khtn.uaieo.adapter.MenuAdapter
 import com.khtn.uaieo.model.Vietsub
 import com.khtn.uaieo.model.itemMenu
@@ -64,7 +65,7 @@ class HomeFragment : Fragment() {
                         intent= Intent(context,NewsActivity::class.java)
                     }
                     1->{
-                        intent= Intent(context,Vietsub::class.java)
+                        intent= Intent(context, VietsubActivity::class.java)
                     }
                     2->{
                         intent= Intent(context,ScheduleScreen::class.java)
