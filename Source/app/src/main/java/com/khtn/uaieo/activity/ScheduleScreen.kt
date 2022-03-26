@@ -28,8 +28,8 @@ class ScheduleScreen : AppCompatActivity() {
         databaseReference?.child(currentUser?.uid!!)?.child("ExamDate")?.addListenerForSingleValueEvent(
             object: ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
-//                    val date= formatDate.format(snapshot.value.toString())
-//                    dateTv.text=date
+                    dateTv.text=snapshot.value.toString()
+                    ShowDayLeft(snapshot.value.toString())
                 }
 
                 override fun onCancelled(error: DatabaseError) {
@@ -49,16 +49,31 @@ class ScheduleScreen : AppCompatActivity() {
                     selectDate.set(Calendar.DAY_OF_MONTH,i3)
                     val date= formatDate.format(selectDate.time)
 
-
-
-                    //Lay instance cua user dang vao
                     val currentUserDB=databaseReference?.child(currentUser?.uid!!)
-                    //Dua thong tin co ban luc resgister vao database instance
-                    currentUserDB?.child("ExamDate")?.setValue(selectDate.time)
+                    currentUserDB?.child("ExamDate")?.setValue(date.toString())
                     dateTv.text= date
+
+                    ShowDayLeft(date.toString())
+
                 },getDate.get(Calendar.YEAR),getDate.get(Calendar.MONTH),getDate.get(Calendar.DAY_OF_MONTH))
 
             datepicker.show()
+        }
+    }
+    // Show day left base on current date and date in input
+    fun ShowDayLeft(date: String){
+        var futureDate= formatDate.parse(date)
+        var currentDate:Date =Date()
+        var diff= futureDate.time-currentDate.time
+        if(!currentDate.after(futureDate)){
+
+            var day= (diff/(24*60*60*1000)).toInt()
+            dayLeftTV.text="${day} ngày còn lại"
+        }else if(currentDate.day==futureDate.day && currentDate.month==futureDate.month &&currentDate.year==futureDate.year){
+            dayLeftTV.text="Bạn có ngày thi vào hôm nay"
+        }else{
+            dayLeftTV.text= "Chúc bạn may mắn với kết quả thi"
+
         }
     }
 }
