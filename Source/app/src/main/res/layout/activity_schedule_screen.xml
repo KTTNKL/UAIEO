@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:text="Schedule"
+        android:text="Lập lịch"
         android:textStyle="bold"
         android:textSize="25dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -20,40 +20,43 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/selectDateTV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="128dp"
-        android:text="Select Exam Date"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.461"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
         android:id="@+id/dateTv"
         android:layout_width="179dp"
         android:layout_height="42dp"
-        android:layout_marginTop="48dp"
-        android:text="Date to go "
-        android:textSize="15dp"
+        android:layout_marginTop="16dp"
         android:gravity="center"
+        android:text="Ngày thi"
+        android:textSize="15dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/selectDateTV"
-        app:layout_constraintHorizontal_bias="0.521"
+        app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="@+id/selectDateTV"
         app:layout_constraintTop_toBottomOf="@+id/selectDateTV" />
 
+    <TextView
+        android:id="@+id/dayLeftTV"
+        android:layout_width="304dp"
+        android:layout_height="113dp"
+        android:layout_marginTop="200dp"
+        android:background="@drawable/bg_day_left_tv"
+        android:gravity="center"
+        android:text="Thòi gian còn lại"
+        android:textSize="35sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/dateTv"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toStartOf="@+id/dateTv"
+        app:layout_constraintTop_toBottomOf="@+id/dateTv" />
+
     <Button
-        android:id="@+id/OKbutton"
-        android:layout_width="118dp"
-        android:layout_height="62dp"
-        android:layout_marginTop="236dp"
-        android:backgroundTint="@color/background_day_button"
-        android:text="95 DAYS LEFT"
-        app:layout_constraintEnd_toEndOf="@+id/selectDateTV"
-        app:layout_constraintHorizontal_bias="0.51"
-        app:layout_constraintStart_toStartOf="@+id/selectDateTV"
-        app:layout_constraintTop_toBottomOf="@+id/selectDateTV" />
+        android:id="@+id/selectDateTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="84dp"
+        android:text="Chọn ngày thi"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
