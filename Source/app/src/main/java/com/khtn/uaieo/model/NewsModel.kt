@@ -13,5 +13,6 @@ class NewsModel {
         this.image = image
         this.url = url
     }
+
 }
 

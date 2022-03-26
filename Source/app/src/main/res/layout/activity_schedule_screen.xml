@@ -45,7 +45,7 @@
         app:layout_constraintTop_toBottomOf="@+id/selectDateTV" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/OKbutton"
         android:layout_width="118dp"
         android:layout_height="62dp"
         android:layout_marginTop="236dp"
