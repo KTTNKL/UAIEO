@@ -13,4 +13,8 @@ class Vietsub {
     constructor(){
 
     }
+
+    fun heheString(): String {
+        return ""
+    }
 }
