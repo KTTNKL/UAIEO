@@ -12,5 +12,6 @@
     <color name="background_day_button">#EA593C</color>
 
     <color name="quizAnswerColor">#F0F0F0</color>
-
+    <color name="green">#00FF00</color>
+    <color name="red">#FF0000</color>
 </resources>
