@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UAIEO">
         <activity
+            android:name=".activity.DetailNewsActivity"
+            android:exported="false" />
+        <activity      
             android:name=".activity.DictionaryActivity"
             android:exported="false"></activity>
         <activity
@@ -27,7 +30,6 @@
         <activity
             android:name=".activity.QuizActivity"
             android:exported="false">
-
         </activity>
         <activity
             android:name=".activity.LogoutAcvitiy"
@@ -37,7 +39,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity
             android:name=".activity.MainActivity"
