@@ -20,11 +20,12 @@
         android:id="@+id/feature_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="100dp"
         android:text="Feature"
-        android:textColor="@color/white"
+        android:textColor="@color/quizAnswerColor"
         android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/item_home_imageView"
+        app:layout_constraintHorizontal_bias="0.527"
         app:layout_constraintStart_toStartOf="@+id/item_home_imageView"
         app:layout_constraintTop_toTopOf="@+id/item_home_imageView" />
 
@@ -32,10 +33,13 @@
         android:id="@+id/caption_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="112dp"
         android:text="Additional caption"
-        android:textColor="@color/white"
+        android:textColor="@color/quizAnswerColor"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/item_home_imageView"
+        app:layout_constraintHorizontal_bias="0.51"
         app:layout_constraintStart_toStartOf="@+id/item_home_imageView"
         app:layout_constraintTop_toBottomOf="@+id/feature_textView" />
 </androidx.constraintlayout.widget.ConstraintLayout>
