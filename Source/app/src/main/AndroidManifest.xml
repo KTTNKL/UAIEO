@@ -10,11 +10,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UAIEO">
         <activity
+            android:name=".activity.TipDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.TipListActivity"
+            android:exported="false"/>
+        <activity
             android:name=".activity.DetailNewsActivity"
             android:exported="false" />
         <activity      
             android:name=".activity.DictionaryActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".activity.ScheduleScreen"
             android:exported="false" />
@@ -29,14 +35,14 @@
             android:exported="false" />
         <activity
             android:name=".activity.QuizActivity"
-            android:exported="false">
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".activity.LogoutAcvitiy"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
+             <intent-filter>
+             <action android:name="android.intent.action.MAIN" />
+             <category android:name="android.intent.category.LAUNCHER" />
+             </intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
