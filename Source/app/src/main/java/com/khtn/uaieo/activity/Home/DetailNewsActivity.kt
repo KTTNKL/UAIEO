@@ -1,4 +1,4 @@
-package com.khtn.uaieo.activity
+package com.khtn.uaieo.activity.Home
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity

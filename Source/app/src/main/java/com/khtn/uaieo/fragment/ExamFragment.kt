@@ -9,8 +9,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.khtn.uaieo.R
-import com.khtn.uaieo.activity.*
+import com.khtn.uaieo.activity.Home.ScheduleScreen
 import com.khtn.uaieo.activity.ReadingListening.ListRLExamActivity
+import com.khtn.uaieo.activity.Speaking.SpeakingExamListActivity
 import com.khtn.uaieo.adapter.MenuAdapter
 import com.khtn.uaieo.model.itemMenu
 
@@ -54,7 +55,7 @@ class ExamFragment : Fragment() {
                         intent= Intent(context, ListRLExamActivity::class.java)
                     }
                     1->{
-                        intent= Intent(context, VietsubActivity::class.java)
+                        intent= Intent(context, SpeakingExamListActivity::class.java)
                     }
                     2->{
                         intent= Intent(context, ScheduleScreen::class.java)

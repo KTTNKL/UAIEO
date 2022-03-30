@@ -1,8 +1,7 @@
-package com.khtn.uaieo.activity
+package com.khtn.uaieo.activity.Home
 import android.app.ProgressDialog
 import android.os.Bundle
 import android.text.method.ScrollingMovementMethod
-import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.DataSnapshot

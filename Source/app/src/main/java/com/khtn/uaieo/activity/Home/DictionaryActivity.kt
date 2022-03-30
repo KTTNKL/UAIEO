@@ -1,11 +1,9 @@
-package com.khtn.uaieo.activity
+package com.khtn.uaieo.activity.Home
 
 import android.os.Bundle
-import android.util.Log
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.SearchView
 import com.khtn.uaieo.R
 import kotlinx.android.synthetic.main.activity_dictionary.*
 

@@ -1,19 +1,16 @@
-package com.khtn.uaieo.activity
+package com.khtn.uaieo.activity.Home
 
 import android.app.ProgressDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.khtn.uaieo.R
-import com.khtn.uaieo.model.itemMenu
 import com.khtn.uaieo.model.itemQuiz
 import kotlinx.android.synthetic.main.activity_quiz.*
 

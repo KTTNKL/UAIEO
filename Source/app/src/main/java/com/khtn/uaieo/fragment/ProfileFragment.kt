@@ -12,7 +12,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
 import com.khtn.uaieo.R
-import com.khtn.uaieo.activity.LoginActivity
+import com.khtn.uaieo.activity.Auth.LoginActivity
 import kotlinx.android.synthetic.main.change_password_dialog.view.*
 import kotlinx.android.synthetic.main.fragment_profile.*
 
@@ -85,7 +85,7 @@ class ProfileFragment : Fragment() {
     fun logout(){
         logoutBT.setOnClickListener {
             auth.signOut()
-            val intent= Intent(context,LoginActivity::class.java)
+            val intent= Intent(context, LoginActivity::class.java)
             startActivity(intent)
             activity?.finish()
         }

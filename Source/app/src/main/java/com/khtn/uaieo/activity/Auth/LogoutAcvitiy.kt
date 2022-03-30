@@ -1,10 +1,11 @@
-package com.khtn.uaieo.activity
+package com.khtn.uaieo.activity.Auth
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.google.firebase.auth.FirebaseAuth
 import com.khtn.uaieo.R
+import com.khtn.uaieo.activity.MainActivity
 import kotlinx.android.synthetic.main.activity_logout_acvitiy.*
 
 class LogoutAcvitiy : AppCompatActivity() {
