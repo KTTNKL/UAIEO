@@ -30,4 +30,8 @@
     <string name="backBtn">Back</string>
     <string name="TipTitle">TIPS FOR TOEIC</string>
     <string name="SearchBtn">TÌM KIẾM</string>
+    <string name="speakingTitle">SPEAKING</string>
+    <string name="RecordBtn">Nhấn và giữ để record</string>
+    <string name="ListenAgainBtn">Nghe lại</string>
+    <string name="OtherRecordBtn">Bài làm của người khác</string>
 </resources>
