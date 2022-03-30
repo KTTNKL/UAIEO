@@ -30,4 +30,8 @@
     <string name="backBtn">Back</string>
     <string name="TipTitle">TIPS FOR TOEIC</string>
     <string name="SearchBtn">TÌM KIẾM</string>
+    <string name="notification">Thông báo</string>
+    <string name="notification_title">Tiêu đề</string>
+    <string name="notification_message">Nội dung</string>
+    <string name="notification_schedule_notification">Lên lịch</string>
 </resources>
