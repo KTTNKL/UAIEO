@@ -11,8 +11,7 @@ import com.bumptech.glide.Glide
 import com.khtn.uaieo.R
 import com.khtn.uaieo.model.NewsModel
 
-class NewsAdapter (var context: Context
-                   , private val news: ArrayList<NewsModel>) : RecyclerView.Adapter<NewsAdapter.ViewHolder>() {
+class NewsAdapter (var context: Context, private val news: ArrayList<NewsModel>) : RecyclerView.Adapter<NewsAdapter.ViewHolder>() {
     var onItemClick : ((NewsModel)->Unit)? = null
 
     inner class ViewHolder(listItemView: View) : RecyclerView.ViewHolder(listItemView) {

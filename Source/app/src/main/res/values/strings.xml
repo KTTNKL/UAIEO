@@ -30,4 +30,6 @@
     <string name="backBtn">Back</string>
     <string name="TipTitle">TIPS FOR TOEIC</string>
     <string name="SearchBtn">TÌM KIẾM</string>
+    <string name="exam"> Examination</string>
+    <string name="RL">Reading/Listening</string>
 </resources>
