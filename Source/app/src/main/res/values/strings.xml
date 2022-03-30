@@ -30,6 +30,8 @@
     <string name="backBtn">Back</string>
     <string name="TipTitle">TIPS FOR TOEIC</string>
     <string name="SearchBtn">TÌM KIẾM</string>
+    <string name="exam"> Examination</string>
+    <string name="RL">Reading/Listening</string>
     <string name="notification">Thông báo</string>
     <string name="notification_title">Tiêu đề</string>
     <string name="notification_message">Nội dung</string>
@@ -38,4 +40,5 @@
     <string name="RecordBtn">Nhấn và giữ để record</string>
     <string name="ListenAgainBtn">Nghe lại</string>
     <string name="OtherRecordBtn">Bài làm của người khác</string>
+
 </resources>
