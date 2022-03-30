@@ -1,4 +1,4 @@
-package com.khtn.uaieo.activity
+package com.khtn.uaieo.activity.Auth
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -8,6 +8,7 @@ import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_login.*
 import com.google.firebase.auth.FirebaseAuth
 import com.khtn.uaieo.R
+import com.khtn.uaieo.activity.MainActivity
 
 class LoginActivity : AppCompatActivity() {
     var auth: FirebaseAuth = FirebaseAuth.getInstance()

@@ -1,19 +1,16 @@
-package com.khtn.uaieo.activity
+package com.khtn.uaieo.activity.Home
 
 import android.app.ProgressDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.method.ScrollingMovementMethod
-import android.util.Log
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.khtn.uaieo.R
-import com.khtn.uaieo.adapter.TipAdapter
 import com.khtn.uaieo.model.Tip
 import kotlinx.android.synthetic.main.activity_tip_detail.*
-import kotlinx.android.synthetic.main.activity_vietsub.*
 
 class TipDetailActivity : AppCompatActivity() {
     lateinit var readingArrayList: ArrayList<Tip>

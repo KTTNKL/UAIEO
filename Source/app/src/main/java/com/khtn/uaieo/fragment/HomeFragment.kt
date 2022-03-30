@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 import com.khtn.uaieo.R
-import com.khtn.uaieo.activity.*
+import com.khtn.uaieo.activity.Home.*
 import com.khtn.uaieo.adapter.MenuAdapter
 import com.khtn.uaieo.model.itemMenu
 
@@ -53,24 +53,24 @@ class HomeFragment : Fragment() {
             override fun onItemClick(position: Int) {
                 when(position){
                     0->{
-                        intent= Intent(context,NewsActivity::class.java)
+                        intent= Intent(context, NewsActivity::class.java)
                     }
                     1->{
                         intent= Intent(context, VietsubActivity::class.java)
                     }
                     2->{
-                        intent= Intent(context,ScheduleScreen::class.java)
+                        intent= Intent(context, ScheduleScreen::class.java)
 
                     }
                     3->{
-                        intent= Intent(context,TipListActivity::class.java)
+                        intent= Intent(context, TipListActivity::class.java)
 
                     }
                     4->{
-                        intent= Intent(context,QuizActivity::class.java)
+                        intent= Intent(context, QuizActivity::class.java)
                     }
                     5->{
-                        intent= Intent(context,DictionaryActivity::class.java)
+                        intent= Intent(context, DictionaryActivity::class.java)
                     }
 
                 }

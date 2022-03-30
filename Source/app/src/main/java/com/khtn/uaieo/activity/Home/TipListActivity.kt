@@ -1,4 +1,4 @@
-package com.khtn.uaieo.activity
+package com.khtn.uaieo.activity.Home
 
 import android.app.ProgressDialog
 import android.content.Intent
@@ -12,22 +12,21 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.khtn.uaieo.R
 import com.khtn.uaieo.adapter.TipAdapter
-import com.khtn.uaieo.adapter.WSExamAdapter
-import com.khtn.uaieo.model.ExamID
 import com.khtn.uaieo.model.Tip
 
-class SpeakingExamListActivity : AppCompatActivity() {
-    lateinit var readingArrayList: ArrayList<ExamID>
+class TipListActivity : AppCompatActivity() {
+
+    lateinit var readingArrayList: ArrayList<Tip>
     lateinit var dialog: ProgressDialog
     lateinit var newRecyclerview: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_speaking_exam_list)
+        setContentView(R.layout.activity_tip_list)
 
-        readingArrayList = ArrayList<ExamID>()
+        readingArrayList = ArrayList<Tip>()
 
-        newRecyclerview = findViewById(R.id.speakingListRecyclerView)
+        newRecyclerview = findViewById(R.id.tipRecyclerView)
         newRecyclerview.layoutManager = LinearLayoutManager(this)
         newRecyclerview.setHasFixedSize(true)
 
@@ -38,34 +37,40 @@ class SpeakingExamListActivity : AppCompatActivity() {
 
         LoadData()
     }
+
     fun LoadData(){
-        val ref= FirebaseDatabase.getInstance().getReference("WSquestions/speaking")
+        val ref= FirebaseDatabase.getInstance().getReference("tips")
         ref.addListenerForSingleValueEvent(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 //Xoa list trc khi them vao moi lan vao app
                 readingArrayList.clear()
-
-                var count = snapshot.childrenCount.toInt()
-                for(i in 1..count){
-                    readingArrayList.add(ExamID("speakingExam" + i.toString()))
+                for (vietsub in snapshot.children){
+                    val modelTip = vietsub.getValue(Tip::class.java)
+                    if (modelTip != null) {
+                        modelTip.createSubtitle()
+                    }
+                    readingArrayList.add(modelTip!!)
                 }
                 dialog.dismiss()
-                var adapter = WSExamAdapter(readingArrayList)
+
+                var adapter = TipAdapter(readingArrayList)
                 newRecyclerview.adapter = adapter
-                adapter.setOnItemClickListener(object: WSExamAdapter.onItemClickListener{
+                adapter.setOnItemClickListener(object: TipAdapter.onItemClickListener{
                     override fun onItemClick(position: Int) {
                         swapScreen(position)
                     }
                 })
+
             }
+
             override fun onCancelled(error: DatabaseError) {
                 TODO("Not yet implemented")
             }
         })
     }
     fun swapScreen(position:Int){
-        val intent = Intent(this, SpeakingQuestionListActivity::class.java)
-        intent.putExtra("ExamIndex", readingArrayList.get(position).id)
+        val intent = Intent(this, TipDetailActivity::class.java)
+        intent.putExtra("TipIndex", position.toString())
         startActivityForResult(intent, 1111)
     }
 }

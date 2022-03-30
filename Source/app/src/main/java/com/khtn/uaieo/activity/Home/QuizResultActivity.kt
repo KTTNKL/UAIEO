@@ -1,9 +1,10 @@
-package com.khtn.uaieo.activity
+package com.khtn.uaieo.activity.Home
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.khtn.uaieo.R
+import com.khtn.uaieo.activity.MainActivity
 import kotlinx.android.synthetic.main.activity_quiz_result.*
 
 class QuizResultActivity : AppCompatActivity() {

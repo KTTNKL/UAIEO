@@ -1,4 +1,4 @@
-package com.khtn.uaieo.activity
+package com.khtn.uaieo.activity.Auth
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

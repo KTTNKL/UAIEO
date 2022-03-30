@@ -1,4 +1,4 @@
-package com.khtn.uaieo.activity
+package com.khtn.uaieo.activity.Speaking
 
 import android.app.ProgressDialog
 import android.content.Intent

@@ -1,8 +1,7 @@
-package com.khtn.uaieo.activity
+package com.khtn.uaieo.activity.Speaking
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import com.bumptech.glide.Glide
 import com.khtn.uaieo.R
 import com.khtn.uaieo.model.partSW

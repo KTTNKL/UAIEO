@@ -1,12 +1,8 @@
-package com.khtn.uaieo.activity
+package com.khtn.uaieo.activity.Home
 
-import android.annotation.SuppressLint
 import android.app.DatePickerDialog
-import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import androidx.annotation.RequiresApi
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.khtn.uaieo.R
