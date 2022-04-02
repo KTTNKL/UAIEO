@@ -18,7 +18,6 @@ class ListRLExamActivity : AppCompatActivity() {
     var ExamArray=ArrayList<itemExamRL>()
     lateinit var adapter:RLExamAdapter
     lateinit var customListView: RecyclerView
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list_rlexam)
@@ -50,7 +49,9 @@ class ListRLExamActivity : AppCompatActivity() {
         customListView!!.adapter = adapter
         adapter.setOnItemClickListener(object: RLExamAdapter.onItemClickListener {
             override fun onItemClick(position: Int) {
-
+                val intent=Intent(this@ListRLExamActivity, PartRLExamActivity::class.java)
+                intent.putExtra("id",ExamArray[position].id)
+                startActivity(intent)
             }
         })
         customListView.layoutManager = LinearLayoutManager(this)
