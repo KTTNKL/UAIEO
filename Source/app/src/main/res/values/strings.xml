@@ -40,5 +40,6 @@
     <string name="RecordBtn">Nhấn và giữ để record</string>
     <string name="ListenAgainBtn">Nghe lại</string>
     <string name="OtherRecordBtn">Bài làm của người khác</string>
-
+    <string name="Next">Câu kế</string>
+    <string name="Mp3sound">Phát</string>
 </resources>

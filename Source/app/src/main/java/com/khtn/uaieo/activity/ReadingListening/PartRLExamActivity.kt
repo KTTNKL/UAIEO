@@ -43,10 +43,10 @@ class PartRLExamActivity : AppCompatActivity() {
                         intent= Intent(this@PartRLExamActivity, Part1::class.java)
                     }
                     1->{
-                        intent= Intent(this@PartRLExamActivity, Part1::class.java)
+                        intent= Intent(this@PartRLExamActivity, Part2::class.java)
                     }
                     2->{
-                        intent= Intent(this@PartRLExamActivity, Part1::class.java)
+                        intent= Intent(this@PartRLExamActivity, Part3::class.java)
 
                     }
                     3->{
