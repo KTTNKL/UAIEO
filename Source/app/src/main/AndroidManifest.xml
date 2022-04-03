@@ -13,6 +13,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UAIEO">
         <activity
+            android:name=".activity.ReadingListening.Part3"
+            android:exported="false" />
+        <activity
+            android:name=".activity.ReadingListening.Part2"
+            android:exported="false" />
+        <activity
             android:name=".activity.ReadingListening.Part1"
             android:exported="false" />
         <activity
