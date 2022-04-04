@@ -46,6 +46,6 @@ class RLPartAdapter(var items:ArrayList<Int>?) : RecyclerView.Adapter<RLPartAdap
     override fun onBindViewHolder(holder: HolderView, position: Int) {
         val item=items!![position]
         var number:Int? = item
-        holder.number.text=number.toString()
+        holder.number.text="Phần "+number.toString()
     }
 }

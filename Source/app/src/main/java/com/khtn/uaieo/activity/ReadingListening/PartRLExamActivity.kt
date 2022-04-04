@@ -50,14 +50,17 @@ class PartRLExamActivity : AppCompatActivity() {
 
                     }
                     3->{
-                        intent= Intent(this@PartRLExamActivity, Part1::class.java)
+                        intent= Intent(this@PartRLExamActivity, Part4::class.java)
 
                     }
                     4->{
-                        intent= Intent(this@PartRLExamActivity, Part1::class.java)
+                        intent= Intent(this@PartRLExamActivity, Part5::class.java)
                     }
                     5->{
-                        intent= Intent(this@PartRLExamActivity, Part1::class.java)
+                        intent= Intent(this@PartRLExamActivity, Part6::class.java)
+                    }
+                    6->{
+                        intent= Intent(this@PartRLExamActivity, Part7::class.java)
                     }
 
                 }

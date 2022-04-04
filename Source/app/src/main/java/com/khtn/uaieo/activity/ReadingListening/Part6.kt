@@ -1,9 +1,8 @@
 package com.khtn.uaieo.activity.ReadingListening
 
-import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.bumptech.glide.Glide
+import android.text.method.ScrollingMovementMethod
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -11,63 +10,36 @@ import com.google.firebase.database.ValueEventListener
 import com.khtn.uaieo.R
 import com.khtn.uaieo.model.itemPartRL
 import kotlinx.android.synthetic.main.activity_part3.*
+import kotlinx.android.synthetic.main.activity_part6.*
+import kotlinx.android.synthetic.main.activity_part6.titlePart6TV
+import kotlinx.android.synthetic.main.activity_vietsub.*
 
-class Part3 : AppCompatActivity() {
+class Part6 : AppCompatActivity() {
     var id=""
     var num=0;
     var arr=ArrayList<itemPartRL>()
-    var media= MediaPlayer()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_part3)
+        setContentView(R.layout.activity_part6)
         id= intent.getStringExtra("id").toString()
-        loadDataPart3()
+        loadDataPart6()
         clickNext()
-        clickSound()
     }
+
     private fun clickNext() {
-        nextPart3Btn.setOnClickListener {
+        nextPart6Btn.setOnClickListener {
             if( num<arr.size){
-                num+=3
+                num+=1
                 if(num==arr.size){
-                    num=arr.size-3
+                    num=arr.size-1
                 }
-                media.reset()
                 setData(num)
             }
         }
     }
 
-    fun clickSound(){
-        soundPart3Btn.setOnClickListener {
-            if( num<arr.size){
-                if(!media.isPlaying){
-                    media.setDataSource(arr[num].audio)
-                    media.prepare()
-                    media.start()
-                }else{
-                    media.stop()
-                    media.reset()
-                }
-            }
-        }
-    }
-
-    fun setData(num: Int ){
-        if (num < arr.size) {
-            cau1part3TV.text = "Câu ${arr[num].number}:"+arr[num].title
-            cau2part3TV.text = "Câu ${arr[num+1].number}:"+arr[num + 1].title
-            cau3part3TV.text = "Câu ${arr[num+2].number}:"+arr[num + 2].title
-            try {
-                Glide.with(this).load(arr[num].image).into(imagePart3)
-            } finally {
-
-            }
-        }
-    }
-    private fun loadDataPart3() {
-        val ref= FirebaseDatabase.getInstance().getReference("RLquestions").child(id).child("part3")
+    private fun loadDataPart6() {
+        val ref= FirebaseDatabase.getInstance().getReference("RLquestions").child(id).child("part6")
         ref.addListenerForSingleValueEvent(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 for (item in snapshot.children){
@@ -78,7 +50,7 @@ class Part3 : AppCompatActivity() {
                         }
                     }
                 }
-                setData( 0)
+                setData(0)
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -87,10 +59,9 @@ class Part3 : AppCompatActivity() {
         })
     }
 
-    override fun onBackPressed() {
-        super.onBackPressed()
-        media.stop()
-        media.release()
-        finish()
+    private fun setData(i: Int) {
+        titlePart6TV.setMovementMethod(ScrollingMovementMethod())
+        numberPart6TV.text="Câu ${arr[num].number}"
+        titlePart6TV.text=arr[num].title
     }
 }

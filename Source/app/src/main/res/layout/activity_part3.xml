@@ -6,4 +6,61 @@
     android:layout_height="match_parent"
     tools:context=".activity.ReadingListening.Part3">
 
+    <Button
+        android:id="@+id/soundPart3Btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="84dp"
+        android:layout_marginBottom="32dp"
+        android:text="@string/Mp3sound"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/nextPart3Btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="84dp"
+        android:layout_marginBottom="32dp"
+        android:text="@string/Next"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/soundPart3Btn" />
+
+    <ImageView
+        android:id="@+id/imagePart3"
+        android:layout_width="416dp"
+        android:layout_height="218dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/bg_idea" />
+
+    <TextView
+        android:id="@+id/cau1part3TV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="44dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imagePart3" />
+
+    <TextView
+        android:id="@+id/cau2part3TV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="108dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="@+id/cau1part3TV"
+        app:layout_constraintTop_toBottomOf="@+id/cau1part3TV" />
+
+    <TextView
+        android:id="@+id/cau3part3TV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="@+id/cau2part3TV"
+        app:layout_constraintTop_toBottomOf="@+id/cau2part3TV" />
 </androidx.constraintlayout.widget.ConstraintLayout>

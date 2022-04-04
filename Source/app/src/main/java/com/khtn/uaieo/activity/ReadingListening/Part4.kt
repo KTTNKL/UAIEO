@@ -12,17 +12,16 @@ import com.khtn.uaieo.R
 import com.khtn.uaieo.model.itemPartRL
 import kotlinx.android.synthetic.main.activity_part3.*
 
-class Part3 : AppCompatActivity() {
+class Part4 : AppCompatActivity() {
     var id=""
     var num=0;
     var arr=ArrayList<itemPartRL>()
     var media= MediaPlayer()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_part3)
         id= intent.getStringExtra("id").toString()
-        loadDataPart3()
+        loadDataPart4()
         clickNext()
         clickSound()
     }
@@ -66,8 +65,8 @@ class Part3 : AppCompatActivity() {
             }
         }
     }
-    private fun loadDataPart3() {
-        val ref= FirebaseDatabase.getInstance().getReference("RLquestions").child(id).child("part3")
+    private fun loadDataPart4() {
+        val ref= FirebaseDatabase.getInstance().getReference("RLquestions").child(id).child("part4")
         ref.addListenerForSingleValueEvent(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 for (item in snapshot.children){
@@ -78,7 +77,7 @@ class Part3 : AppCompatActivity() {
                         }
                     }
                 }
-                setData( 0)
+                setData(0)
             }
 
             override fun onCancelled(error: DatabaseError) {

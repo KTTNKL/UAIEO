@@ -1,6 +1,6 @@
 package com.khtn.uaieo.model
 
-class itemPart3 {
+class itemPartRL {
     var title: String?=""
     var option1: String?="";
     var option2: String?="";
@@ -9,7 +9,11 @@ class itemPart3 {
     var number : Int?=0;
     var audio: String?="";
     var answer: String?=""
-    constructor(_title: String, _option1: String, _option2: String, _option3: String, _option4: String, _answer: String,number:Int?,audio:String?){
+    var image: String?=""
+    var image2: String?=""
+    var image3: String?=""
+
+    constructor(_title: String, _option1: String, _option2: String, _option3: String, _option4: String, _answer: String,number:Int?,audio:String?,image:String?,image2:String?,image3:String?){
         this.title = _title
         this.number=number
         this.audio=audio
@@ -18,6 +22,9 @@ class itemPart3 {
         this.option3 = _option3
         this.option4 = _option4
         this.answer = _answer
+        this.image=image
+        this.image2=image2
+        this.image3=image3
     }
     constructor(){
 
