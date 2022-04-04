@@ -3,67 +3,45 @@ package com.khtn.uaieo.activity.ReadingListening
 import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import com.bumptech.glide.Glide
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.khtn.uaieo.R
 import com.khtn.uaieo.model.itemPartRL
-import kotlinx.android.synthetic.main.activity_part2.*
+import kotlinx.android.synthetic.main.activity_part1.*
+import kotlinx.android.synthetic.main.activity_part3.*
+import kotlinx.android.synthetic.main.activity_part5.*
 
-class Part2 : AppCompatActivity() {
+class Part5 : AppCompatActivity() {
     var id=""
     var num=0;
     var arr=ArrayList<itemPartRL>()
     var media= MediaPlayer()
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_part2)
+        setContentView(R.layout.activity_part5)
         id= intent.getStringExtra("id").toString()
-        loadDataPart2()
-        clickSound()
+        loadDataPart5()
         clickNext()
     }
 
     private fun clickNext() {
-        nextPart2Btn.setOnClickListener {
+        nextPart5Btn.setOnClickListener {
             if( num<arr.size){
-                num++
+                num+=1
                 if(num==arr.size){
                     num=arr.size-1
                 }
-                media.reset()
                 setData(num)
             }
         }
     }
 
-    fun clickSound(){
-        soundPart2Btn.setOnClickListener {
-
-            if( num<arr.size){
-                if(!media.isPlaying){
-                    media.setDataSource(arr[num].audio)
-                    media.prepare()
-                    media.start()
-                }else{
-                    media.stop()
-                    media.reset()
-                }
-            }
-        }
-    }
-
-    fun setData(num: Int ){
-        if( num<arr.size) {
-            questionPart2TV.text = "Câu " + arr[num].number
-        }
-    }
-
-    private fun loadDataPart2() {
-        val ref= FirebaseDatabase.getInstance().getReference("RLquestions").child(id).child("part2")
+    private fun loadDataPart5() {
+        val ref= FirebaseDatabase.getInstance().getReference("RLquestions").child(id).child("part5")
         ref.addListenerForSingleValueEvent(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 for (item in snapshot.children){
@@ -72,7 +50,7 @@ class Part2 : AppCompatActivity() {
                         arr.add(question)
                     }
                 }
-                questionPart2TV.text="Câu "+arr[0].number
+                setData(0)
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -80,10 +58,8 @@ class Part2 : AppCompatActivity() {
             }
         })
     }
-    override fun onBackPressed() {
-        super.onBackPressed()
-        media.stop()
-        media.release()
-        finish()
+
+    private fun setData(num: Int) {
+        titlePart5TV.text = "Câu ${arr[num].number}:"+arr[num].title
     }
 }
