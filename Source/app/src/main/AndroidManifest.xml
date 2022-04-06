@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UAIEO">
         <activity
+            android:name=".activity.AnalystUserActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.ReadingListening.Part7"
             android:exported="false" />
         <activity
