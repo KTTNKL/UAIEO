@@ -1,4 +1,4 @@
-package com.khtn.uaieo.activity.Speaking
+package com.khtn.uaieo.activity
 
 import android.app.ProgressDialog
 import android.content.Intent
@@ -11,21 +11,24 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.khtn.uaieo.R
+import com.khtn.uaieo.activity.Speaking.SpeakingQuestionListActivity
 import com.khtn.uaieo.adapter.WSExamAdapter
 import com.khtn.uaieo.model.ExamID
+import kotlinx.android.synthetic.main.activity_writing_exam_list.*
 
-class SpeakingExamListActivity : AppCompatActivity() {
+class WritingExamListActivity : AppCompatActivity() {
+
     lateinit var readingArrayList: ArrayList<ExamID>
     lateinit var dialog: ProgressDialog
     lateinit var newRecyclerview: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_speaking_exam_list)
+        setContentView(R.layout.activity_writing_exam_list)
 
         readingArrayList = ArrayList<ExamID>()
 
-        newRecyclerview = findViewById(R.id.speakingListRecyclerView)
+        newRecyclerview = findViewById(R.id.writingListRecyclerView)
         newRecyclerview.layoutManager = LinearLayoutManager(this)
         newRecyclerview.setHasFixedSize(true)
 
@@ -36,8 +39,9 @@ class SpeakingExamListActivity : AppCompatActivity() {
 
         LoadData()
     }
+
     fun LoadData(){
-        val ref= FirebaseDatabase.getInstance().getReference("WSquestions/speaking")
+        val ref= FirebaseDatabase.getInstance().getReference("WSquestions/writing")
         ref.addListenerForSingleValueEvent(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 //Xoa list trc khi them vao moi lan vao app
@@ -45,7 +49,7 @@ class SpeakingExamListActivity : AppCompatActivity() {
 
                 var count = snapshot.childrenCount.toInt()
                 for(i in 1..count){
-                    readingArrayList.add(ExamID("speakingExam" + i.toString()))
+                    readingArrayList.add(ExamID("writingExam" + i.toString()))
                 }
                 dialog.dismiss()
                 var adapter = WSExamAdapter(readingArrayList)
@@ -62,8 +66,8 @@ class SpeakingExamListActivity : AppCompatActivity() {
         })
     }
     fun swapScreen(position:Int){
-        val intent = Intent(this, SpeakingQuestionListActivity::class.java)
-        intent.putExtra("SpeakingIndex", readingArrayList.get(position).id)
+        val intent = Intent(this, WritingQuestionListActivity::class.java)
+        intent.putExtra("WritingIndex", readingArrayList.get(position).id)
         startActivityForResult(intent, 1111)
     }
 }

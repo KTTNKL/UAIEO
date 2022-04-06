@@ -46,4 +46,8 @@
     <string name="B">B</string>
     <string name="C">C</string>
     <string name="D">D</string>
+    <string name="writingTitle">WRITING</string>
+    <string name="uploadBtn">Đăng Bài Làm</string>
+    <string name="pickImageBtn">Chọn Hình</string>
+    <string name="exampleAnswerBtn">Các Bài Làm Tham Khảo</string>
 </resources>
