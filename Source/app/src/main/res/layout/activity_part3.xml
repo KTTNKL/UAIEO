@@ -28,39 +28,301 @@
 
     <ImageView
         android:id="@+id/imagePart3"
-        android:layout_width="416dp"
-        android:layout_height="218dp"
+        android:layout_width="414dp"
+        android:layout_height="186dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/bg_idea" />
 
-    <TextView
-        android:id="@+id/cau1part3TV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="44dp"
-        android:text="TextView"
+    <ScrollView
+        android:layout_width="424dp"
+        android:layout_height="387dp"
+        android:layout_marginTop="6dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imagePart3" />
+        app:layout_constraintTop_toBottomOf="@+id/imagePart3"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="SpeakableTextPresentCheck">
 
-    <TextView
-        android:id="@+id/cau2part3TV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="108dp"
-        android:text="TextView"
-        app:layout_constraintStart_toStartOf="@+id/cau1part3TV"
-        app:layout_constraintTop_toBottomOf="@+id/cau1part3TV" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/cau3part3TV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:text="TextView"
-        app:layout_constraintStart_toStartOf="@+id/cau2part3TV"
-        app:layout_constraintTop_toBottomOf="@+id/cau2part3TV" />
+            <TextView
+                android:id="@+id/cau1part3TV"
+                android:layout_width="381dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:text="TextView" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="53dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/buttonA_part3_ques1"
+                    android:layout_width="131dp"
+                    android:layout_height="50dp"
+                    android:text="@string/A" />
+
+                <TextView
+                    android:id="@+id/part3_ques1_A_TV"
+                    android:layout_width="272dp"
+                    android:layout_height="wrap_content"
+
+                    android:text="TextView" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="53dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/buttonB_part3_ques1"
+                    android:layout_width="20dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/B" />
+
+                <TextView
+                    android:id="@+id/part3_ques1_B_TV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="TextView"
+                    tools:ignore="DuplicateIds" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="53dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/buttonC_part3_ques1"
+                    android:layout_width="20dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/C" />
+
+                <TextView
+                    android:id="@+id/part3_ques1_C_TV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="TextView"
+                    tools:ignore="DuplicateIds" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="53dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/buttonD_part3_ques1"
+                    android:layout_width="20dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/D" />
+
+                <TextView
+                    android:id="@+id/part3_ques1_D_TV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="TextView"
+                    tools:ignore="DuplicateIds" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/cau2part3TV"
+                android:layout_width="381dp"
+                android:layout_height="43dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="4dp"
+                android:text="TextView" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="53dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/buttonA_part3_ques2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/A" />
+
+                <TextView
+                    android:id="@+id/part3_ques2_A_TV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="TextView" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="53dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/buttonB_part3_ques2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/B" />
+
+                <TextView
+                    android:id="@+id/part3_ques2_B_TV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="TextView"
+                    tools:ignore="DuplicateIds" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="53dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/buttonC_part3_ques2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/C" />
+
+                <TextView
+                    android:id="@+id/part3_ques2_C_TV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="TextView"
+                    tools:ignore="DuplicateIds" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="53dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/buttonD_part3_ques2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/D" />
+
+                <TextView
+                    android:id="@+id/part3_ques2_D_TV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="TextView"
+                    tools:ignore="DuplicateIds" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/cau3part3TV"
+                android:layout_width="386dp"
+                android:layout_height="47dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="4dp"
+                android:text="TextView" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="53dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/buttonA_part3_ques3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/A" />
+
+                <TextView
+                    android:id="@+id/part3_ques3_A_TV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="TextView" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="53dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/buttonB_part3_ques3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/B" />
+
+                <TextView
+                    android:id="@+id/part3_ques3_B_TV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="TextView"
+                    tools:ignore="DuplicateIds" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="53dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/buttonC_part3_ques3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/C" />
+
+                <TextView
+                    android:id="@+id/part3_ques3_C_TV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="TextView"
+                    tools:ignore="DuplicateIds" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="53dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/buttonD_part3_ques3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/D" />
+
+                <TextView
+                    android:id="@+id/part3_ques3_D_TV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="TextView"
+                    tools:ignore="DuplicateIds" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

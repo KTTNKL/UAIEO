@@ -3,6 +3,7 @@ package com.khtn.uaieo.activity.ReadingListening
 import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -17,6 +18,7 @@ class Part1 : AppCompatActivity() {
     var num=0;
     var arr=ArrayList<itemPartRL>()
     var media= MediaPlayer()
+    var correctAnswers = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +28,8 @@ class Part1 : AppCompatActivity() {
         loadDataPart1()
         clickSound()
         clickNext()
+
+
     }
 
 
@@ -41,7 +45,7 @@ class Part1 : AppCompatActivity() {
                         arr.add(question)
                     }
                 }
-                Glide.with(this@Part1).load(arr[0].image).into(part1IV)
+                setData(0)
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -60,9 +64,14 @@ class Part1 : AppCompatActivity() {
                 num++
                 if(num==arr.size){
                     num=arr.size-1
+                    Toast.makeText(this, "Part 1: " + correctAnswers.toString() + "/" + arr.size, Toast.LENGTH_SHORT).show()
+                    nextPart1Btn.setText("XEM ĐIỂM")
                 }
-                media.reset()
-                setData(num)
+                else{
+                    media.reset()
+                    setData(num)
+                }
+
             }
         }
     }
@@ -76,9 +85,11 @@ class Part1 : AppCompatActivity() {
                     media.setDataSource(arr[num].audio)
                     media.prepare()
                     media.start()
+                    audioPart1Btn.setText("DỪNG")
                 }else{
                     media.stop()
                     media.reset()
+                    audioPart1Btn.setText("PHÁT")
                 }
             }
 
@@ -87,7 +98,129 @@ class Part1 : AppCompatActivity() {
 
     fun setData(num: Int ){
         if( num<arr.size) {
+            questionNumberTextViewPart1.text = "Câu " + arr[num].number
             Glide.with(this).load(arr[num].image).into(part1IV)
+            buttonA.setBackgroundResource(R.drawable.bg_quiz_question)
+            buttonB.setBackgroundResource(R.drawable.bg_quiz_question)
+            buttonC.setBackgroundResource(R.drawable.bg_quiz_question)
+            buttonD.setBackgroundResource(R.drawable.bg_quiz_question)
+            buttonA.isClickable = true
+            buttonB.isClickable = true
+            buttonC.isClickable = true
+            buttonD.isClickable = true
+
+            buttonA.setOnClickListener {
+                if(arr[num].answer == "A")
+                {
+                    buttonA.setBackgroundResource(R.drawable.bg_correct)
+                    correctAnswers++
+                }
+                else
+                {
+                    buttonA.setBackgroundResource(R.drawable.bg_wrong)
+                    if(arr[num].answer == "B")
+                    {
+                        buttonB.setBackgroundResource(R.drawable.bg_correct)
+                    }
+                    if(arr[num].answer == "C")
+                    {
+                        buttonC.setBackgroundResource(R.drawable.bg_correct)
+                    }
+                    if(arr[num].answer == "D")
+                    {
+                        buttonD.setBackgroundResource(R.drawable.bg_correct)
+                    }
+                }
+                buttonA.isClickable = false
+                buttonB.isClickable = false
+                buttonC.isClickable = false
+                buttonD.isClickable = false
+            }
+
+            buttonB.setOnClickListener {
+                if(arr[num].answer == "B")
+                {
+                    buttonB.setBackgroundResource(R.drawable.bg_correct)
+                    correctAnswers++
+                }
+                else
+                {
+                    buttonB.setBackgroundResource(R.drawable.bg_wrong)
+                    if(arr[num].answer == "A")
+                    {
+                        buttonA.setBackgroundResource(R.drawable.bg_correct)
+                    }
+                    if(arr[num].answer == "C")
+                    {
+                        buttonC.setBackgroundResource(R.drawable.bg_correct)
+                    }
+                    if(arr[num].answer == "D")
+                    {
+                        buttonD.setBackgroundResource(R.drawable.bg_correct)
+                    }
+                }
+                buttonA.isClickable = false
+                buttonB.isClickable = false
+                buttonC.isClickable = false
+                buttonD.isClickable = false
+            }
+
+            buttonC.setOnClickListener {
+                if(arr[num].answer == "C")
+                {
+                    buttonC.setBackgroundResource(R.drawable.bg_correct)
+                    correctAnswers++
+                }
+                else
+                {
+                    buttonC.setBackgroundResource(R.drawable.bg_wrong)
+                    if(arr[num].answer == "A")
+                    {
+                        buttonA.setBackgroundResource(R.drawable.bg_correct)
+                    }
+                    if(arr[num].answer == "B")
+                    {
+                        buttonB.setBackgroundResource(R.drawable.bg_correct)
+                    }
+                    if(arr[num].answer == "D")
+                    {
+                        buttonD.setBackgroundResource(R.drawable.bg_correct)
+                    }
+                }
+                buttonA.isClickable = false
+                buttonB.isClickable = false
+                buttonC.isClickable = false
+                buttonD.isClickable = false
+            }
+
+            buttonD.setOnClickListener {
+                if(arr[num].answer == "D")
+                {
+                    buttonD.setBackgroundResource(R.drawable.bg_correct)
+                    correctAnswers++
+                }
+                else
+                {
+                    buttonD.setBackgroundResource(R.drawable.bg_wrong)
+                    if(arr[num].answer == "A")
+                    {
+                        buttonA.setBackgroundResource(R.drawable.bg_correct)
+                    }
+                    if(arr[num].answer == "B")
+                    {
+                        buttonB.setBackgroundResource(R.drawable.bg_correct)
+                    }
+                    if(arr[num].answer == "C")
+                    {
+                        buttonC.setBackgroundResource(R.drawable.bg_correct)
+                    }
+                }
+                buttonA.isClickable = false
+                buttonB.isClickable = false
+                buttonC.isClickable = false
+                buttonD.isClickable = false
+            }
+
         }
     }
     override fun onBackPressed() {
