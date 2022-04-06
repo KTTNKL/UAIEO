@@ -12,6 +12,7 @@ import com.khtn.uaieo.R
 import com.khtn.uaieo.activity.Home.ScheduleScreen
 import com.khtn.uaieo.activity.ReadingListening.ListRLExamActivity
 import com.khtn.uaieo.activity.Speaking.SpeakingExamListActivity
+import com.khtn.uaieo.activity.WritingExamListActivity
 import com.khtn.uaieo.adapter.MenuAdapter
 import com.khtn.uaieo.model.itemMenu
 
@@ -58,7 +59,7 @@ class ExamFragment : Fragment() {
                         intent= Intent(context, SpeakingExamListActivity::class.java)
                     }
                     2->{
-                        intent= Intent(context, ScheduleScreen::class.java)
+                        intent= Intent(context, WritingExamListActivity::class.java)
 
                     }
 

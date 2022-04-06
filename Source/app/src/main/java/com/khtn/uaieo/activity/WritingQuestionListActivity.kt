@@ -1,4 +1,4 @@
-package com.khtn.uaieo.activity.Speaking
+package com.khtn.uaieo.activity
 
 import android.app.ProgressDialog
 import android.content.Intent
@@ -12,31 +12,33 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.khtn.uaieo.R
+import com.khtn.uaieo.activity.Speaking.SpeakingQuestionDetailActicity
 import com.khtn.uaieo.adapter.WSExamAdapter
 import com.khtn.uaieo.model.ExamID
 import com.khtn.uaieo.model.partSW
+import kotlinx.android.synthetic.main.activity_writing_question_list.*
 import java.util.*
 import kotlin.collections.ArrayList
 
-class SpeakingQuestionListActivity : AppCompatActivity() {
+class WritingQuestionListActivity : AppCompatActivity() {
 
     lateinit var readingArrayList: ArrayList<partSW>
     lateinit var dialog: ProgressDialog
     lateinit var newRecyclerview: RecyclerView
     lateinit var id: String
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_speaking_question_list)
+        setContentView(R.layout.activity_writing_question_list)
 
         val intent = intent
-        id = intent.getStringExtra("SpeakingIndex").toString()
+        id = intent.getStringExtra("WritingIndex").toString()
 
-        Log.d("speaking",id)
-
+        Log.d("writingggg",id)
         readingArrayList = ArrayList<partSW>()
 
-        newRecyclerview = findViewById(R.id.speakingQuestionRecyclerView)
+        newRecyclerview = findViewById(R.id.writingQuestionRecyclerView)
         newRecyclerview.layoutManager = LinearLayoutManager(this)
         newRecyclerview.setHasFixedSize(true)
 
@@ -52,7 +54,8 @@ class SpeakingQuestionListActivity : AppCompatActivity() {
     fun LoadData(){
 
         //Xoa list trc khi them vao moi lan vao app
-        var path = "WSquestions/speaking/" + id
+        var path = "WSquestions/writing/" + id
+
 
         val ref= FirebaseDatabase.getInstance().getReference(path)
         ref.addListenerForSingleValueEvent(object: ValueEventListener {
@@ -71,8 +74,9 @@ class SpeakingQuestionListActivity : AppCompatActivity() {
                         }
                     }
                 }
+
                 var TotalQuestion = ArrayList<ExamID>()
-                for(i in 1..11){
+                for(i in 1..8){
                     TotalQuestion.add(ExamID("CÂU " + i.toString()))
                 }
                 dialog.dismiss()
@@ -90,8 +94,9 @@ class SpeakingQuestionListActivity : AppCompatActivity() {
         })
     }
     fun swapScreen(position:Int){
-        val intent = Intent(this, SpeakingQuestionDetailActicity::class.java)
-        intent.putExtra("SpeakingQuestionData", readingArrayList.get(position))
+        val intent = Intent(this, WritingQuestionDetailActivity::class.java)
+        intent.putExtra("IDExam",id);
+        intent.putExtra("WritingQuestionData", readingArrayList.get(position))
         startActivityForResult(intent, 1111)
     }
 }

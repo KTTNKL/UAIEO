@@ -15,6 +15,18 @@
         <activity
             android:name=".activity.AnalystUserActivity"
             android:exported="false" />
+        <activity 
+            android:name=".activity.ExampleWritingAnswerListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.WritingQuestionDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.WritingQuestionListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.WritingExamListActivity"
+            android:exported="false" />
         <activity
             android:name=".activity.ReadingListening.Part7"
             android:exported="false" />
@@ -46,9 +58,6 @@
 
         <activity
             android:name=".activity.NotificationDetailActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activity.NotificationListActivity"
             android:exported="false" />
         <activity
             android:name=".activity.Speaking.SpeakingQuestionDetailActicity"
