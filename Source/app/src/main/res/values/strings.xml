@@ -42,4 +42,9 @@
     <string name="OtherRecordBtn">Bài làm của người khác</string>
     <string name="Next">Câu kế</string>
     <string name="Mp3sound">Phát</string>
+    <string name="writingTitle">WRITING</string>
+    <string name="uploadBtn">Đăng Bài Làm</string>
+    <string name="pickImageBtn">Chọn Hình</string>
+    <string name="exampleAnswerBtn">Các Bài Làm Tham Khảo</string>
+
 </resources>

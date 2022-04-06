@@ -12,7 +12,7 @@ class SpeakingQuestionDetailActicity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_speaking_question_detail_acticity)
 
-        var question = intent.getSerializableExtra("QuestionData") as partSW
+        var question = intent.getSerializableExtra("SpeakingQuestionData") as partSW
 
         Glide.with(this).load(question.image).into(speakingImage)
         questionNumberTV.text = "CÂU: " + question.number.toString()
