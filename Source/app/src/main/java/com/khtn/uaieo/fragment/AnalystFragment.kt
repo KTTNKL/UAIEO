@@ -1,5 +1,6 @@
 package com.khtn.uaieo.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -13,6 +14,8 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.khtn.uaieo.R
+import com.khtn.uaieo.activity.AnalystUserActivity
+import com.khtn.uaieo.activity.ReadingListening.PartRLExamActivity
 import com.khtn.uaieo.adapter.AnalystExamAdapter
 import com.khtn.uaieo.model.itemExamRL
 import com.khtn.uaieo.model.itemMenu
@@ -66,7 +69,9 @@ class AnalystFragment : Fragment() {
 
         adapter.setOnItemClickListener(object :AnalystExamAdapter.onItemClickListener{
             override fun onItemClick(position: Int) {
-
+                val intent= Intent(context, AnalystUserActivity::class.java)
+                intent.putExtra("id",itemList[position].id)
+                startActivity(intent)
             }
         })
     }

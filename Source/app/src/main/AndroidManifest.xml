@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UAIEO">
         <activity
+            android:name=".activity.AnalystUserActivity"
+            android:exported="false" />
+        <activity 
             android:name=".activity.ExampleWritingAnswerListActivity"
             android:exported="false" />
         <activity
