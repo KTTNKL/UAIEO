@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.google.firebase.auth.FirebaseAuth
@@ -13,18 +14,19 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
 import com.khtn.uaieo.R
 import com.khtn.uaieo.activity.Auth.LoginActivity
+import com.khtn.uaieo.activity.NotificationDetailActivity
 import kotlinx.android.synthetic.main.change_password_dialog.view.*
 import kotlinx.android.synthetic.main.fragment_profile.*
 
 
 class ProfileFragment : Fragment() {
-
     lateinit var auth: FirebaseAuth
     var databaseReference: DatabaseReference?=null
     lateinit var user: FirebaseUser
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
+
     ): View? {
         return inflater.inflate(R.layout.fragment_profile, container, false)
     }
@@ -35,6 +37,7 @@ class ProfileFragment : Fragment() {
         loadProfile()
         changePassword()
         logout()
+        setNotification()
     }
     fun init (){
         auth = FirebaseAuth.getInstance()
@@ -88,6 +91,13 @@ class ProfileFragment : Fragment() {
             val intent= Intent(context, LoginActivity::class.java)
             startActivity(intent)
             activity?.finish()
+        }
+    }
+
+    fun setNotification() {
+        notificationBT!!.setOnClickListener {
+            val intent= Intent(context, NotificationDetailActivity::class.java)
+            startActivity(intent)
         }
     }
 }

@@ -45,9 +45,6 @@
             android:name=".activity.NotificationDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.NotificationListActivity"
-            android:exported="false" />
-        <activity
             android:name=".activity.Speaking.SpeakingQuestionDetailActicity"
             android:exported="false" />
         <activity
