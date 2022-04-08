@@ -43,13 +43,93 @@
 
     <TextView
         android:id="@+id/titlePart7TV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="369dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="4dp"
         android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
+
+    <Button
+        android:id="@+id/buttonA_part7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/A"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titlePart7TV" />
+
+    <Button
+        android:id="@+id/buttonB_part7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="4dp"
+        android:text="@string/B"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonA_part7" />
+
+    <Button
+        android:id="@+id/buttonC_part7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="4dp"
+        android:text="@string/C"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonB_part7" />
+
+    <Button
+        android:id="@+id/buttonD_part7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="4dp"
+        android:text="@string/D"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonC_part7" />
+
+    <TextView
+        android:id="@+id/textViewA_part7"
+        android:layout_width="272dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        app:layout_constraintStart_toEndOf="@+id/buttonA_part7"
+        app:layout_constraintTop_toBottomOf="@+id/titlePart7TV" />
+
+    <TextView
+        android:id="@+id/textViewB_part7"
+        android:layout_width="273dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:text="TextView"
+        app:layout_constraintStart_toEndOf="@+id/buttonB_part7"
+        app:layout_constraintTop_toBottomOf="@+id/textViewA_part7" />
+
+    <TextView
+        android:id="@+id/textViewC_part7"
+        android:layout_width="272dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:text="TextView"
+        app:layout_constraintStart_toEndOf="@+id/buttonC_part7"
+        app:layout_constraintTop_toBottomOf="@+id/textViewB_part7" />
+
+    <TextView
+        android:id="@+id/textViewD_part7"
+        android:layout_width="270dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:text="TextView"
+        app:layout_constraintStart_toEndOf="@+id/buttonD_part7"
+        app:layout_constraintTop_toBottomOf="@+id/textViewC_part7" />
 
     <Button
         android:id="@+id/nextPart7Btn"

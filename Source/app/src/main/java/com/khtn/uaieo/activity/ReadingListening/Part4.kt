@@ -3,6 +3,7 @@ package com.khtn.uaieo.activity.ReadingListening
 import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -17,6 +18,8 @@ class Part4 : AppCompatActivity() {
     var num=0;
     var arr=ArrayList<itemPartRL>()
     var media= MediaPlayer()
+    var correctAnswers = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_part3)
@@ -31,9 +34,15 @@ class Part4 : AppCompatActivity() {
                 num+=3
                 if(num==arr.size){
                     num=arr.size-3
+                    Toast.makeText(this, "Part 3: " + correctAnswers.toString() + "/" + arr.size, Toast.LENGTH_SHORT).show()
+                    nextPart3Btn.setText("XEM ĐIỂM")
                 }
-                media.reset()
-                setData(num)
+                else
+                {
+                    media.reset()
+                    setData(num)
+                }
+
             }
         }
     }
@@ -45,9 +54,11 @@ class Part4 : AppCompatActivity() {
                     media.setDataSource(arr[num].audio)
                     media.prepare()
                     media.start()
+                    soundPart3Btn.setText("DỪNG")
                 }else{
                     media.stop()
                     media.reset()
+                    soundPart3Btn.setText("PHÁT")
                 }
             }
         }
@@ -58,6 +69,391 @@ class Part4 : AppCompatActivity() {
             cau1part3TV.text = "Câu ${arr[num].number}:"+arr[num].title
             cau2part3TV.text = "Câu ${arr[num+1].number}:"+arr[num + 1].title
             cau3part3TV.text = "Câu ${arr[num+2].number}:"+arr[num + 2].title
+
+            part3_ques1_A_TV.text = arr[num].option1
+            part3_ques1_B_TV.text = arr[num].option2
+            part3_ques1_C_TV.text = arr[num].option3
+            part3_ques1_D_TV.text = arr[num].option4
+
+            part3_ques2_A_TV.text = arr[num + 1].option1
+            part3_ques2_B_TV.text = arr[num + 1].option2
+            part3_ques2_C_TV.text = arr[num + 1].option3
+            part3_ques2_D_TV.text = arr[num + 1].option4
+
+            part3_ques3_A_TV.text = arr[num + 2].option1
+            part3_ques3_B_TV.text = arr[num + 2].option2
+            part3_ques3_C_TV.text = arr[num + 2].option3
+            part3_ques3_D_TV.text = arr[num + 2].option4
+
+            buttonA_part3_ques1.isClickable = true
+            buttonB_part3_ques1.isClickable = true
+            buttonC_part3_ques1.isClickable = true
+            buttonD_part3_ques1.isClickable = true
+
+            buttonA_part3_ques2.isClickable = true
+            buttonB_part3_ques2.isClickable = true
+            buttonC_part3_ques2.isClickable = true
+            buttonD_part3_ques2.isClickable = true
+
+            buttonA_part3_ques3.isClickable = true
+            buttonB_part3_ques3.isClickable = true
+            buttonC_part3_ques3.isClickable = true
+            buttonD_part3_ques3.isClickable = true
+
+            buttonA_part3_ques1.setBackgroundResource(R.drawable.bg_quiz_question)
+            buttonB_part3_ques1.setBackgroundResource(R.drawable.bg_quiz_question)
+            buttonC_part3_ques1.setBackgroundResource(R.drawable.bg_quiz_question)
+            buttonD_part3_ques1.setBackgroundResource(R.drawable.bg_quiz_question)
+
+            buttonA_part3_ques2.setBackgroundResource(R.drawable.bg_quiz_question)
+            buttonB_part3_ques2.setBackgroundResource(R.drawable.bg_quiz_question)
+            buttonC_part3_ques2.setBackgroundResource(R.drawable.bg_quiz_question)
+            buttonD_part3_ques2.setBackgroundResource(R.drawable.bg_quiz_question)
+
+            buttonA_part3_ques3.setBackgroundResource(R.drawable.bg_quiz_question)
+            buttonB_part3_ques3.setBackgroundResource(R.drawable.bg_quiz_question)
+            buttonC_part3_ques3.setBackgroundResource(R.drawable.bg_quiz_question)
+            buttonD_part3_ques3.setBackgroundResource(R.drawable.bg_quiz_question)
+
+
+            // Cau hoi 1
+            buttonA_part3_ques1.setOnClickListener {
+                if(arr[num].answer == "A")
+                {
+                    buttonA_part3_ques1.setBackgroundResource(R.drawable.bg_correct)
+                    correctAnswers++
+                }
+                else
+                {
+                    buttonA_part3_ques1.setBackgroundResource(R.drawable.bg_wrong)
+                    if(arr[num].answer == "B")
+                    {
+                        buttonB_part3_ques1.setBackgroundResource(R.drawable.bg_correct)
+                    }
+                    if(arr[num].answer == "C")
+                    {
+                        buttonC_part3_ques1.setBackgroundResource(R.drawable.bg_correct)
+                    }
+                    if(arr[num].answer == "D")
+                    {
+                        buttonD_part3_ques1.setBackgroundResource(R.drawable.bg_correct)
+                    }
+                }
+                buttonA_part3_ques1.isClickable = false
+                buttonB_part3_ques1.isClickable = false
+                buttonC_part3_ques1.isClickable = false
+                buttonD_part3_ques1.isClickable = false
+            }
+
+            buttonB_part3_ques1.setOnClickListener {
+                if(arr[num].answer == "B")
+                {
+                    buttonB_part3_ques1.setBackgroundResource(R.drawable.bg_correct)
+                    correctAnswers++
+                }
+                else
+                {
+                    buttonB_part3_ques1.setBackgroundResource(R.drawable.bg_wrong)
+                    if(arr[num].answer == "A")
+                    {
+                        buttonA_part3_ques1.setBackgroundResource(R.drawable.bg_correct)
+                    }
+                    if(arr[num].answer == "C")
+                    {
+                        buttonC_part3_ques1.setBackgroundResource(R.drawable.bg_correct)
+                    }
+                    if(arr[num].answer == "D")
+                    {
+                        buttonD_part3_ques1.setBackgroundResource(R.drawable.bg_correct)
+                    }
+                }
+                buttonA_part3_ques1.isClickable = false
+                buttonB_part3_ques1.isClickable = false
+                buttonC_part3_ques1.isClickable = false
+                buttonD_part3_ques1.isClickable = false
+            }
+
+            buttonC_part3_ques1.setOnClickListener {
+                if(arr[num].answer == "C")
+                {
+                    buttonC_part3_ques1.setBackgroundResource(R.drawable.bg_correct)
+                    correctAnswers++
+                }
+                else
+                {
+                    buttonC_part3_ques1.setBackgroundResource(R.drawable.bg_wrong)
+                    if(arr[num].answer == "A")
+                    {
+                        buttonA_part3_ques1.setBackgroundResource(R.drawable.bg_correct)
+                    }
+                    if(arr[num].answer == "B")
+                    {
+                        buttonB_part3_ques1.setBackgroundResource(R.drawable.bg_correct)
+                    }
+                    if(arr[num].answer == "D")
+                    {
+                        buttonD_part3_ques1.setBackgroundResource(R.drawable.bg_correct)
+                    }
+                }
+                buttonA_part3_ques1.isClickable = false
+                buttonB_part3_ques1.isClickable = false
+                buttonC_part3_ques1.isClickable = false
+                buttonD_part3_ques1.isClickable = false
+            }
+
+            buttonD_part3_ques1.setOnClickListener {
+                if(arr[num].answer == "D")
+                {
+                    buttonD_part3_ques1.setBackgroundResource(R.drawable.bg_correct)
+                    correctAnswers++
+                }
+                else
+                {
+                    buttonD_part3_ques1.setBackgroundResource(R.drawable.bg_wrong)
+                    if(arr[num].answer == "A")
+                    {
+                        buttonA_part3_ques1.setBackgroundResource(R.drawable.bg_correct)
+                    }
+                    if(arr[num].answer == "B")
+                    {
+                        buttonB_part3_ques1.setBackgroundResource(R.drawable.bg_correct)
+                    }
+                    if(arr[num].answer == "C")
+                    {
+                        buttonC_part3_ques1.setBackgroundResource(R.drawable.bg_correct)
+                    }
+                }
+                buttonA_part3_ques1.isClickable = false
+                buttonB_part3_ques1.isClickable = false
+                buttonC_part3_ques1.isClickable = false
+                buttonD_part3_ques1.isClickable = false
+            }
+
+            // Cau hoi 2
+            buttonA_part3_ques2.setOnClickListener {
+                if(arr[num + 1].answer == "A")
+                {
+                    buttonA_part3_ques2.setBackgroundResource(R.drawable.bg_correct)
+                    correctAnswers++
+                }
+                else
+                {
+                    buttonA_part3_ques2.setBackgroundResource(R.drawable.bg_wrong)
+                    if(arr[num + 1].answer == "B")
+                    {
+                        buttonB_part3_ques2.setBackgroundResource(R.drawable.bg_correct)
+                    }
+                    if(arr[num + 1].answer == "C")
+                    {
+                        buttonC_part3_ques2.setBackgroundResource(R.drawable.bg_correct)
+                    }
+                    if(arr[num + 1].answer == "D")
+                    {
+                        buttonD_part3_ques2.setBackgroundResource(R.drawable.bg_correct)
+                    }
+                }
+                buttonA_part3_ques2.isClickable = false
+                buttonB_part3_ques2.isClickable = false
+                buttonC_part3_ques2.isClickable = false
+                buttonD_part3_ques2.isClickable = false
+            }
+
+            buttonB_part3_ques2.setOnClickListener {
+                if(arr[num + 1].answer == "B")
+                {
+                    buttonB_part3_ques2.setBackgroundResource(R.drawable.bg_correct)
+                    correctAnswers++
+                }
+                else
+                {
+                    buttonB_part3_ques2.setBackgroundResource(R.drawable.bg_wrong)
+                    if(arr[num + 1].answer == "A")
+                    {
+                        buttonA_part3_ques2.setBackgroundResource(R.drawable.bg_correct)
+                    }
+                    if(arr[num + 1].answer == "C")
+                    {
+                        buttonC_part3_ques2.setBackgroundResource(R.drawable.bg_correct)
+                    }
+                    if(arr[num + 1].answer == "D")
+                    {
+                        buttonD_part3_ques2.setBackgroundResource(R.drawable.bg_correct)
+                    }
+                }
+                buttonA_part3_ques2.isClickable = false
+                buttonB_part3_ques2.isClickable = false
+                buttonC_part3_ques2.isClickable = false
+                buttonD_part3_ques2.isClickable = false
+            }
+
+            buttonC_part3_ques2.setOnClickListener {
+                if(arr[num + 1].answer == "C")
+                {
+                    buttonC_part3_ques2.setBackgroundResource(R.drawable.bg_correct)
+                    correctAnswers++
+                }
+                else
+                {
+                    buttonC_part3_ques2.setBackgroundResource(R.drawable.bg_wrong)
+                    if(arr[num + 1].answer == "A")
+                    {
+                        buttonA_part3_ques2.setBackgroundResource(R.drawable.bg_correct)
+                    }
+                    if(arr[num + 1].answer == "B")
+                    {
+                        buttonB_part3_ques2.setBackgroundResource(R.drawable.bg_correct)
+                    }
+                    if(arr[num + 1].answer == "D")
+                    {
+                        buttonD_part3_ques2.setBackgroundResource(R.drawable.bg_correct)
+                    }
+                }
+                buttonA_part3_ques2.isClickable = false
+                buttonB_part3_ques2.isClickable = false
+                buttonC_part3_ques2.isClickable = false
+                buttonD_part3_ques2.isClickable = false
+            }
+
+            buttonD_part3_ques2.setOnClickListener {
+                if(arr[num + 1].answer == "D")
+                {
+                    buttonD_part3_ques2.setBackgroundResource(R.drawable.bg_correct)
+                    correctAnswers++
+                }
+                else
+                {
+                    buttonD_part3_ques2.setBackgroundResource(R.drawable.bg_wrong)
+                    if(arr[num + 1].answer == "A")
+                    {
+                        buttonA_part3_ques2.setBackgroundResource(R.drawable.bg_correct)
+                    }
+                    if(arr[num + 1].answer == "B")
+                    {
+                        buttonB_part3_ques2.setBackgroundResource(R.drawable.bg_correct)
+                    }
+                    if(arr[num + 1].answer == "C")
+                    {
+                        buttonC_part3_ques2.setBackgroundResource(R.drawable.bg_correct)
+                    }
+                }
+                buttonA_part3_ques2.isClickable = false
+                buttonB_part3_ques2.isClickable = false
+                buttonC_part3_ques2.isClickable = false
+                buttonD_part3_ques2.isClickable = false
+            }
+
+            // Cau hoi 3
+            buttonA_part3_ques3.setOnClickListener {
+                if(arr[num + 2].answer == "A")
+                {
+                    buttonA_part3_ques3.setBackgroundResource(R.drawable.bg_correct)
+                    correctAnswers++
+                }
+                else
+                {
+                    buttonA_part3_ques3.setBackgroundResource(R.drawable.bg_wrong)
+                    if(arr[num + 2].answer == "B")
+                    {
+                        buttonB_part3_ques3.setBackgroundResource(R.drawable.bg_correct)
+                    }
+                    if(arr[num + 2].answer == "C")
+                    {
+                        buttonC_part3_ques3.setBackgroundResource(R.drawable.bg_correct)
+                    }
+                    if(arr[num + 2].answer == "D")
+                    {
+                        buttonD_part3_ques3.setBackgroundResource(R.drawable.bg_correct)
+                    }
+                }
+                buttonA_part3_ques3.isClickable = false
+                buttonB_part3_ques3.isClickable = false
+                buttonC_part3_ques3.isClickable = false
+                buttonD_part3_ques3.isClickable = false
+            }
+
+            buttonB_part3_ques3.setOnClickListener {
+                if(arr[num + 2].answer == "B")
+                {
+                    buttonB_part3_ques3.setBackgroundResource(R.drawable.bg_correct)
+                    correctAnswers++
+                }
+                else
+                {
+                    buttonB_part3_ques3.setBackgroundResource(R.drawable.bg_wrong)
+                    if(arr[num + 2].answer == "A")
+                    {
+                        buttonA_part3_ques3.setBackgroundResource(R.drawable.bg_correct)
+                    }
+                    if(arr[num + 2].answer == "C")
+                    {
+                        buttonC_part3_ques3.setBackgroundResource(R.drawable.bg_correct)
+                    }
+                    if(arr[num + 2].answer == "D")
+                    {
+                        buttonD_part3_ques3.setBackgroundResource(R.drawable.bg_correct)
+                    }
+                }
+                buttonA_part3_ques3.isClickable = false
+                buttonB_part3_ques3.isClickable = false
+                buttonC_part3_ques3.isClickable = false
+                buttonD_part3_ques3.isClickable = false
+            }
+
+            buttonC_part3_ques3.setOnClickListener {
+                if(arr[num + 2].answer == "C")
+                {
+                    buttonC_part3_ques3.setBackgroundResource(R.drawable.bg_correct)
+                    correctAnswers++
+                }
+                else
+                {
+                    buttonC_part3_ques3.setBackgroundResource(R.drawable.bg_wrong)
+                    if(arr[num + 2].answer == "A")
+                    {
+                        buttonA_part3_ques3.setBackgroundResource(R.drawable.bg_correct)
+                    }
+                    if(arr[num + 2].answer == "B")
+                    {
+                        buttonB_part3_ques3.setBackgroundResource(R.drawable.bg_correct)
+                    }
+                    if(arr[num + 2].answer == "D")
+                    {
+                        buttonD_part3_ques3.setBackgroundResource(R.drawable.bg_correct)
+                    }
+                }
+                buttonA_part3_ques3.isClickable = false
+                buttonB_part3_ques3.isClickable = false
+                buttonC_part3_ques3.isClickable = false
+                buttonD_part3_ques3.isClickable = false
+            }
+
+            buttonD_part3_ques3.setOnClickListener {
+                if(arr[num + 2].answer == "D")
+                {
+                    buttonD_part3_ques3.setBackgroundResource(R.drawable.bg_correct)
+                    correctAnswers++
+                }
+                else
+                {
+                    buttonD_part3_ques3.setBackgroundResource(R.drawable.bg_wrong)
+                    if(arr[num + 2].answer == "A")
+                    {
+                        buttonA_part3_ques3.setBackgroundResource(R.drawable.bg_correct)
+                    }
+                    if(arr[num + 2].answer == "B")
+                    {
+                        buttonB_part3_ques3.setBackgroundResource(R.drawable.bg_correct)
+                    }
+                    if(arr[num + 2].answer == "C")
+                    {
+                        buttonC_part3_ques3.setBackgroundResource(R.drawable.bg_correct)
+                    }
+                }
+                buttonA_part3_ques3.isClickable = false
+                buttonB_part3_ques3.isClickable = false
+                buttonC_part3_ques3.isClickable = false
+                buttonD_part3_ques3.isClickable = false
+            }
             try {
                 Glide.with(this).load(arr[num].image).into(imagePart3)
             } finally {

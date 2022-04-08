@@ -66,7 +66,7 @@
 
                 <Button
                     android:id="@+id/buttonA_part3_ques1"
-                    android:layout_width="131dp"
+                    android:layout_width="120dp"
                     android:layout_height="50dp"
                     android:text="@string/A" />
 
@@ -85,9 +85,8 @@
 
                 <Button
                     android:id="@+id/buttonB_part3_ques1"
-                    android:layout_width="20dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_width="120dp"
+                    android:layout_height="50dp"
                     android:text="@string/B" />
 
                 <TextView
@@ -106,9 +105,8 @@
 
                 <Button
                     android:id="@+id/buttonC_part3_ques1"
-                    android:layout_width="20dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_width="120dp"
+                    android:layout_height="50dp"
                     android:text="@string/C" />
 
                 <TextView
@@ -127,9 +125,8 @@
 
                 <Button
                     android:id="@+id/buttonD_part3_ques1"
-                    android:layout_width="20dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_width="120dp"
+                    android:layout_height="50dp"
                     android:text="@string/D" />
 
                 <TextView
@@ -156,9 +153,8 @@
 
                 <Button
                     android:id="@+id/buttonA_part3_ques2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_width="120dp"
+                    android:layout_height="50dp"
                     android:text="@string/A" />
 
                 <TextView
@@ -176,9 +172,8 @@
 
                 <Button
                     android:id="@+id/buttonB_part3_ques2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_width="120dp"
+                    android:layout_height="50dp"
                     android:text="@string/B" />
 
                 <TextView
@@ -197,9 +192,8 @@
 
                 <Button
                     android:id="@+id/buttonC_part3_ques2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_width="120dp"
+                    android:layout_height="50dp"
                     android:text="@string/C" />
 
                 <TextView
@@ -218,9 +212,8 @@
 
                 <Button
                     android:id="@+id/buttonD_part3_ques2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_width="120dp"
+                    android:layout_height="50dp"
                     android:text="@string/D" />
 
                 <TextView
@@ -246,9 +239,8 @@
 
                 <Button
                     android:id="@+id/buttonA_part3_ques3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_width="120dp"
+                    android:layout_height="50dp"
                     android:text="@string/A" />
 
                 <TextView
@@ -266,9 +258,8 @@
 
                 <Button
                     android:id="@+id/buttonB_part3_ques3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_width="120dp"
+                    android:layout_height="50dp"
                     android:text="@string/B" />
 
                 <TextView
@@ -287,9 +278,8 @@
 
                 <Button
                     android:id="@+id/buttonC_part3_ques3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_width="120dp"
+                    android:layout_height="50dp"
                     android:text="@string/C" />
 
                 <TextView
@@ -308,9 +298,8 @@
 
                 <Button
                     android:id="@+id/buttonD_part3_ques3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_width="120dp"
+                    android:layout_height="50dp"
                     android:text="@string/D" />
 
                 <TextView

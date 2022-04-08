@@ -30,7 +30,7 @@ class Part3 : AppCompatActivity() {
         clickSound()
     }
 
-    // TODO: fix button size
+
     private fun clickNext() {
         nextPart3Btn.setOnClickListener {
             if( num<arr.size){
@@ -475,7 +475,7 @@ class Part3 : AppCompatActivity() {
                         }
                     }
                 }
-                setData( 0)
+                setData(0)
             }
 
             override fun onCancelled(error: DatabaseError) {

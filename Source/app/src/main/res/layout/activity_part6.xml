@@ -30,6 +30,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
+
     <Button
         android:id="@+id/nextPart6Btn"
         android:layout_width="wrap_content"
@@ -38,5 +40,85 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/buttonA_part6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="28dp"
+        android:text="@string/A"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titlePart6TV" />
+
+    <Button
+        android:id="@+id/buttonB_part6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/B"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonA_part6" />
+
+    <Button
+        android:id="@+id/buttonC_part6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/C"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonB_part6" />
+
+    <Button
+        android:id="@+id/buttonD_part6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/D"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonC_part6" />
+
+    <TextView
+        android:id="@+id/textViewA_part6"
+        android:layout_width="240dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="32dp"
+        android:text="TextView"
+        app:layout_constraintStart_toEndOf="@+id/buttonA_part6"
+        app:layout_constraintTop_toBottomOf="@+id/titlePart6TV" />
+
+    <TextView
+        android:id="@+id/textViewB_part6"
+        android:layout_width="242dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="20dp"
+        android:text="TextView"
+        app:layout_constraintStart_toEndOf="@+id/buttonB_part6"
+        app:layout_constraintTop_toBottomOf="@+id/textViewA_part6" />
+
+    <TextView
+        android:id="@+id/textViewC_part6"
+        android:layout_width="241dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="20dp"
+        android:text="TextView"
+        app:layout_constraintStart_toEndOf="@+id/buttonC_part6"
+        app:layout_constraintTop_toBottomOf="@+id/textViewB_part6" />
+
+    <TextView
+        android:id="@+id/textViewD_part6"
+        android:layout_width="242dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="24dp"
+        android:text="TextView"
+        app:layout_constraintStart_toEndOf="@+id/buttonD_part6"
+        app:layout_constraintTop_toBottomOf="@+id/textViewC_part6" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
