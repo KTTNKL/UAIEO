@@ -4,6 +4,7 @@ import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -15,7 +16,8 @@ import kotlinx.android.synthetic.main.activity_part2.*
 
 class Part2 : AppCompatActivity() {
     var id=""
-    var num=0;
+    var num=0
+    var currPoint:Long=0
     var arr=ArrayList<itemPartRL>()
     var media= MediaPlayer()
     var correctAnswers = 0
@@ -28,6 +30,40 @@ class Part2 : AppCompatActivity() {
         loadDataPart2()
         clickSound()
         clickNext()
+        checkExist()
+    }
+
+    private fun checkExist() {
+        var auth = FirebaseAuth.getInstance()
+        var curUID= auth.uid;
+        var exits = FirebaseDatabase.getInstance().getReference("analyst/${id}/${curUID}").child("part2")!!
+        exits!!.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()) {
+                    currPoint= snapshot.value as Long
+                }
+                else{
+                    val reference= FirebaseDatabase.getInstance().reference!!.child("analyst/${id}/${curUID}")
+                    reference.child("id").setValue("${curUID}")
+                    reference.child("part2").setValue(0)
+                    reference.child("email").setValue(auth.currentUser?.email)
+                }
+            }
+            override fun onCancelled(error: DatabaseError) {
+                TODO("No need")
+            }
+        })
+    }
+
+    private fun updateScore(){
+        if(correctAnswers > currPoint)
+        {
+            var auth = FirebaseAuth.getInstance()
+            var curUID= auth.uid;
+            val reference= FirebaseDatabase.getInstance().reference!!.child("analyst/${id}/${curUID}")
+            reference.child("id").setValue("${curUID}")
+            reference.child("part2").setValue(correctAnswers)
+        }
     }
 
     private fun clickNext() {
@@ -97,6 +133,7 @@ class Part2 : AppCompatActivity() {
                 buttonA_part2.isClickable = false
                 buttonB_part2.isClickable = false
                 buttonC_part2.isClickable = false
+                updateScore()
             }
             buttonB_part2.setOnClickListener {
                 if(arr[num].answer == "B")
@@ -119,6 +156,7 @@ class Part2 : AppCompatActivity() {
                 buttonA_part2.isClickable = false
                 buttonB_part2.isClickable = false
                 buttonC_part2.isClickable = false
+                updateScore()
             }
             buttonC_part2.setOnClickListener {
                 if(arr[num].answer == "C")
@@ -141,6 +179,7 @@ class Part2 : AppCompatActivity() {
                 buttonA_part2.isClickable = false
                 buttonB_part2.isClickable = false
                 buttonC_part2.isClickable = false
+                updateScore()
             }
         }
     }
