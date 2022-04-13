@@ -3,6 +3,7 @@ package com.khtn.uaieo.activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.DataSnapshot
@@ -34,6 +35,9 @@ class AnalystUserActivity : AppCompatActivity() {
         RV = findViewById(R.id.anlystUserRV)
         RV.layoutManager = LinearLayoutManager(this)
         RV.adapter = adapter
+        val itemDecoration: RecyclerView.ItemDecoration = DividerItemDecoration(this,
+            DividerItemDecoration.VERTICAL)
+        RV.addItemDecoration(itemDecoration)
     }
 
     private fun loadData() {

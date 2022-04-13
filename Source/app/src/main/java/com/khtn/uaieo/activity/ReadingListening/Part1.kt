@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.activity_part1.*
 class Part1 : AppCompatActivity() {
     var id=""
     var num=0;
-    var currPoint:Long=0;
+    var currPoint:Long=0
     var arr=ArrayList<itemPartRL>()
     var media= MediaPlayer()
     var correctAnswers = 0
@@ -47,12 +47,24 @@ class Part1 : AppCompatActivity() {
                     val reference= FirebaseDatabase.getInstance().reference!!.child("analyst/${id}/${curUID}")
                     reference.child("id").setValue("${curUID}")
                     reference.child("part1").setValue(0)
+                    reference.child("email").setValue(auth.currentUser?.email)
                 }
             }
             override fun onCancelled(error: DatabaseError) {
                 TODO("No need")
             }
         })
+    }
+
+    private fun updateScore(){
+        if(correctAnswers > currPoint)
+        {
+            var auth = FirebaseAuth.getInstance()
+            var curUID= auth.uid;
+            val reference= FirebaseDatabase.getInstance().reference!!.child("analyst/${id}/${curUID}")
+            reference.child("id").setValue("${curUID}")
+            reference.child("part1").setValue(correctAnswers)
+        }
     }
 
 
@@ -156,6 +168,7 @@ class Part1 : AppCompatActivity() {
                 buttonB.isClickable = false
                 buttonC.isClickable = false
                 buttonD.isClickable = false
+                updateScore()
             }
 
             buttonB.setOnClickListener {
@@ -184,6 +197,7 @@ class Part1 : AppCompatActivity() {
                 buttonB.isClickable = false
                 buttonC.isClickable = false
                 buttonD.isClickable = false
+                updateScore()
             }
 
             buttonC.setOnClickListener {
@@ -212,6 +226,7 @@ class Part1 : AppCompatActivity() {
                 buttonB.isClickable = false
                 buttonC.isClickable = false
                 buttonD.isClickable = false
+                updateScore()
             }
 
             buttonD.setOnClickListener {
@@ -240,6 +255,7 @@ class Part1 : AppCompatActivity() {
                 buttonB.isClickable = false
                 buttonC.isClickable = false
                 buttonD.isClickable = false
+                updateScore()
             }
 
         }

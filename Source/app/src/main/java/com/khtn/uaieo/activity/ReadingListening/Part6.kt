@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.method.ScrollingMovementMethod
 import android.widget.Toast
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -18,7 +19,8 @@ import kotlinx.android.synthetic.main.activity_vietsub.*
 
 class Part6 : AppCompatActivity() {
     var id=""
-    var num=0;
+    var num=0
+    var currPoint:Long=0
     var arr=ArrayList<itemPartRL>()
     var correctAnswers = 0
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,6 +29,7 @@ class Part6 : AppCompatActivity() {
         id= intent.getStringExtra("id").toString()
         loadDataPart6()
         clickNext()
+        checkExist()
     }
 
     private fun clickNext() {
@@ -43,6 +46,38 @@ class Part6 : AppCompatActivity() {
                     setData(num)
                 }
             }
+        }
+    }
+    private fun checkExist() {
+        var auth = FirebaseAuth.getInstance()
+        var curUID= auth.uid;
+        var exits = FirebaseDatabase.getInstance().getReference("analyst/${id}/${curUID}").child("part6")!!
+        exits!!.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()) {
+                    currPoint= snapshot.value as Long
+                }
+                else{
+                    val reference= FirebaseDatabase.getInstance().reference!!.child("analyst/${id}/${curUID}")
+                    reference.child("id").setValue("${curUID}")
+                    reference.child("part6").setValue(0)
+                    reference.child("email").setValue(auth.currentUser?.email)
+                }
+            }
+            override fun onCancelled(error: DatabaseError) {
+                TODO("No need")
+            }
+        })
+    }
+
+    private fun updateScore(){
+        if(correctAnswers > currPoint)
+        {
+            var auth = FirebaseAuth.getInstance()
+            var curUID= auth.uid;
+            val reference= FirebaseDatabase.getInstance().reference!!.child("analyst/${id}/${curUID}")
+            reference.child("id").setValue("${curUID}")
+            reference.child("part6").setValue(correctAnswers)
         }
     }
 
@@ -113,6 +148,7 @@ class Part6 : AppCompatActivity() {
             buttonB_part6.isClickable = false
             buttonC_part6.isClickable = false
             buttonD_part6.isClickable = false
+            updateScore()
         }
 
         buttonB_part6.setOnClickListener {
@@ -141,6 +177,7 @@ class Part6 : AppCompatActivity() {
             buttonB_part6.isClickable = false
             buttonC_part6.isClickable = false
             buttonD_part6.isClickable = false
+            updateScore()
         }
 
         buttonC_part6.setOnClickListener {
@@ -169,6 +206,7 @@ class Part6 : AppCompatActivity() {
             buttonB_part6.isClickable = false
             buttonC_part6.isClickable = false
             buttonD_part6.isClickable = false
+            updateScore()
         }
 
         buttonD_part6.setOnClickListener {
@@ -197,6 +235,7 @@ class Part6 : AppCompatActivity() {
             buttonB_part6.isClickable = false
             buttonC_part6.isClickable = false
             buttonD_part6.isClickable = false
+            updateScore()
         }
 
     }
