@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.bumptech.glide.Glide
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -16,7 +17,8 @@ import kotlinx.android.synthetic.main.activity_part7.*
 
 class Part7 : AppCompatActivity() {
     var id=""
-    var num=0;
+    var num=0
+    var currPoint:Long=0
     var arr=ArrayList<itemPartRL>()
     var correctAnswers = 0
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,6 +27,7 @@ class Part7 : AppCompatActivity() {
         id= intent.getStringExtra("id").toString()
         loadDataPart7()
         clickNext()
+        checkExist()
     }
 
     private fun clickNext() {
@@ -42,6 +45,38 @@ class Part7 : AppCompatActivity() {
                 }
 
             }
+        }
+    }
+    private fun checkExist() {
+        var auth = FirebaseAuth.getInstance()
+        var curUID= auth.uid;
+        var exits = FirebaseDatabase.getInstance().getReference("analyst/${id}/${curUID}").child("part7")!!
+        exits!!.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()) {
+                    currPoint= snapshot.value as Long
+                }
+                else{
+                    val reference= FirebaseDatabase.getInstance().reference!!.child("analyst/${id}/${curUID}")
+                    reference.child("id").setValue("${curUID}")
+                    reference.child("part7").setValue(0)
+                    reference.child("email").setValue(auth.currentUser?.email)
+                }
+            }
+            override fun onCancelled(error: DatabaseError) {
+                TODO("No need")
+            }
+        })
+    }
+
+    private fun updateScore(){
+        if(correctAnswers > currPoint)
+        {
+            var auth = FirebaseAuth.getInstance()
+            var curUID= auth.uid;
+            val reference= FirebaseDatabase.getInstance().reference!!.child("analyst/${id}/${curUID}")
+            reference.child("id").setValue("${curUID}")
+            reference.child("part7").setValue(correctAnswers)
         }
     }
 
@@ -63,7 +98,8 @@ class Part7 : AppCompatActivity() {
             override fun onCancelled(error: DatabaseError) {
                 TODO("Not yet implemented")
             }
-        })    }
+        })
+    }
 
     private fun setData(i: Int) {
         titlePart7TV.text="Câu ${arr[num].number}:"+ arr[num].title
@@ -109,6 +145,7 @@ class Part7 : AppCompatActivity() {
             buttonB_part7.isClickable = false
             buttonC_part7.isClickable = false
             buttonD_part7.isClickable = false
+            updateScore()
         }
 
         buttonB_part7.setOnClickListener {
@@ -137,6 +174,7 @@ class Part7 : AppCompatActivity() {
             buttonB_part7.isClickable = false
             buttonC_part7.isClickable = false
             buttonD_part7.isClickable = false
+            updateScore()
         }
 
         buttonC_part7.setOnClickListener {
@@ -165,6 +203,7 @@ class Part7 : AppCompatActivity() {
             buttonB_part7.isClickable = false
             buttonC_part7.isClickable = false
             buttonD_part7.isClickable = false
+            updateScore()
         }
 
         buttonD_part7.setOnClickListener {
@@ -193,6 +232,7 @@ class Part7 : AppCompatActivity() {
             buttonB_part7.isClickable = false
             buttonC_part7.isClickable = false
             buttonD_part7.isClickable = false
+            updateScore()
         }
 
         try {
