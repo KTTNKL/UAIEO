@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.bumptech.glide.Glide
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -16,6 +17,7 @@ import kotlinx.android.synthetic.main.activity_part1.*
 class Part1 : AppCompatActivity() {
     var id=""
     var num=0;
+    var currPoint:Long=0;
     var arr=ArrayList<itemPartRL>()
     var media= MediaPlayer()
     var correctAnswers = 0
@@ -28,11 +30,30 @@ class Part1 : AppCompatActivity() {
         loadDataPart1()
         clickSound()
         clickNext()
-
+        checkExist()
 
     }
 
-
+    private fun checkExist() {
+        var auth = FirebaseAuth.getInstance()
+        var curUID= auth.uid;
+        var exits = FirebaseDatabase.getInstance().getReference("analyst/${id}/${curUID}").child("part1")!!
+        exits!!.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()) {
+                    currPoint= snapshot.value as Long
+                }
+                else{
+                    val reference= FirebaseDatabase.getInstance().reference!!.child("analyst/${id}/${curUID}")
+                    reference.child("id").setValue("${curUID}")
+                    reference.child("part1").setValue(0)
+                }
+            }
+            override fun onCancelled(error: DatabaseError) {
+                TODO("No need")
+            }
+        })
+    }
 
 
     private fun loadDataPart1() {
