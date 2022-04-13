@@ -44,6 +44,15 @@ class AnalystUserActivity : AppCompatActivity() {
                 arrUser.clear()
                 for (item in snapshot.children){
                     val modelUser = item.getValue(itemAnalystUser::class.java)
+                    var sum=0
+                    sum+= modelUser?.part1!!
+                    sum+= modelUser?.part2!!
+                    sum+= modelUser?.part3!!
+                    sum+= modelUser?.part4!!
+                    sum+= modelUser?.part5!!
+                    sum+= modelUser?.part6!!
+                    sum+= modelUser?.part7!!
+                    modelUser.overall=sum
                     arrUser.add(modelUser!!)
                 }
                 adapter.notifyDataSetChanged()
