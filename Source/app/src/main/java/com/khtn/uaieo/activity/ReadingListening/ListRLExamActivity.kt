@@ -50,7 +50,7 @@ class ListRLExamActivity : AppCompatActivity() {
         adapter.setOnItemClickListener(object: RLExamAdapter.onItemClickListener {
             override fun onItemClick(position: Int) {
                 val intent=Intent(this@ListRLExamActivity, PartRLExamActivity::class.java)
-                intent.putExtra("id",ExamArray[position].id)
+                intent.putExtra("exam",ExamArray[position])
                 startActivity(intent)
             }
         })

@@ -30,7 +30,7 @@ class AnalystUserAdapter(private val userList: ArrayList<itemAnalystUser>):
         holder.part5.text=currentItem.part5.toString()
         holder.part6.text=currentItem.part6.toString()
         holder.part7.text=currentItem.part7.toString()
-
+        holder.ranking.text=(position+1).toString()
     }
 
     override fun getItemCount(): Int {
@@ -48,10 +48,11 @@ class AnalystUserAdapter(private val userList: ArrayList<itemAnalystUser>):
         val part5: TextView = itemView.findViewById(R.id.p5TV)
         val part6: TextView = itemView.findViewById(R.id.p6TV)
         val part7: TextView = itemView.findViewById(R.id.p7TV)
+        val ranking: TextView=itemView.findViewById(R.id.rankingTV)
 
     }
     val dictionary = mapOf(
-        0 to 10,
+        0 to 0,
         1 to 10,
         2 to 10,
         3 to 10,
