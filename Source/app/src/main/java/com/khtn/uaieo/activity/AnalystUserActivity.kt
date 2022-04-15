@@ -59,6 +59,15 @@ class AnalystUserActivity : AppCompatActivity() {
                     modelUser.overall=sum
                     arrUser.add(modelUser!!)
                 }
+                for( i in 0..arrUser.size){
+                    for(j in i+1..arrUser.size-1){
+                        if(arrUser[i].overall!! < arrUser[j].overall!!){
+                            var temp=arrUser[i]
+                            arrUser[i]=arrUser[j]
+                            arrUser[j]=temp
+                        }
+                    }
+                }
                 adapter.notifyDataSetChanged()
 
             }

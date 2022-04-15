@@ -11,11 +11,12 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.khtn.uaieo.R
+import com.khtn.uaieo.model.itemExamRL
 import com.khtn.uaieo.model.itemPartRL
 import kotlinx.android.synthetic.main.activity_part3.*
 
 class Part4 : AppCompatActivity() {
-    var id=""
+    lateinit var exam: itemExamRL
     var num=0
     var currPoint:Long=0
     var arr=ArrayList<itemPartRL>()
@@ -25,7 +26,7 @@ class Part4 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_part3)
-        id= intent.getStringExtra("id").toString()
+        exam= intent.getSerializableExtra("exam") as itemExamRL
         loadDataPart4()
         clickNext()
         clickSound()
@@ -34,14 +35,14 @@ class Part4 : AppCompatActivity() {
     private fun checkExist() {
         var auth = FirebaseAuth.getInstance()
         var curUID= auth.uid;
-        var exits = FirebaseDatabase.getInstance().getReference("analyst/${id}/${curUID}").child("part4")!!
+        var exits = FirebaseDatabase.getInstance().getReference("analyst/${exam.id}/${curUID}").child("part4")!!
         exits!!.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
                     currPoint= snapshot.value as Long
                 }
                 else{
-                    val reference= FirebaseDatabase.getInstance().reference!!.child("analyst/${id}/${curUID}")
+                    val reference= FirebaseDatabase.getInstance().reference!!.child("analyst/${exam.id}/${curUID}")
                     reference.child("id").setValue("${curUID}")
                     reference.child("part4").setValue(0)
                     reference.child("email").setValue(auth.currentUser?.email)
@@ -58,7 +59,7 @@ class Part4 : AppCompatActivity() {
         {
             var auth = FirebaseAuth.getInstance()
             var curUID= auth.uid;
-            val reference= FirebaseDatabase.getInstance().reference!!.child("analyst/${id}/${curUID}")
+            val reference= FirebaseDatabase.getInstance().reference!!.child("analyst/${exam.id}/${curUID}")
             reference.child("id").setValue("${curUID}")
             reference.child("part4").setValue(correctAnswers)
         }
@@ -509,7 +510,7 @@ class Part4 : AppCompatActivity() {
         }
     }
     private fun loadDataPart4() {
-        val ref= FirebaseDatabase.getInstance().getReference("RLquestions").child(id).child("part4")
+        val ref= FirebaseDatabase.getInstance().getReference("RLquestions").child("${exam.id}").child("part4")
         ref.addListenerForSingleValueEvent(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 for (item in snapshot.children){
