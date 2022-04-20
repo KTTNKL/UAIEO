@@ -6,7 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".activity.ReadingListening.Part7">
 
-    <ScrollView
+    <Button
+        android:id="@+id/part7saveBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/save"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView android:layout_marginTop="60dp"
         android:id="@+id/scrollView2"
         android:layout_width="410dp"
         android:layout_height="317dp"
@@ -135,8 +145,11 @@
         android:id="@+id/nextPart7Btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/bg_radius_button"
         android:text="@string/Next"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewD_part7" />
 </androidx.constraintlayout.widget.ConstraintLayout>

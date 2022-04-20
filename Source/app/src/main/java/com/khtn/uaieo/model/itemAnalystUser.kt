@@ -5,6 +5,9 @@ import java.io.Serializable
 class itemAnalystUser : Serializable {
 
     var id: String?=""
+    var email: String?=""
+
+    var overall: Int?=0
     var part1: Int?=0
     var part2: Int?=0
     var part3: Int?=0
@@ -13,7 +16,7 @@ class itemAnalystUser : Serializable {
     var part6: Int?=0
     var part7: Int?=0
 
-    constructor(id: String?, part1: Int?,part2: Int?,part3: Int?,part4: Int?,part5: Int?,part6: Int?,part7: Int?){
+    constructor(email:String?,id: String?, part1: Int?,part2: Int?,part3: Int?,part4: Int?,part5: Int?,part6: Int?,part7: Int?){
         this.part1=part1;
         this.part2=part2;
         this.part3=part3;
@@ -22,6 +25,7 @@ class itemAnalystUser : Serializable {
         this.part6=part6;
         this.part7=part7;
         this.id=id
+        this.email=email;
     }
     constructor(){
 

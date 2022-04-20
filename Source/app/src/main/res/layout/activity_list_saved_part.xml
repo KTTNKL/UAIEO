@@ -4,13 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.AnalystUserActivity">
+    tools:context=".activity.ReadingListening.ListSavedPartActivity">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/anlystUserRV"
-        android:layout_width="409dp"
-        android:layout_height="729dp"
+        android:id="@+id/recyclerPartview"
+        android:layout_width="386dp"
+        android:layout_height="670dp"
+        android:layout_marginTop="24dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.489"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

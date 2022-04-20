@@ -48,11 +48,14 @@ class RegisterActivity : AppCompatActivity() {
                     currentUserDB?.child("UID")?.setValue(currentUser?.uid!!)
 
                     //Thong bao tao thanh cong
-                    Toast.makeText(parent,"Registration succesfully!", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this,"Registration succesfully!", Toast.LENGTH_LONG).show()
+                    finish()
                 }else{
                     //Neu khong tao duoc thi tao bang thong bao
-                    Toast.makeText(parent,"Registration failed, please try again!",
+                    Toast.makeText(this,"Registration failed, please try again!",
                         Toast.LENGTH_LONG).show()
+                    finish()
+
                 }
             }
     }

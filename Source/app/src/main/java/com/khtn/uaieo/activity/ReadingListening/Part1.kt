@@ -3,6 +3,7 @@ package com.khtn.uaieo.activity.ReadingListening
 import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
@@ -11,42 +12,67 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.khtn.uaieo.R
+import com.khtn.uaieo.model.itemExamRL
 import com.khtn.uaieo.model.itemPartRL
 import kotlinx.android.synthetic.main.activity_part1.*
 
 class Part1 : AppCompatActivity() {
-    var id=""
+    var isOneQuestion = false
+    lateinit var exam:itemExamRL
     var num=0;
-    var currPoint:Long=0;
+    var currPoint:Long=0
     var arr=ArrayList<itemPartRL>()
     var media= MediaPlayer()
     var correctAnswers = 0
-
+    var auth = FirebaseAuth.getInstance()
+    var curUID= auth.uid;
+    lateinit var question: itemPartRL
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_part1)
         val intent=intent
-        id= intent.getStringExtra("id").toString()
-        loadDataPart1()
-        clickSound()
-        clickNext()
-        checkExist()
+        isOneQuestion = intent.getBooleanExtra("isOneQuestion", false)
+        part1saveBtn.visibility = View.INVISIBLE
+        nextPart1Btn.visibility = View.INVISIBLE
 
+        if(isOneQuestion)
+        {
+            // xem cau hoi da luu
+            question = intent.getSerializableExtra("question") as itemPartRL
+            arr.add(question)
+            setData(0)
+            clickSound()
+        }
+        else
+        {
+             // chay binh thuong
+            exam= intent.getSerializableExtra("exam") as itemExamRL
+            loadDataPart1()
+            clickSound()
+            clickNext()
+            checkExist()
+            saveClick()
+        }
+    }
+
+    private fun saveClick() {
+//        val reference= FirebaseDatabase.getInstance().reference!!.child("profile/${curUID}/save/part1/")
+//        reference.child("part1").setValue(0)
+//        reference.child("email").setValue(auth.currentUser?.email)
     }
 
     private fun checkExist() {
-        var auth = FirebaseAuth.getInstance()
-        var curUID= auth.uid;
-        var exits = FirebaseDatabase.getInstance().getReference("analyst/${id}/${curUID}").child("part1")!!
+        var exits = FirebaseDatabase.getInstance().getReference("analyst/${exam.id}/${curUID}").child("part1")!!
         exits!!.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
                     currPoint= snapshot.value as Long
                 }
                 else{
-                    val reference= FirebaseDatabase.getInstance().reference!!.child("analyst/${id}/${curUID}")
+                    val reference= FirebaseDatabase.getInstance().reference!!.child("analyst/${exam.id}/${curUID}")
                     reference.child("id").setValue("${curUID}")
                     reference.child("part1").setValue(0)
+                    reference.child("email").setValue(auth.currentUser?.email)
                 }
             }
             override fun onCancelled(error: DatabaseError) {
@@ -55,9 +81,20 @@ class Part1 : AppCompatActivity() {
         })
     }
 
+    private fun updateScore(){
+        if(correctAnswers > currPoint)
+        {
+            var auth = FirebaseAuth.getInstance()
+            var curUID= auth.uid;
+            val reference= FirebaseDatabase.getInstance().reference!!.child("analyst/${exam.id}/${curUID}")
+            reference.child("id").setValue("${curUID}")
+            reference.child("part1").setValue(correctAnswers)
+        }
+    }
+
 
     private fun loadDataPart1() {
-        val ref= FirebaseDatabase.getInstance().getReference("RLquestions").child(id).child("part1")
+        val ref= FirebaseDatabase.getInstance().getReference("RLquestions").child("${exam.id}").child("part1")
         ref.addListenerForSingleValueEvent(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 for (item in snapshot.children){
@@ -156,6 +193,7 @@ class Part1 : AppCompatActivity() {
                 buttonB.isClickable = false
                 buttonC.isClickable = false
                 buttonD.isClickable = false
+                updateScore()
             }
 
             buttonB.setOnClickListener {
@@ -184,6 +222,7 @@ class Part1 : AppCompatActivity() {
                 buttonB.isClickable = false
                 buttonC.isClickable = false
                 buttonD.isClickable = false
+                updateScore()
             }
 
             buttonC.setOnClickListener {
@@ -212,6 +251,7 @@ class Part1 : AppCompatActivity() {
                 buttonB.isClickable = false
                 buttonC.isClickable = false
                 buttonD.isClickable = false
+                updateScore()
             }
 
             buttonD.setOnClickListener {
@@ -240,6 +280,7 @@ class Part1 : AppCompatActivity() {
                 buttonB.isClickable = false
                 buttonC.isClickable = false
                 buttonD.isClickable = false
+                updateScore()
             }
 
         }

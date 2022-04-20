@@ -38,10 +38,10 @@ class WritingQuestionDetailActivity : AppCompatActivity() {
         writingWordTV.text = question.words
 
         exampleAnswerBtn.setOnClickListener {
-//            val intent = Intent(this, ExampleWritingAnswerListActivity::class.java)
-//            intent.putExtra("IdExam",ID);
-//            intent.putExtra("QuestionNumber",question.number.toString());
-//            startActivityForResult(intent, 1111)
+            val intent = Intent(this, ListAnswerActivity::class.java)
+            intent.putExtra("IdExam",ID);
+            intent.putExtra("QuestionNumber",question.number.toString());
+            startActivityForResult(intent, 1111)
         }
         pickImage.setOnClickListener {
             startFileChooser()

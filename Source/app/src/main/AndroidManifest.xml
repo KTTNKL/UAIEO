@@ -4,6 +4,9 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.STORAGE"/>
 
     <application
         android:allowBackup="true"
@@ -24,8 +27,20 @@
         <activity
             android:name=".activity.AnalystUserActivity"
             android:exported="false" />
-        <activity 
-            android:name=".activity.ExampleWritingAnswerListActivity"
+        <activity
+            android:name=".activity.ReadingListening.ListQuestionOfEachSavedPartActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.ReadingListening.ListSavedPartActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.DetailAnswerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.ListAnswerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.AnalystUserActivity"
             android:exported="false" />
         <activity
             android:name=".activity.WritingQuestionDetailActivity"

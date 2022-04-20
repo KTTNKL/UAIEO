@@ -37,9 +37,9 @@ class ExamFragment : Fragment() {
         var itemList:ArrayList<itemMenu>
         itemList= ArrayList()
 
-        itemList.add(itemMenu(R.drawable.bg_news,"Listening/Reading","Thi đọc và nghe"))
-        itemList.add(itemMenu(R.drawable.bg_sub,"Speaking","Thi nói"))
-        itemList.add(itemMenu(R.drawable.bg_schedule,"Writing","Thi viết"))
+        itemList.add(itemMenu(R.drawable.bg_lisrea,"Listening/Reading","Thi đọc và nghe"))
+        itemList.add(itemMenu(R.drawable.bg_spe,"Speaking","Thi nói"))
+        itemList.add(itemMenu(R.drawable.bg_wri,"Writing","Thi viết"))
 
 
 

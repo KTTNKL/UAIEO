@@ -3,72 +3,72 @@ package com.khtn.uaieo.activity.ReadingListening
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.khtn.uaieo.R
-import com.khtn.uaieo.activity.Home.*
 import com.khtn.uaieo.adapter.RLExamAdapter
 import com.khtn.uaieo.adapter.RLPartAdapter
 import com.khtn.uaieo.model.itemExamRL
-import com.khtn.uaieo.model.partSW
+import kotlinx.android.synthetic.main.activity_list_saved_part.*
 
-class PartRLExamActivity : AppCompatActivity() {
+class ListSavedPartActivity : AppCompatActivity() {
     var PartArray=ArrayList<Int>()
     lateinit var adapter: RLPartAdapter
-    lateinit var customListView: RecyclerView
+    lateinit var recyclerPartview: RecyclerView
     lateinit var exam:itemExamRL
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_part_rlexam)
+        setContentView(R.layout.activity_list_saved_part)
         val intent=intent
-        exam= intent.getSerializableExtra("exam") as itemExamRL
+        //exam= intent.getSerializableExtra("exam") as itemExamRL
         setupLayout()
-
     }
-
     private fun setupLayout() {
         for (i in 1..7){
             PartArray.add(i)
         }
         adapter= RLPartAdapter(PartArray)
-        customListView = findViewById<RecyclerView>(R.id.partRLRV) as RecyclerView
-        customListView!!.adapter = adapter
+
+        recyclerPartview = findViewById<RecyclerView>(R.id.recyclerPartview) as RecyclerView
+        recyclerPartview!!.adapter = adapter
         adapter.setOnItemClickListener(object: RLPartAdapter.onItemClickListener {
             lateinit var intent: Intent
+            var partnumber: Int = 0;
+
             override fun onItemClick(position: Int) {
                 when(position){
                     0->{
-                        intent= Intent(this@PartRLExamActivity, Part1::class.java)
+                        partnumber = 1
                     }
                     1->{
-                        intent= Intent(this@PartRLExamActivity, Part2::class.java)
+                        partnumber = 2
                     }
                     2->{
-                        intent= Intent(this@PartRLExamActivity, Part3::class.java)
+                        partnumber = 3
 
                     }
                     3->{
-                        intent= Intent(this@PartRLExamActivity, Part4::class.java)
+                        partnumber = 4
 
                     }
                     4->{
-                        intent= Intent(this@PartRLExamActivity, Part5::class.java)
+                        partnumber = 5
                     }
                     5->{
-                        intent= Intent(this@PartRLExamActivity, Part6::class.java)
+                        partnumber = 6
                     }
                     6->{
-                        intent= Intent(this@PartRLExamActivity, Part7::class.java)
+                        partnumber = 7
                     }
 
                 }
-                intent.putExtra("exam",exam)
+                intent= Intent(this@ListSavedPartActivity, ListQuestionOfEachSavedPartActivity::class.java)
+                intent.putExtra("partnumber",partnumber)
                 startActivity(intent)
 
             }
         })
-        customListView.layoutManager = LinearLayoutManager(this)
+        recyclerPartview.layoutManager = LinearLayoutManager(this)
     }
 }

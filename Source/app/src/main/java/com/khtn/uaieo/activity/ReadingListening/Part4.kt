@@ -3,19 +3,29 @@ package com.khtn.uaieo.activity.ReadingListening
 import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import com.bumptech.glide.Glide
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.khtn.uaieo.R
+import com.khtn.uaieo.model.itemExamRL
 import com.khtn.uaieo.model.itemPartRL
+import kotlinx.android.synthetic.main.activity_part2.*
 import kotlinx.android.synthetic.main.activity_part3.*
 
 class Part4 : AppCompatActivity() {
-    var id=""
-    var num=0;
+    var isOneQuestion = false
+    var auth = FirebaseAuth.getInstance()
+    var curUID= auth.uid;
+    lateinit var question: itemPartRL
+
+    lateinit var exam: itemExamRL
+    var num=0
+    var currPoint:Long=0
     var arr=ArrayList<itemPartRL>()
     var media= MediaPlayer()
     var correctAnswers = 0
@@ -23,10 +33,59 @@ class Part4 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_part3)
-        id= intent.getStringExtra("id").toString()
-        loadDataPart4()
-        clickNext()
-        clickSound()
+
+        val intent=intent
+        isOneQuestion = intent.getBooleanExtra("isOneQuestion", false)
+        part3saveBtn.visibility = View.INVISIBLE
+        nextPart3Btn.visibility = View.INVISIBLE
+        if(isOneQuestion)
+        {
+            question = intent.getSerializableExtra("question") as itemPartRL
+            arr.add(question)
+            setData(0)
+            clickSound()
+        }
+        else
+        {
+            exam= intent.getSerializableExtra("exam") as itemExamRL
+            loadDataPart4()
+            clickNext()
+            clickSound()
+            checkExist()
+        }
+
+    }
+    private fun checkExist() {
+        var auth = FirebaseAuth.getInstance()
+        var curUID= auth.uid;
+        var exits = FirebaseDatabase.getInstance().getReference("analyst/${exam.id}/${curUID}").child("part4")!!
+        exits!!.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()) {
+                    currPoint= snapshot.value as Long
+                }
+                else{
+                    val reference= FirebaseDatabase.getInstance().reference!!.child("analyst/${exam.id}/${curUID}")
+                    reference.child("id").setValue("${curUID}")
+                    reference.child("part4").setValue(0)
+                    reference.child("email").setValue(auth.currentUser?.email)
+                }
+            }
+            override fun onCancelled(error: DatabaseError) {
+                TODO("No need")
+            }
+        })
+    }
+
+    private fun updateScore(){
+        if(correctAnswers > currPoint)
+        {
+            var auth = FirebaseAuth.getInstance()
+            var curUID= auth.uid;
+            val reference= FirebaseDatabase.getInstance().reference!!.child("analyst/${exam.id}/${curUID}")
+            reference.child("id").setValue("${curUID}")
+            reference.child("part4").setValue(correctAnswers)
+        }
     }
     private fun clickNext() {
         nextPart3Btn.setOnClickListener {
@@ -143,6 +202,7 @@ class Part4 : AppCompatActivity() {
                 buttonB_part3_ques1.isClickable = false
                 buttonC_part3_ques1.isClickable = false
                 buttonD_part3_ques1.isClickable = false
+                updateScore()
             }
 
             buttonB_part3_ques1.setOnClickListener {
@@ -171,6 +231,7 @@ class Part4 : AppCompatActivity() {
                 buttonB_part3_ques1.isClickable = false
                 buttonC_part3_ques1.isClickable = false
                 buttonD_part3_ques1.isClickable = false
+                updateScore()
             }
 
             buttonC_part3_ques1.setOnClickListener {
@@ -199,6 +260,7 @@ class Part4 : AppCompatActivity() {
                 buttonB_part3_ques1.isClickable = false
                 buttonC_part3_ques1.isClickable = false
                 buttonD_part3_ques1.isClickable = false
+                updateScore()
             }
 
             buttonD_part3_ques1.setOnClickListener {
@@ -227,6 +289,7 @@ class Part4 : AppCompatActivity() {
                 buttonB_part3_ques1.isClickable = false
                 buttonC_part3_ques1.isClickable = false
                 buttonD_part3_ques1.isClickable = false
+                updateScore()
             }
 
             // Cau hoi 2
@@ -256,6 +319,7 @@ class Part4 : AppCompatActivity() {
                 buttonB_part3_ques2.isClickable = false
                 buttonC_part3_ques2.isClickable = false
                 buttonD_part3_ques2.isClickable = false
+                updateScore()
             }
 
             buttonB_part3_ques2.setOnClickListener {
@@ -284,6 +348,7 @@ class Part4 : AppCompatActivity() {
                 buttonB_part3_ques2.isClickable = false
                 buttonC_part3_ques2.isClickable = false
                 buttonD_part3_ques2.isClickable = false
+                updateScore()
             }
 
             buttonC_part3_ques2.setOnClickListener {
@@ -312,6 +377,7 @@ class Part4 : AppCompatActivity() {
                 buttonB_part3_ques2.isClickable = false
                 buttonC_part3_ques2.isClickable = false
                 buttonD_part3_ques2.isClickable = false
+                updateScore()
             }
 
             buttonD_part3_ques2.setOnClickListener {
@@ -340,6 +406,7 @@ class Part4 : AppCompatActivity() {
                 buttonB_part3_ques2.isClickable = false
                 buttonC_part3_ques2.isClickable = false
                 buttonD_part3_ques2.isClickable = false
+                updateScore()
             }
 
             // Cau hoi 3
@@ -369,6 +436,7 @@ class Part4 : AppCompatActivity() {
                 buttonB_part3_ques3.isClickable = false
                 buttonC_part3_ques3.isClickable = false
                 buttonD_part3_ques3.isClickable = false
+                updateScore()
             }
 
             buttonB_part3_ques3.setOnClickListener {
@@ -397,6 +465,7 @@ class Part4 : AppCompatActivity() {
                 buttonB_part3_ques3.isClickable = false
                 buttonC_part3_ques3.isClickable = false
                 buttonD_part3_ques3.isClickable = false
+                updateScore()
             }
 
             buttonC_part3_ques3.setOnClickListener {
@@ -425,6 +494,7 @@ class Part4 : AppCompatActivity() {
                 buttonB_part3_ques3.isClickable = false
                 buttonC_part3_ques3.isClickable = false
                 buttonD_part3_ques3.isClickable = false
+                updateScore()
             }
 
             buttonD_part3_ques3.setOnClickListener {
@@ -453,6 +523,7 @@ class Part4 : AppCompatActivity() {
                 buttonB_part3_ques3.isClickable = false
                 buttonC_part3_ques3.isClickable = false
                 buttonD_part3_ques3.isClickable = false
+                updateScore()
             }
             try {
                 Glide.with(this).load(arr[num].image).into(imagePart3)
@@ -462,7 +533,7 @@ class Part4 : AppCompatActivity() {
         }
     }
     private fun loadDataPart4() {
-        val ref= FirebaseDatabase.getInstance().getReference("RLquestions").child(id).child("part4")
+        val ref= FirebaseDatabase.getInstance().getReference("RLquestions").child("${exam.id}").child("part4")
         ref.addListenerForSingleValueEvent(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 for (item in snapshot.children){
