@@ -16,6 +16,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UAIEO">
         <activity
+            android:name=".activity.ReadingListening.ListQuestionOfEachSavedPartActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.ReadingListening.ListSavedPartActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.DetailAnswerActivity"
             android:exported="false" />
         <activity

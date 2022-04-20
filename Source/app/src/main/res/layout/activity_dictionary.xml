@@ -22,9 +22,8 @@
         android:id="@+id/webView"
         android:layout_width="418dp"
         android:layout_height="525dp"
-        android:layout_marginTop="76dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/DicTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/translateTV" />
 
     <EditText
         android:id="@+id/SearchBar"
@@ -50,4 +49,16 @@
         android:text="@string/SearchBtn"
         app:layout_constraintEnd_toEndOf="@+id/SearchBar"
         app:layout_constraintTop_toBottomOf="@+id/DicTextView" />
+
+    <TextView
+        android:id="@+id/translateTV"
+        android:layout_width="376dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/definition"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="@+id/SearchBar"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="@+id/SearchBar"
+        app:layout_constraintTop_toBottomOf="@+id/SearchBar" />
 </androidx.constraintlayout.widget.ConstraintLayout>
