@@ -60,7 +60,7 @@
                 android:text="TextView" />
 
             <Button
-                android:id="@+id/recordSpeakingBtn"
+                android:id="@+id/btnRecord"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_radius_button"
@@ -70,15 +70,24 @@
                 android:text="@string/RecordBtn" />
 
             <Button
-                android:id="@+id/listenAgainBtn"
+                android:id="@+id/btnPlay"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_radius_button"
                 android:textColor="@color/white"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
-                android:text="@string/RecordBtn" />
+                android:text="@string/ListenAgainBtn" />
 
+            <Button
+                android:id="@+id/uploadRecordBtn"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_radius_button"
+                android:textColor="@color/white"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:text="@string/UploadRecord" />
             <Button
                 android:id="@+id/otherRecordBtn"
                 android:layout_width="300dp"
@@ -87,7 +96,7 @@
                 android:textColor="@color/white"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
-                android:text="@string/RecordBtn" />
+                android:text="@string/OtherRecordBtn" />
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
