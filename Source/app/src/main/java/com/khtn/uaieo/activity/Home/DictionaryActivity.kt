@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.appcompat.app.AppCompatActivity
+import com.khtn.uaieo.Dic
 import com.khtn.uaieo.R
 import kotlinx.android.synthetic.main.activity_dictionary.*
 
@@ -13,17 +14,22 @@ class DictionaryActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dictionary)
 
-        webView.settings.setJavaScriptEnabled(true)
-
-        webView.webViewClient = object : WebViewClient() {
-            override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
-                url?.let { view?.loadUrl(it) }
-                return true
-            }
-        }
-        webView.loadUrl("https://dictionary.cambridge.org/vi/dictionary/english/dictionary")
+//        webView.settings.setJavaScriptEnabled(true)
+//
+//        webView.webViewClient = object : WebViewClient() {
+//            override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
+//                url?.let { view?.loadUrl(it) }
+//                return true
+//            }
+//        }
+//        webView.loadUrl("https://dictionary.cambridge.org/vi/dictionary/english/dictionary")
+//        searchButton.setOnClickListener {
+//            webView.loadUrl("https://dictionary.cambridge.org/vi/dictionary/english/"+SearchBar.text)
+//        }
         searchButton.setOnClickListener {
-            webView.loadUrl("https://dictionary.cambridge.org/vi/dictionary/english/"+SearchBar.text)
+            var query= SearchBar.text.toString()
+            var myDic= Dic(this,query,translateTV)
+            myDic.execute()
         }
     }
 }
