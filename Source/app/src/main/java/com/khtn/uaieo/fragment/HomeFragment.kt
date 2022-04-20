@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 import com.khtn.uaieo.R
+import com.khtn.uaieo.activity.ChatActivity
 import com.khtn.uaieo.activity.Home.*
 import com.khtn.uaieo.adapter.MenuAdapter
 import com.khtn.uaieo.model.itemMenu
@@ -24,6 +25,12 @@ class HomeFragment : Fragment() {
     ): View? {
         val view= inflater.inflate(R.layout.fragment_home, container, false)
         initRecyclerView(view)
+        val chatFAB: View? = view?.findViewById(R.id.chatFAB)
+
+        chatFAB?.setOnClickListener {
+            val intent = Intent(context, ChatActivity::class.java)
+            startActivity(intent)
+        }
         return view
     }
 
