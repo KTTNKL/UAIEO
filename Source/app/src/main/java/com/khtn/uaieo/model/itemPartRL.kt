@@ -1,6 +1,7 @@
 package com.khtn.uaieo.model
+import java.io.Serializable
 
-class itemPartRL {
+class itemPartRL: Serializable  {
     var title: String?=""
     var option1: String?="";
     var option2: String?="";
@@ -12,8 +13,9 @@ class itemPartRL {
     var image: String?=""
     var image2: String?=""
     var image3: String?=""
-
-    constructor(_title: String, _option1: String, _option2: String, _option3: String, _option4: String, _answer: String,number:Int?,audio:String?,image:String?,image2:String?,image3:String?){
+    var id: String?="";
+    var bookType: String?="";
+    constructor(_title: String, _option1: String, _option2: String, _option3: String, _option4: String, _answer: String,number:Int?,audio:String?,image:String?,image2:String?,image3:String?, id:String?, bookType:String?){
         this.title = _title
         this.number=number
         this.audio=audio
@@ -25,6 +27,8 @@ class itemPartRL {
         this.image=image
         this.image2=image2
         this.image3=image3
+        this.id= id
+        this.bookType = bookType
     }
     constructor(){
 
