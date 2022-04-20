@@ -13,6 +13,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UAIEO">
         <activity
+            android:name=".activity.ChatActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.DetailAnswerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.ListAnswerActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.AnalystUserActivity"
             android:exported="false" />
         <activity 
