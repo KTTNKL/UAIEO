@@ -7,6 +7,7 @@ class itemAnalystUser : Serializable {
     var id: String?=""
     var email: String?=""
 
+    var overall: Int?=0
     var part1: Int?=0
     var part2: Int?=0
     var part3: Int?=0

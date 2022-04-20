@@ -17,13 +17,13 @@ class PartRLExamActivity : AppCompatActivity() {
     var PartArray=ArrayList<Int>()
     lateinit var adapter: RLPartAdapter
     lateinit var customListView: RecyclerView
-     var id=""
+    lateinit var exam:itemExamRL
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_part_rlexam)
         val intent=intent
-        id= intent.getStringExtra("id").toString()
+        exam= intent.getSerializableExtra("exam") as itemExamRL
         setupLayout()
 
     }
@@ -64,7 +64,7 @@ class PartRLExamActivity : AppCompatActivity() {
                     }
 
                 }
-                intent.putExtra("id",id)
+                intent.putExtra("exam",exam)
                 startActivity(intent)
 
             }
