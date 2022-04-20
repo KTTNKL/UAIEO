@@ -3,6 +3,7 @@ package com.khtn.uaieo.activity.ReadingListening
 import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
@@ -16,6 +17,7 @@ import com.khtn.uaieo.model.itemPartRL
 import kotlinx.android.synthetic.main.activity_part1.*
 
 class Part1 : AppCompatActivity() {
+    var isOneQuestion = false
     lateinit var exam:itemExamRL
     var num=0;
     var currPoint:Long=0
@@ -24,22 +26,39 @@ class Part1 : AppCompatActivity() {
     var correctAnswers = 0
     var auth = FirebaseAuth.getInstance()
     var curUID= auth.uid;
+    lateinit var question: itemPartRL
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_part1)
         val intent=intent
-        exam= intent.getSerializableExtra("exam") as itemExamRL
-        loadDataPart1()
-        clickSound()
-        clickNext()
-        checkExist()
-        saveClick()
+        isOneQuestion = intent.getBooleanExtra("isOneQuestion", false)
+        part1saveBtn.visibility = View.INVISIBLE
+        nextPart1Btn.visibility = View.INVISIBLE
+
+        if(isOneQuestion)
+        {
+            // xem cau hoi da luu
+            question = intent.getSerializableExtra("question") as itemPartRL
+            arr.add(question)
+            setData(0)
+            clickSound()
+        }
+        else
+        {
+             // chay binh thuong
+            exam= intent.getSerializableExtra("exam") as itemExamRL
+            loadDataPart1()
+            clickSound()
+            clickNext()
+            checkExist()
+            saveClick()
+        }
     }
 
     private fun saveClick() {
-        val reference= FirebaseDatabase.getInstance().reference!!.child("profile/${curUID}/save/part1/")
-        reference.child("part1").setValue(0)
-        reference.child("email").setValue(auth.currentUser?.email)
+//        val reference= FirebaseDatabase.getInstance().reference!!.child("profile/${curUID}/save/part1/")
+//        reference.child("part1").setValue(0)
+//        reference.child("email").setValue(auth.currentUser?.email)
     }
 
     private fun checkExist() {
