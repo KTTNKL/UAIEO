@@ -52,4 +52,5 @@
     <string name="exampleAnswerBtn">Các Bài Làm Tham Khảo</string>
     <string name="commentBtn">Bình Luận</string>
     <string name="score">SCORE:</string>
+    <string name="save">SAVE</string>
 </resources>

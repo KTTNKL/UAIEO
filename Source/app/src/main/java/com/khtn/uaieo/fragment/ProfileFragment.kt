@@ -15,6 +15,9 @@ import com.google.firebase.database.*
 import com.khtn.uaieo.R
 import com.khtn.uaieo.activity.Auth.LoginActivity
 import com.khtn.uaieo.activity.NotificationDetailActivity
+import com.khtn.uaieo.activity.ReadingListening.ListRLExamActivity
+import com.khtn.uaieo.activity.ReadingListening.ListSavedPartActivity
+import com.khtn.uaieo.activity.ReadingListening.PartRLExamActivity
 import kotlinx.android.synthetic.main.change_password_dialog.view.*
 import kotlinx.android.synthetic.main.fragment_profile.*
 
@@ -38,6 +41,7 @@ class ProfileFragment : Fragment() {
         changePassword()
         logout()
         setNotification()
+        saveQuestion()
     }
     fun init (){
         auth = FirebaseAuth.getInstance()
@@ -97,6 +101,13 @@ class ProfileFragment : Fragment() {
     fun setNotification() {
         notificationBT!!.setOnClickListener {
             val intent= Intent(context, NotificationDetailActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
+    fun saveQuestion(){
+        savedQuestionsBT!!.setOnClickListener{
+            var intent= Intent(context, ListSavedPartActivity::class.java)
             startActivity(intent)
         }
     }
