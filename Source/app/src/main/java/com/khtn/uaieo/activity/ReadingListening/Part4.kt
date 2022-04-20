@@ -3,6 +3,7 @@ package com.khtn.uaieo.activity.ReadingListening
 import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
@@ -13,9 +14,15 @@ import com.google.firebase.database.ValueEventListener
 import com.khtn.uaieo.R
 import com.khtn.uaieo.model.itemExamRL
 import com.khtn.uaieo.model.itemPartRL
+import kotlinx.android.synthetic.main.activity_part2.*
 import kotlinx.android.synthetic.main.activity_part3.*
 
 class Part4 : AppCompatActivity() {
+    var isOneQuestion = false
+    var auth = FirebaseAuth.getInstance()
+    var curUID= auth.uid;
+    lateinit var question: itemPartRL
+
     lateinit var exam: itemExamRL
     var num=0
     var currPoint:Long=0
@@ -26,11 +33,27 @@ class Part4 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_part3)
-        exam= intent.getSerializableExtra("exam") as itemExamRL
-        loadDataPart4()
-        clickNext()
-        clickSound()
-        checkExist()
+
+        val intent=intent
+        isOneQuestion = intent.getBooleanExtra("isOneQuestion", false)
+        part3saveBtn.visibility = View.INVISIBLE
+        nextPart3Btn.visibility = View.INVISIBLE
+        if(isOneQuestion)
+        {
+            question = intent.getSerializableExtra("question") as itemPartRL
+            arr.add(question)
+            setData(0)
+            clickSound()
+        }
+        else
+        {
+            exam= intent.getSerializableExtra("exam") as itemExamRL
+            loadDataPart4()
+            clickNext()
+            clickSound()
+            checkExist()
+        }
+
     }
     private fun checkExist() {
         var auth = FirebaseAuth.getInstance()

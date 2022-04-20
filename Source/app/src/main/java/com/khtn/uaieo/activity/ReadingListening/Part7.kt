@@ -2,6 +2,7 @@ package com.khtn.uaieo.activity.ReadingListening
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
@@ -17,6 +18,11 @@ import kotlinx.android.synthetic.main.activity_part6.*
 import kotlinx.android.synthetic.main.activity_part7.*
 
 class Part7 : AppCompatActivity() {
+    var isOneQuestion = false
+    var auth = FirebaseAuth.getInstance()
+    var curUID= auth.uid;
+    lateinit var question: itemPartRL
+
     lateinit var exam: itemExamRL
     var num=0
     var currPoint:Long=0
@@ -25,10 +31,24 @@ class Part7 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_part7)
-        exam= intent.getSerializableExtra("exam") as itemExamRL
-        loadDataPart7()
-        clickNext()
-        checkExist()
+        val intent=intent
+        isOneQuestion = intent.getBooleanExtra("isOneQuestion", false)
+        part7saveBtn.visibility = View.INVISIBLE
+        nextPart7Btn.visibility = View.INVISIBLE
+        if(isOneQuestion)
+        {
+            question = intent.getSerializableExtra("question") as itemPartRL
+            arr.add(question)
+            setData(0)
+        }
+        else
+        {
+            exam= intent.getSerializableExtra("exam") as itemExamRL
+            loadDataPart7()
+            clickNext()
+            checkExist()
+        }
+
     }
 
     private fun clickNext() {
