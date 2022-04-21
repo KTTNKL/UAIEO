@@ -32,8 +32,7 @@ class Part1 : AppCompatActivity() {
         setContentView(R.layout.activity_part1)
         val intent=intent
         isOneQuestion = intent.getBooleanExtra("isOneQuestion", false)
-        part1saveBtn.visibility = View.INVISIBLE
-        nextPart1Btn.visibility = View.INVISIBLE
+
 
         if(isOneQuestion)
         {
@@ -42,6 +41,8 @@ class Part1 : AppCompatActivity() {
             arr.add(question)
             setData(0)
             clickSound()
+            part1saveBtn.visibility = View.INVISIBLE
+            nextPart1Btn.visibility = View.INVISIBLE
         }
         else
         {
@@ -56,9 +57,28 @@ class Part1 : AppCompatActivity() {
     }
 
     private fun saveClick() {
+        part1saveBtn.setOnClickListener {
+            val questionid = "" + System.currentTimeMillis()
+            val reference= FirebaseDatabase.getInstance().reference!!.child("profile/${curUID}/save/part1/${questionid}")
+
+
+            var hashMap: HashMap<String, Any> = HashMap()
+            hashMap.put("idQuestion", questionid.toString())
+            hashMap.put("bookType", exam.bookType!!)
+            hashMap.put("id", exam.id!!)
+            hashMap.put("answer", arr[num].answer!!)
+            hashMap.put("audio", arr[num].audio!!)
+            hashMap.put("image", arr[num].image!!)
+            hashMap.put("number", arr[num].number!!)
+            reference.setValue(hashMap)
+
+
+
+        }
 //        val reference= FirebaseDatabase.getInstance().reference!!.child("profile/${curUID}/save/part1/")
 //        reference.child("part1").setValue(0)
 //        reference.child("email").setValue(auth.currentUser?.email)
+
     }
 
     private fun checkExist() {
@@ -82,14 +102,18 @@ class Part1 : AppCompatActivity() {
     }
 
     private fun updateScore(){
-        if(correctAnswers > currPoint)
+        if(!isOneQuestion)
         {
-            var auth = FirebaseAuth.getInstance()
-            var curUID= auth.uid;
-            val reference= FirebaseDatabase.getInstance().reference!!.child("analyst/${exam.id}/${curUID}")
-            reference.child("id").setValue("${curUID}")
-            reference.child("part1").setValue(correctAnswers)
+            if(correctAnswers > currPoint)
+            {
+                var auth = FirebaseAuth.getInstance()
+                var curUID= auth.uid;
+                val reference= FirebaseDatabase.getInstance().reference!!.child("analyst/${exam.id}/${curUID}")
+                reference.child("id").setValue("${curUID}")
+                reference.child("part1").setValue(correctAnswers)
+            }
         }
+
     }
 
 

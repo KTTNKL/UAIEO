@@ -3,25 +3,37 @@ package com.khtn.uaieo.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.khtn.uaieo.R
 import com.khtn.uaieo.model.itemPartRL
 
 class SavedQuestionAdapter(var items: ArrayList<itemPartRL>?)  : RecyclerView.Adapter<SavedQuestionAdapter.HolderView>(){
-    class HolderView(itemView: View, listener: onItemClickListener): RecyclerView.ViewHolder(itemView){
+    inner class HolderView(itemView: View, listener: onItemClickListener): RecyclerView.ViewHolder(itemView){
+
 
         var booktype: TextView =itemView.findViewById(R.id.examBookTypeTV)
         var examid: TextView =itemView.findViewById(R.id.examIDTV)
         var questionnumber: TextView =itemView.findViewById(R.id.examNumberTV)
+        var deleteBtn: ImageView = itemView.findViewById(R.id.deleteSavedQuestionBtn)
+
         init{
             itemView.setOnClickListener{
                 listener.onItemClick(adapterPosition)
+
             }
+            deleteBtn.setOnClickListener {
+                onButtonClick?.invoke(items!![adapterPosition])
+            }
+
         }
+
     }
     private lateinit var mListenr: onItemClickListener
 
+    var onButtonClick: ((itemPartRL) -> Unit)? = null
     interface  onItemClickListener{
         fun onItemClick(position: Int){
 
