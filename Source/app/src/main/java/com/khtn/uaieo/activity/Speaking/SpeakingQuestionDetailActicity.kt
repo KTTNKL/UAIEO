@@ -10,6 +10,7 @@ import android.Manifest
 import android.app.ProgressDialog
 import android.app.appsearch.StorageInfo
 import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.media.MediaPlayer
 import android.media.MediaRecorder
@@ -27,6 +28,7 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
+import com.khtn.uaieo.activity.ListAnswerWritingActivity
 import java.io.File
 import java.io.IOException
 
@@ -124,13 +126,14 @@ class SpeakingQuestionDetailActicity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_speaking_question_detail_acticity)
 
+        var id = intent.getStringExtra("SpeakingID").toString()
+        var question = intent.getSerializableExtra("SpeakingQuestionData") as partSW
 
-            var question = intent.getSerializableExtra("SpeakingQuestionData") as partSW
-
-            Glide.with(this).load(question.image).into(speakingImage)
-            questionNumberTV.text = "CÂU: " + question.number.toString()
-            contentQuestionTV.text = question.content
-            questionTV.text = question.question
+        Log.d("111111111", id)
+        Glide.with(this).load(question.image).into(speakingImage)
+        questionNumberTV.text = "CÂU: " + question.number.toString()
+        contentQuestionTV.text = question.content
+        questionTV.text = question.question
 
         // Record to the external cache directory for visibility
         fileName = "${externalCacheDir?.absolutePath}/audiorecordtest.3gp"
@@ -158,21 +161,43 @@ class SpeakingQuestionDetailActicity : AppCompatActivity() {
 
         uploadRecordBtn.setOnClickListener{ // play audio method will play
             mProgress = ProgressDialog(this)
-            upload()
+            question.number?.let { it1 -> upload(id, it1) }
+        }
+        otherRecordBtn.setOnClickListener{
+            val intent = Intent(this, ListAnswerSpeakingActivity::class.java)
+            intent.putExtra("id",id);
+            intent.putExtra("number",question.number.toString());
+            startActivityForResult(intent, 1111)
         }
 
     }
-    private fun upload(){
+    private fun upload(id: String, number: Int){
         mProgress?.setMessage("Uploading ...")
         mProgress?.show()
         auth = FirebaseAuth.getInstance()
         user= auth.currentUser!!
 
-        val recordID = "" + System.currentTimeMillis()
-        var path:StorageReference = storageReference.child("speakingExam1").child("1").child(recordID.toString())
+        val recordID = "" + System.currentTimeMillis()+".3gp"
+        var path = storageReference.child(id).child(number.toString()).child(recordID.toString())
 
         var uri: Uri = Uri.fromFile(File(fileName))
         path.putFile(uri).addOnSuccessListener {
+            val downloadURLTask = storageReference.child("${id}/${number}/${recordID}").downloadUrl
+            downloadURLTask.addOnSuccessListener {
+                var hashMap: HashMap<String, Any> = HashMap()
+                hashMap.put("image", it.toString())
+                hashMap.put("id", user.uid)
+                user.email?.let { it1 -> hashMap.put("email", it1) }
+
+                databaseReference.child("WSquestions/speaking/${id}/question${number}").child("example").child(user.uid).setValue(hashMap)
+                    .addOnSuccessListener { taskSnapshot ->
+                        Toast.makeText(this, "uploaded successfully", Toast.LENGTH_LONG)
+                            .show()
+                    }
+                    .addOnFailureListener { e ->
+                        Toast.makeText(this, "${e.message}", Toast.LENGTH_LONG).show()
+                    }
+            }
             mProgress?.dismiss()
         }
 

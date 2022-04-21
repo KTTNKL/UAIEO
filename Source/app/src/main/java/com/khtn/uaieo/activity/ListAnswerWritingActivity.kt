@@ -1,4 +1,4 @@
-package com.khtn.uaieo.activity.Speaking
+package com.khtn.uaieo.activity
 
 import android.app.ProgressDialog
 import android.content.Intent
@@ -14,29 +14,30 @@ import com.google.firebase.database.ValueEventListener
 import com.khtn.uaieo.R
 import com.khtn.uaieo.adapter.WSExamAdapter
 import com.khtn.uaieo.model.ExamID
-import com.khtn.uaieo.model.partSW
-import java.util.*
+import com.khtn.uaieo.model.WritingSpeakingExample
 import kotlin.collections.ArrayList
 
-class SpeakingQuestionListActivity : AppCompatActivity() {
+class ListAnswerWritingActivity : AppCompatActivity() {
 
-    lateinit var readingArrayList: ArrayList<partSW>
+
+    lateinit var readingArrayList: ArrayList<WritingSpeakingExample>
     lateinit var dialog: ProgressDialog
     lateinit var newRecyclerview: RecyclerView
-    lateinit var id: String
+    lateinit var ID: String
+    var path: String = ""
+    var questionNumber: Int = -1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_speaking_question_list)
+        setContentView(R.layout.activity_list_answer)
 
-        val intent = intent
-        id = intent.getStringExtra("SpeakingIndex").toString()
 
-        Log.d("speaking",id)
+        ID = intent.getStringExtra("IdExam").toString();
+        questionNumber = intent.getStringExtra("QuestionNumber")?.toInt()!!;
 
-        readingArrayList = ArrayList<partSW>()
+        readingArrayList = ArrayList<WritingSpeakingExample>()
 
-        newRecyclerview = findViewById(R.id.speakingQuestionRecyclerView)
+        newRecyclerview = findViewById(R.id.listExampleRecyclerView)
         newRecyclerview.layoutManager = LinearLayoutManager(this)
         newRecyclerview.setHasFixedSize(true)
 
@@ -52,7 +53,9 @@ class SpeakingQuestionListActivity : AppCompatActivity() {
     fun LoadData(){
 
         //Xoa list trc khi them vao moi lan vao app
-        var path = "WSquestions/speaking/" + id
+        path = "WSquestions/writing/" + ID + "/" +"question" + questionNumber.toString() + "/example";
+
+        Log.d("aaaaaaaa",path);
 
         val ref= FirebaseDatabase.getInstance().getReference(path)
         ref.addListenerForSingleValueEvent(object: ValueEventListener {
@@ -60,20 +63,16 @@ class SpeakingQuestionListActivity : AppCompatActivity() {
                 //Xoa list trc khi them vao moi lan vao app
                 readingArrayList.clear()
                 for (temp in snapshot.children){
-                    val question = temp.getValue(partSW::class.java)
+                    val question = temp.getValue(WritingSpeakingExample::class.java)
                     readingArrayList.add(question!!)
                 }
 
-                for(i in 0..(readingArrayList.size - 2)){
-                    for(j in (i+1)..(readingArrayList.size-1)){
-                        if(readingArrayList.get(i).number!! > readingArrayList.get(j).number!!){
-                            Collections.swap(readingArrayList, i, j)
-                        }
-                    }
-                }
                 var TotalQuestion = ArrayList<ExamID>()
-                for(i in 1..11){
-                    TotalQuestion.add(ExamID("CÂU " + i.toString()))
+                for(i in 0..(readingArrayList.size - 1)){
+                    TotalQuestion.add(ExamID("Answer " + (i+1).toString()))
+                }
+                for(i in readingArrayList){
+                    Log.d("aaaaaa", i.email.toString())
                 }
                 dialog.dismiss()
                 var adapter = WSExamAdapter(TotalQuestion)
@@ -90,9 +89,9 @@ class SpeakingQuestionListActivity : AppCompatActivity() {
         })
     }
     fun swapScreen(position:Int){
-        val intent = Intent(this, SpeakingQuestionDetailActicity::class.java)
-        intent.putExtra("SpeakingQuestionData", readingArrayList.get(position))
-        intent.putExtra("SpeakingID", id.toString())
+        val intent = Intent(this, DetailAnswerWritingActivity::class.java)
+        intent.putExtra("path", path + "/" + readingArrayList.get(position).id)
+        intent.putExtra("AnswerData", readingArrayList.get(position))
         startActivityForResult(intent, 1111)
     }
 }

@@ -1,9 +1,9 @@
-package com.khtn.uaieo.activity
+package com.khtn.uaieo.activity.Speaking
 
-import android.app.ProgressDialog
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.app.ProgressDialog
+import android.media.MediaPlayer
 import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -17,37 +17,37 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.storage.FirebaseStorage
 import com.khtn.uaieo.R
 import com.khtn.uaieo.adapter.CommentAdapter
-import com.khtn.uaieo.adapter.WSExamAdapter
 import com.khtn.uaieo.model.Comment
-import com.khtn.uaieo.model.ExamID
-import com.khtn.uaieo.model.WritingExample
-import kotlinx.android.synthetic.main.activity_detail_answer.*
-import kotlinx.android.synthetic.main.activity_writing_question_detail.*
+import com.khtn.uaieo.model.WritingSpeakingExample
+import kotlinx.android.synthetic.main.activity_detail_answer_speaking.*
+import kotlinx.android.synthetic.main.activity_part1.*
 
-class DetailAnswerActivity : AppCompatActivity() {
+class DetailAnswerSpeakingActivity : AppCompatActivity() {
 
     private  val storageReference= FirebaseStorage.getInstance().reference
     private val databaseReference = FirebaseDatabase.getInstance().reference
     lateinit var auth: FirebaseAuth
     lateinit var user: FirebaseUser
     var path: String = ""
+    var media= MediaPlayer()
+    var audio: String = ""
     lateinit var readingArrayList: ArrayList<Comment>
     lateinit var dialog: ProgressDialog
     lateinit var newRecyclerview: RecyclerView
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_detail_answer)
+        setContentView(R.layout.activity_detail_answer_speaking)
 
-        var question = intent.getSerializableExtra("AnswerData") as WritingExample
+        var question = intent.getSerializableExtra("AnswerData") as WritingSpeakingExample
         path = intent.getStringExtra("path").toString();
 
-        Glide.with(this).load(question.image).into(answerImage)
-        authorAnswerTV.text = "Làm của: " + question.email
 
+        authorSpeakingAnswerTV.text = "Làm của: " + question.email
         readingArrayList = ArrayList<Comment>()
 
-        newRecyclerview = findViewById(R.id.commentRecyclerView)
+        newRecyclerview = findViewById(R.id.commentRecyclerView1)
         newRecyclerview.layoutManager = LinearLayoutManager(this)
         newRecyclerview.setHasFixedSize(true)
 
@@ -71,6 +71,18 @@ class DetailAnswerActivity : AppCompatActivity() {
             reference.child("content").setValue("${commentTV.text}")
 
             LoadData()
+        }
+        audioBtn.setOnClickListener{
+            if(!media.isPlaying){
+                media.setDataSource(question.image.toString())
+                media.prepare()
+                media.start()
+                audioBtn.setText("DỪNG")
+            }else{
+                media.stop()
+                media.reset()
+                audioBtn.setText("PHÁT")
+            }
         }
     }
     fun LoadData(){
@@ -107,4 +119,5 @@ class DetailAnswerActivity : AppCompatActivity() {
 //        intent.putExtra("AnswerData", readingArrayList.get(position))
 //        startActivityForResult(intent, 1111)
     }
+
 }
