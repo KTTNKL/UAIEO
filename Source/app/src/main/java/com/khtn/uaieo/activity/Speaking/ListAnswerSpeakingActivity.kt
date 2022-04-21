@@ -1,4 +1,4 @@
-package com.khtn.uaieo.activity
+package com.khtn.uaieo.activity.Speaking
 
 import android.app.ProgressDialog
 import android.content.Intent
@@ -14,15 +14,11 @@ import com.google.firebase.database.ValueEventListener
 import com.khtn.uaieo.R
 import com.khtn.uaieo.adapter.WSExamAdapter
 import com.khtn.uaieo.model.ExamID
-import com.khtn.uaieo.model.WritingExample
-import com.khtn.uaieo.model.partSW
-import java.util.*
+import com.khtn.uaieo.model.WritingSpeakingExample
 import kotlin.collections.ArrayList
 
-class ListAnswerActivity : AppCompatActivity() {
-
-
-    lateinit var readingArrayList: ArrayList<WritingExample>
+class ListAnswerSpeakingActivity : AppCompatActivity() {
+    lateinit var readingArrayList: ArrayList<WritingSpeakingExample>
     lateinit var dialog: ProgressDialog
     lateinit var newRecyclerview: RecyclerView
     lateinit var ID: String
@@ -31,15 +27,14 @@ class ListAnswerActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_list_answer)
+        setContentView(R.layout.activity_list_answer_speaking)
 
+        ID = intent.getStringExtra("id").toString();
+        questionNumber = intent.getStringExtra("number")?.toInt()!!;
 
-        ID = intent.getStringExtra("IdExam").toString();
-        questionNumber = intent.getStringExtra("QuestionNumber")?.toInt()!!;
+        readingArrayList = ArrayList<WritingSpeakingExample>()
 
-        readingArrayList = ArrayList<WritingExample>()
-
-        newRecyclerview = findViewById(R.id.listExampleRecyclerView)
+        newRecyclerview = findViewById(R.id.listExampleRecyclerView2)
         newRecyclerview.layoutManager = LinearLayoutManager(this)
         newRecyclerview.setHasFixedSize(true)
 
@@ -50,14 +45,11 @@ class ListAnswerActivity : AppCompatActivity() {
         )
 
         LoadData()
-    }
-
+}
     fun LoadData(){
 
         //Xoa list trc khi them vao moi lan vao app
-        path = "WSquestions/writing/" + ID + "/" +"question" + questionNumber.toString() + "/example";
-
-        Log.d("aaaaaaaa",path);
+        path = "WSquestions/speaking/" + ID + "/" +"question" + questionNumber.toString() + "/example";
 
         val ref= FirebaseDatabase.getInstance().getReference(path)
         ref.addListenerForSingleValueEvent(object: ValueEventListener {
@@ -65,16 +57,13 @@ class ListAnswerActivity : AppCompatActivity() {
                 //Xoa list trc khi them vao moi lan vao app
                 readingArrayList.clear()
                 for (temp in snapshot.children){
-                    val question = temp.getValue(WritingExample::class.java)
+                    val question = temp.getValue(WritingSpeakingExample::class.java)
                     readingArrayList.add(question!!)
                 }
 
                 var TotalQuestion = ArrayList<ExamID>()
                 for(i in 0..(readingArrayList.size - 1)){
                     TotalQuestion.add(ExamID("Answer " + (i+1).toString()))
-                }
-                for(i in readingArrayList){
-                    Log.d("aaaaaa", i.email.toString())
                 }
                 dialog.dismiss()
                 var adapter = WSExamAdapter(TotalQuestion)
@@ -91,7 +80,7 @@ class ListAnswerActivity : AppCompatActivity() {
         })
     }
     fun swapScreen(position:Int){
-        val intent = Intent(this, DetailAnswerActivity::class.java)
+        val intent = Intent(this, DetailAnswerSpeakingActivity::class.java)
         intent.putExtra("path", path + "/" + readingArrayList.get(position).id)
         intent.putExtra("AnswerData", readingArrayList.get(position))
         startActivityForResult(intent, 1111)

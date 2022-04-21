@@ -13,7 +13,6 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import com.khtn.uaieo.R
 import com.khtn.uaieo.model.partSW
-import kotlinx.android.synthetic.main.activity_speaking_question_detail_acticity.*
 import kotlinx.android.synthetic.main.activity_writing_question_detail.*
 
 class WritingQuestionDetailActivity : AppCompatActivity() {
@@ -38,7 +37,7 @@ class WritingQuestionDetailActivity : AppCompatActivity() {
         writingWordTV.text = question.words
 
         exampleAnswerBtn.setOnClickListener {
-            val intent = Intent(this, ListAnswerActivity::class.java)
+            val intent = Intent(this, ListAnswerWritingActivity::class.java)
             intent.putExtra("IdExam",ID);
             intent.putExtra("QuestionNumber",question.number.toString());
             startActivityForResult(intent, 1111)

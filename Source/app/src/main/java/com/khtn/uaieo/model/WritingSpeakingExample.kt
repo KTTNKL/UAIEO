@@ -2,7 +2,7 @@ package com.khtn.uaieo.model
 
 import java.io.Serializable
 
-class WritingExample : Serializable {
+class WritingSpeakingExample : Serializable {
     var email: String?=""
     var id: String?=""
     var image: String?=""
