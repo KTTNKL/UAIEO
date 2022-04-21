@@ -33,10 +33,11 @@ class Part7 : AppCompatActivity() {
         setContentView(R.layout.activity_part7)
         val intent=intent
         isOneQuestion = intent.getBooleanExtra("isOneQuestion", false)
-        part7saveBtn.visibility = View.INVISIBLE
-        nextPart7Btn.visibility = View.INVISIBLE
+
         if(isOneQuestion)
         {
+            part7saveBtn.visibility = View.INVISIBLE
+            nextPart7Btn.visibility = View.INVISIBLE
             question = intent.getSerializableExtra("question") as itemPartRL
             arr.add(question)
             setData(0)
@@ -47,8 +48,32 @@ class Part7 : AppCompatActivity() {
             loadDataPart7()
             clickNext()
             checkExist()
+            saveClick()
         }
 
+    }
+
+    private fun saveClick() {
+        part7saveBtn.setOnClickListener {
+            val questionid = "" + System.currentTimeMillis()
+            val reference= FirebaseDatabase.getInstance().reference!!.child("profile/${curUID}/save/part7/${questionid}")
+
+
+            var hashMap: HashMap<String, Any> = HashMap()
+            hashMap.put("idQuestion", questionid.toString())
+            hashMap.put("bookType", exam.bookType!!)
+            hashMap.put("id", exam.id!!)
+
+            hashMap.put("answer", arr[num].answer!!)
+            hashMap.put("image", arr[num].image!!)
+            hashMap.put("option1", arr[num].option1!!)
+            hashMap.put("option2", arr[num].option2!!)
+            hashMap.put("option3", arr[num].option3!!)
+            hashMap.put("option4", arr[num].option4!!)
+            hashMap.put("title", arr[num].title!!)
+            hashMap.put("number", arr[num].number!!)
+            reference.setValue(hashMap)
+        }
     }
 
     private fun clickNext() {
@@ -91,14 +116,18 @@ class Part7 : AppCompatActivity() {
     }
 
     private fun updateScore(){
-        if(correctAnswers > currPoint)
+        if(!isOneQuestion)
         {
-            var auth = FirebaseAuth.getInstance()
-            var curUID= auth.uid;
-            val reference= FirebaseDatabase.getInstance().reference!!.child("analyst/${exam.id}/${curUID}")
-            reference.child("id").setValue("${curUID}")
-            reference.child("part7").setValue(correctAnswers)
+            if(correctAnswers > currPoint)
+            {
+                var auth = FirebaseAuth.getInstance()
+                var curUID= auth.uid;
+                val reference= FirebaseDatabase.getInstance().reference!!.child("analyst/${exam.id}/${curUID}")
+                reference.child("id").setValue("${curUID}")
+                reference.child("part7").setValue(correctAnswers)
+            }
         }
+
     }
 
     private fun loadDataPart7() {

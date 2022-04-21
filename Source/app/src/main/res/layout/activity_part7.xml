@@ -19,7 +19,7 @@
     <ScrollView android:layout_marginTop="60dp"
         android:id="@+id/scrollView2"
         android:layout_width="410dp"
-        android:layout_height="317dp"
+        android:layout_height="250dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -35,7 +35,7 @@
             <ImageView
                 android:id="@+id/image1Part7"
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
+                android:layout_height="268dp"
                 tools:srcCompat="@tools:sample/avatars" />
 
             <ImageView
@@ -53,8 +53,8 @@
 
     <TextView
         android:id="@+id/titlePart7TV"
-        android:layout_width="369dp"
-        android:layout_height="58dp"
+        android:layout_width="389dp"
+        android:layout_height="38dp"
         android:layout_marginTop="4dp"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"

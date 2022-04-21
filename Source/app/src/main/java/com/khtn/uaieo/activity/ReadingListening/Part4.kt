@@ -3,10 +3,12 @@ package com.khtn.uaieo.activity.ReadingListening
 import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -36,13 +38,34 @@ class Part4 : AppCompatActivity() {
 
         val intent=intent
         isOneQuestion = intent.getBooleanExtra("isOneQuestion", false)
-        part3saveBtn.visibility = View.INVISIBLE
-        nextPart3Btn.visibility = View.INVISIBLE
+
         if(isOneQuestion)
         {
+            part3saveBtn.visibility = View.INVISIBLE
+            nextPart3Btn.visibility = View.INVISIBLE
             question = intent.getSerializableExtra("question") as itemPartRL
-            arr.add(question)
-            setData(0)
+            Log.d("hd",question.idQuestion.toString())
+
+            var user: FirebaseUser = FirebaseAuth.getInstance().currentUser!!
+            val ref= FirebaseDatabase.getInstance().getReference("profile/${user.uid}/save/part4/${question.idQuestion}")
+            ref.addListenerForSingleValueEvent(object: ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    Log.d("hd", snapshot.childrenCount.toString())
+                    for (item in snapshot.children){
+
+                        val question = item.getValue(itemPartRL::class.java)
+                        Log.d("hd", question!!.option1.toString())
+                        if (question != null) {
+                            arr.add(question)
+                        }
+                    }
+                    setData(0)
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    TODO("Not yet implemented")
+                }
+            })
             clickSound()
         }
         else
@@ -52,8 +75,66 @@ class Part4 : AppCompatActivity() {
             clickNext()
             clickSound()
             checkExist()
+            saveClick()
         }
 
+    }
+
+    private fun saveClick() {
+        part3saveBtn.setOnClickListener {
+            val questionid = "" + System.currentTimeMillis()
+            val reference= FirebaseDatabase.getInstance().reference!!.child("profile/${curUID}/save/part4/${questionid}")
+
+
+            var hashMap: HashMap<String, Any> = HashMap()
+            hashMap.put("idQuestion", questionid.toString())
+            hashMap.put("bookType", exam.bookType!!)
+            hashMap.put("id", exam.id!!)
+
+            hashMap.put("answer", arr[num].answer!!)
+            hashMap.put("audio", arr[num].audio!!)
+            hashMap.put("number", arr[num].number!!)
+            hashMap.put("option1", arr[num].option1!!)
+            hashMap.put("option2", arr[num].option2!!)
+            hashMap.put("option3", arr[num].option3!!)
+            hashMap.put("option4", arr[num].option4!!)
+            hashMap.put("title", arr[num].title!!)
+
+            reference.child("question1").setValue(hashMap)
+            hashMap.clear()
+
+            hashMap.put("idQuestion", questionid.toString())
+            hashMap.put("bookType", exam.bookType!!)
+            hashMap.put("id", exam.id!!)
+
+            hashMap.put("answer", arr[num+1].answer!!)
+            hashMap.put("audio", arr[num+1].audio!!)
+            hashMap.put("number", arr[num+1].number!!)
+            hashMap.put("option1", arr[num+1].option1!!)
+            hashMap.put("option2", arr[num+1].option2!!)
+            hashMap.put("option3", arr[num+1].option3!!)
+            hashMap.put("option4", arr[num+1].option4!!)
+            hashMap.put("title", arr[num+1].title!!)
+
+            reference.child("question2").setValue(hashMap)
+            hashMap.clear()
+
+            hashMap.put("idQuestion", questionid.toString())
+            hashMap.put("bookType", exam.bookType!!)
+            hashMap.put("id", exam.id!!)
+
+            hashMap.put("answer", arr[num+2].answer!!)
+            hashMap.put("audio", arr[num+2].audio!!)
+            hashMap.put("number", arr[num+2].number!!)
+            hashMap.put("option1", arr[num+2].option1!!)
+            hashMap.put("option2", arr[num+2].option2!!)
+            hashMap.put("option3", arr[num+2].option3!!)
+            hashMap.put("option4", arr[num+2].option4!!)
+            hashMap.put("title", arr[num+2].title!!)
+
+            reference.child("question3").setValue(hashMap)
+            hashMap.clear()
+        }
     }
     private fun checkExist() {
         var auth = FirebaseAuth.getInstance()
@@ -78,14 +159,18 @@ class Part4 : AppCompatActivity() {
     }
 
     private fun updateScore(){
-        if(correctAnswers > currPoint)
+        if(!isOneQuestion)
         {
-            var auth = FirebaseAuth.getInstance()
-            var curUID= auth.uid;
-            val reference= FirebaseDatabase.getInstance().reference!!.child("analyst/${exam.id}/${curUID}")
-            reference.child("id").setValue("${curUID}")
-            reference.child("part4").setValue(correctAnswers)
+            if(correctAnswers > currPoint)
+            {
+                var auth = FirebaseAuth.getInstance()
+                var curUID= auth.uid;
+                val reference= FirebaseDatabase.getInstance().reference!!.child("analyst/${exam.id}/${curUID}")
+                reference.child("id").setValue("${curUID}")
+                reference.child("part4").setValue(correctAnswers)
+            }
         }
+
     }
     private fun clickNext() {
         nextPart3Btn.setOnClickListener {
