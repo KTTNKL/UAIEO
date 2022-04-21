@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
@@ -38,32 +39,69 @@ class ListQuestionOfEachSavedPartActivity : AppCompatActivity() {
     private fun loadData() {
         var user: FirebaseUser = FirebaseAuth.getInstance().currentUser!!
         Log.d("hd", user.uid)
+
         val ref= FirebaseDatabase.getInstance().getReference("profile/${user.uid}/save/part${partNumber}")
-        ref.addValueEventListener(object: ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                //Xoa list trc khi them vao moi lan vao app
-                ExamArray.clear()
-                for (item in snapshot.children){
-                    val modelExam = item.getValue(itemPartRL::class.java)
-                    Log.d("hd", modelExam!!.bookType.toString())
-                    ExamArray.add(modelExam!!)
-                }
-                if(ExamArray.size == 0)
-                {
-                    announceTV.text = "NO QUESTION WAS SAVED IN THIS PART !!!!"
-                }
-                else
-                {
-                    announceTV.text = ""
+        if(partNumber == 3 || partNumber == 4)
+        {
+            ref.addValueEventListener(object: ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    //Xoa list trc khi them vao moi lan vao app
+                    ExamArray.clear()
+                    for (item in snapshot.children){
+                        for( child in item.children){
+                            val question = child.getValue(itemPartRL::class.java)
+                            if (question != null) {
+                                ExamArray.add(question)
+                                break
+                            }
+                        }
+                    }
+                    if(ExamArray.size == 0)
+                    {
+                        announceTV.text = "NO QUESTION WAS SAVED IN THIS PART !!!!"
+                    }
+                    else
+                    {
+                        announceTV.text = ""
+                    }
+
+                    adapter.notifyDataSetChanged()
                 }
 
-                adapter.notifyDataSetChanged()
-            }
+                override fun onCancelled(error: DatabaseError) {
+                    TODO("Not yet implemented")
+                }
+            })
+        }
+        else{
+            ref.addValueEventListener(object: ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    //Xoa list trc khi them vao moi lan vao app
+                    ExamArray.clear()
+                    for (item in snapshot.children){
+                        val modelExam = item.getValue(itemPartRL::class.java)
+                        Log.d("hd", modelExam!!.bookType.toString())
+                        ExamArray.add(modelExam!!)
+                    }
+                    if(ExamArray.size == 0)
+                    {
+                        announceTV.text = "NO QUESTION WAS SAVED IN THIS PART !!!!"
+                    }
+                    else
+                    {
+                        announceTV.text = ""
+                    }
 
-            override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
-            }
-        })    }
+                    adapter.notifyDataSetChanged()
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    TODO("Not yet implemented")
+                }
+            })
+        }
+
+    }
 
     private fun setupLayout() {
         adapter= SavedQuestionAdapter(ExamArray)
@@ -77,17 +115,22 @@ class ListQuestionOfEachSavedPartActivity : AppCompatActivity() {
                 {
                     1-> intent= Intent(this@ListQuestionOfEachSavedPartActivity, Part1::class.java)
                     2-> intent= Intent(this@ListQuestionOfEachSavedPartActivity, Part2::class.java)
-                    3-> intent= Intent(this@ListQuestionOfEachSavedPartActivity, Part3::class.java)
+                    3->intent= Intent(this@ListQuestionOfEachSavedPartActivity, Part3::class.java)
                     4-> intent= Intent(this@ListQuestionOfEachSavedPartActivity, Part4::class.java)
                     5-> intent= Intent(this@ListQuestionOfEachSavedPartActivity, Part5::class.java)
                     6-> intent= Intent(this@ListQuestionOfEachSavedPartActivity, Part6::class.java)
                     7-> intent= Intent(this@ListQuestionOfEachSavedPartActivity, Part7::class.java)
                 }
+
                 intent.putExtra("question",ExamArray[position])
                 intent.putExtra("isOneQuestion", true)
                 startActivity(intent)
             }
         })
+        var user: FirebaseUser = FirebaseAuth.getInstance().currentUser!!
+        adapter.onButtonClick = {
+            question ->FirebaseDatabase.getInstance().getReference("profile/${user.uid}/save/part${partNumber}/${question.idQuestion}").removeValue()
+        }
         customListView.layoutManager = LinearLayoutManager(this)
 
     }
