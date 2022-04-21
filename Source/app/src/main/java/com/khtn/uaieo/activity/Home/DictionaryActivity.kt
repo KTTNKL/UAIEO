@@ -1,10 +1,8 @@
 package com.khtn.uaieo.activity.Home
 
 import android.os.Bundle
-import android.webkit.WebView
-import android.webkit.WebViewClient
 import androidx.appcompat.app.AppCompatActivity
-import com.khtn.uaieo.Dic
+import com.khtn.uaieo.DictionaryAPI
 import com.khtn.uaieo.R
 import kotlinx.android.synthetic.main.activity_dictionary.*
 
@@ -28,7 +26,7 @@ class DictionaryActivity : AppCompatActivity() {
 //        }
         searchButton.setOnClickListener {
             var query= SearchBar.text.toString()
-            var myDic= Dic(this,query,translateTV)
+            var myDic= DictionaryAPI(this,query,translateTV)
             myDic.execute()
         }
     }

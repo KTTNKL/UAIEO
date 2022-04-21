@@ -13,7 +13,7 @@ import java.io.InputStreamReader
 import java.net.URL
 import javax.net.ssl.HttpsURLConnection
 
-class Dic(context: Context, query: String, textView: TextView) : AsyncTask<String, Int, String>(){
+class DictionaryAPI(context: Context, query: String, textView: TextView) : AsyncTask<String, Int, String>(){
 
     var myWord= query
     var textResult=textView
