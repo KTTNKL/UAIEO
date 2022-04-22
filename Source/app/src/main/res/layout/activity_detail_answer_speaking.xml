@@ -4,39 +4,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.DetailAnswerWritingActivity">
+    tools:context=".activity.Speaking.DetailAnswerSpeakingActivity">
 
-
-    <ImageView
-        android:id="@+id/answerImage"
-        android:layout_width="331dp"
-        android:layout_height="212dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="4dp"
-        android:scaleType="fitXY"
+    <Button
+        android:id="@+id/audioBtn"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/bg_radius_button"
+        android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/authorAnswerTV"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:layout_constraintTop_toBottomOf="@+id/authorSpeakingAnswerTV"
+        android:text="@string/Mp3sound"/>
 
     <TextView
-        android:id="@+id/authorAnswerTV"
+        android:id="@+id/authorSpeakingAnswerTV"
         android:layout_width="match_parent"
         android:layout_height="77dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="4dp"
         android:gravity="center_vertical"
         android:textSize="20dp"
-        android:layout_marginStart="20dp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/commentRecyclerView"
+        android:id="@+id/commentRecyclerView1"
         android:layout_width="match_parent"
         android:layout_height="250dp"
         android:layout_marginTop="4dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/answerImage" />
+        app:layout_constraintTop_toBottomOf="@+id/audioBtn" />
 
     <EditText
         android:id="@+id/commentTV"
@@ -44,7 +44,7 @@
         android:layout_height="59dp"
         android:hint="Enter Comment"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/commentRecyclerView" />
+        app:layout_constraintTop_toBottomOf="@+id/commentRecyclerView1" />
     <Button
         android:id="@+id/commentBtn"
         android:layout_width="82dp"
@@ -52,5 +52,5 @@
         android:layout_marginStart="32dp"
         android:text="@string/commentBtn"
         app:layout_constraintStart_toEndOf="@+id/commentTV"
-        app:layout_constraintTop_toBottomOf="@+id/commentRecyclerView" />
+        app:layout_constraintTop_toBottomOf="@+id/commentRecyclerView1" />
 </androidx.constraintlayout.widget.ConstraintLayout>
