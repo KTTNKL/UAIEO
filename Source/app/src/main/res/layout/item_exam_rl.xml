@@ -15,7 +15,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/bg_item_exam" />
+        app:srcCompat="@drawable/bg_recycler" />
 
     <TextView
         android:id="@+id/testNumberTV"
@@ -23,7 +23,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="28dp"
+        android:fontFamily="@font/lobster"
         android:text="TextView"
+        android:textColor="@color/quizAnswerColor"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -35,7 +37,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="24dp"
+        android:fontFamily="@font/lobster"
         android:text="TextView"
+        android:textColor="@color/quizAnswerColor"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/testNumberTV"
@@ -47,7 +51,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="12dp"
+        android:fontFamily="@font/sanchez"
         android:text="TextView"
+        android:textColor="@color/quizAnswerColor"
+        android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/testNumberTV"
         app:layout_constraintTop_toBottomOf="@+id/bookNameTV" />
 </androidx.constraintlayout.widget.ConstraintLayout>
