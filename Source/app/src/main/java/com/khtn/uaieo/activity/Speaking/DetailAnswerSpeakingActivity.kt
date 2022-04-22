@@ -73,6 +73,7 @@ class DetailAnswerSpeakingActivity : AppCompatActivity() {
             LoadData()
         }
         audioBtn.setOnClickListener{
+
             if(!media.isPlaying){
                 media.setDataSource(question.image.toString())
                 media.prepare()
@@ -84,6 +85,21 @@ class DetailAnswerSpeakingActivity : AppCompatActivity() {
                 audioBtn.setText("PHÁT")
             }
         }
+        media.setOnCompletionListener {
+            media.stop();
+            if (media != null) {
+                media.reset();
+                audioBtn.setText("PHÁT")
+            }
+        }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        if (media != null) {
+        media.stop()
+        media.release()}
+        finish()
     }
     fun LoadData(){
 
