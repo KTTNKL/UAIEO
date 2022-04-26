@@ -1,23 +1,17 @@
-package com.khtn.uaieo.activity
+package com.khtn.uaieo.activity.Home
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.EditText
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.khtn.uaieo.R
-import com.khtn.uaieo.activity.ReadingListening.PartRLExamActivity
 import com.khtn.uaieo.adapter.ChatAdapter
-import com.khtn.uaieo.adapter.RLExamAdapter
 import com.khtn.uaieo.model.ChatMessage
-import com.khtn.uaieo.model.itemExamRL
 import kotlinx.android.synthetic.main.activity_chat.*
 import java.util.HashMap
 
@@ -27,11 +21,14 @@ class ChatActivity : AppCompatActivity() {
     var chatArray= ArrayList<ChatMessage>()
     lateinit var adapter:ChatAdapter
     lateinit var customListView: RecyclerView
-
+    var topic=""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat)
+        val intent=intent
 
+        topic= intent.getStringExtra("topic").toString()
+        Log.d("MyScreen",topic)
         clickChat()
         loadData()
         setupLayout()
@@ -46,7 +43,7 @@ class ChatActivity : AppCompatActivity() {
     }
 
     private fun loadData() {
-        val ref= FirebaseDatabase.getInstance().getReference("chat")
+        val ref= FirebaseDatabase.getInstance().getReference("chat").child(topic)
         ref.addValueEventListener(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 chatArray.clear()
@@ -85,7 +82,7 @@ class ChatActivity : AppCompatActivity() {
             hashMap.put("email", message.email.toString())
             hashMap.put("time", message.time.toString())
 
-            databaseReference!!.child("chat").child(chatID).setValue(hashMap)
+            databaseReference!!.child("chat").child(topic).child(chatID).setValue(hashMap)
             // Clear the input
             input.setText("")
         }    }
