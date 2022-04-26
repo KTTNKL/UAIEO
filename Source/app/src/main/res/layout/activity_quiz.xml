@@ -18,13 +18,12 @@
         android:layout_marginTop="48dp"
         android:text="@string/quiz_title"
         android:textSize="34sp"
-        android:fontFamily="@font/lobster"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.113"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:fontFamily="@font/lobster"/>
+        android:fontFamily= "@font/lobster"/>
 
     <TextView
         android:id="@+id/QuizTitleTextview"

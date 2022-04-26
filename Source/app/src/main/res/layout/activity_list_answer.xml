@@ -26,7 +26,6 @@
         android:fontFamily="@font/lobster"
         android:layout_height="61dp"
         android:layout_marginTop="24dp"
-        android:fontFamily="@font/lobster"
         android:gravity="center"
         android:text="@string/exampleAnswerBtn"
         android:textSize="30dp"

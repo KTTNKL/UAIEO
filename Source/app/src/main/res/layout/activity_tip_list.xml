@@ -20,7 +20,6 @@
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <TextView
-        android:fontFamily="@font/sanchez"
         android:id="@+id/textView4"
         android:layout_width="405dp"
         android:fontFamily="@font/lobster"
