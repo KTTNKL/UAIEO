@@ -7,25 +7,29 @@
 
     <ImageView
         android:id="@+id/item_ranking_imageView"
-        android:layout_width="404dp"
+        android:layout_marginBottom="10dp"
+        android:layout_width="390dp"
         android:layout_height="105dp"
         android:layout_marginStart="4dp"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="4dp"
+        android:scaleType="fitXY"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.428"
+        app:layout_constraintHorizontal_bias="0.461"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/bg_item_exam" />
+        app:srcCompat="@drawable/bg_item" />
 
     <TextView
         android:id="@+id/rank_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/lobster"
         android:text="Rank 1:"
-        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/item_ranking_imageView" />
@@ -35,9 +39,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/lobster"
         android:text="LE KY LUONG"
-        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/item_ranking_imageView"
         app:layout_constraintTop_toBottomOf="@+id/rank_textView" />

@@ -9,6 +9,7 @@
     <TextView
         android:id="@+id/textView9"
         android:layout_width="405dp"
+        android:fontFamily="@font/lobster"
         android:layout_height="43dp"
         android:layout_marginStart="0dp"
         android:layout_marginTop="4dp"

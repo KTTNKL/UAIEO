@@ -22,10 +22,9 @@
         android:id="@+id/authorSpeakingAnswerTV"
         android:layout_width="match_parent"
         android:layout_height="77dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="4dp"
+        android:fontFamily="@font/lobster"
         android:gravity="center_vertical"
-        android:textSize="20dp"
+        android:textSize="25dp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -45,12 +44,15 @@
         android:hint="Enter Comment"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/commentRecyclerView1" />
+
     <Button
         android:id="@+id/commentBtn"
-        android:layout_width="82dp"
-        android:layout_height="53dp"
-        android:layout_marginStart="32dp"
+        android:layout_width="102dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="12dp"
+        android:background="@drawable/bg_radius_button"
         android:text="@string/commentBtn"
+        android:textColor="@color/white"
         app:layout_constraintStart_toEndOf="@+id/commentTV"
         app:layout_constraintTop_toBottomOf="@+id/commentRecyclerView1" />
 </androidx.constraintlayout.widget.ConstraintLayout>

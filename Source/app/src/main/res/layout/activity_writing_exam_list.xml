@@ -9,14 +9,15 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/writingListRecyclerView"
         android:layout_width="412dp"
-        android:layout_height="462dp"
+        android:layout_height="560dp"
         android:layout_marginTop="100dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:layout_width="405dp"
-        android:layout_height="43dp"
+        android:layout_height="60dp"
+        android:fontFamily="@font/lobster"
         android:layout_marginStart="0dp"
         android:layout_marginTop="4dp"
         android:textStyle="bold"
