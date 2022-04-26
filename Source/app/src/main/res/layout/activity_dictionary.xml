@@ -6,12 +6,21 @@
     android:layout_height="match_parent"
     tools:context=".activity.Home.DictionaryActivity">
 
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.6"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg_activity" />
+
     <TextView
         android:id="@+id/DicTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="36dp"
+        android:fontFamily="@font/lobster"
         android:text="@string/dictionary"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -20,10 +29,11 @@
 
     <WebView
         android:id="@+id/webView"
-        android:layout_width="418dp"
-        android:layout_height="525dp"
+        android:layout_width="412dp"
+        android:layout_height="521dp"
+        android:layout_marginTop="300dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/translateTV" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/SearchBar"
@@ -52,13 +62,27 @@
 
     <TextView
         android:id="@+id/translateTV"
-        android:layout_width="376dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="24dp"
-        android:text="@string/definition"
+        android:layout_width="389dp"
+        android:layout_height="123dp"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/sanchez"
         android:gravity="center"
+        android:text="@string/definition"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@+id/SearchBar"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="@+id/SearchBar"
         app:layout_constraintTop_toBottomOf="@+id/SearchBar" />
+
+    <TextView
+        android:id="@+id/symTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:fontFamily="@font/lobster"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/webView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

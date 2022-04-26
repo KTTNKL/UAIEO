@@ -5,7 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.ReadingListening.Part5">
-
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.6"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg_activity" />
     <Button
         android:id="@+id/nextPart5Btn"
         android:layout_width="wrap_content"
@@ -21,21 +26,27 @@
 
     <Button
         android:id="@+id/part5saveBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:text="@string/save"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/bg_circle"
+        android:drawableTop="@android:drawable/ic_menu_save"
+        android:paddingTop="5dp"
+        android:textColor="#fff" />
+
     <TextView
         android:id="@+id/titlePart5TV"
         android:layout_width="366dp"
         android:layout_height="65dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="76dp"
+        android:fontFamily="@font/sanchez"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

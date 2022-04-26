@@ -6,7 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".activity.WritingQuestionDetailActivity">
 
-
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.6"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg_activity" />
     <TextView
         android:id="@+id/textView9"
         android:layout_width="405dp"
@@ -18,7 +23,8 @@
         android:gravity="center"
         android:text="@string/writingTitle"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:fontFamily="@font/lobster"/>
 
     <ScrollView
         android:layout_width="match_parent"

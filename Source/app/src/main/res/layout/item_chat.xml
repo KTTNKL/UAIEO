@@ -3,57 +3,92 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-
-    <TextView
-        android:id="@+id/emailChatTV"
-        android:layout_width="166dp"
-        android:layout_height="21dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/lobster"
-        android:text="TextView"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+    android:layout_height="wrap_content"
+    android:layout_marginStart="8dp"
+    android:layout_marginTop="16dp">
 
 
     <TextView
         android:id="@+id/dateTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:text="TextView"
-        android:textSize="16sp"
-        android:textStyle="italic"
+        android:layout_marginTop="4dp"
+        android:paddingStart="8dp"
+        android:paddingTop="4dp"
+        android:paddingEnd="8dp"
+        android:paddingBottom="4dp"
+        android:text=""
+        android:textColor="#C0C0C0"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.747"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="346dp"
-        android:layout_height="69dp"
-        android:layout_marginTop="36dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.425"
+        android:id="@+id/image_gchat_profile_other"
+        android:layout_width="37dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="16dp"
+        android:contentDescription="User Icon"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/bg_correct" />
+        app:layout_constraintTop_toBottomOf="@+id/dateTV"
+        app:srcCompat="@drawable/ic_chat" />
 
     <TextView
-        android:id="@+id/contentChatTV"
-        android:layout_width="327dp"
-        android:layout_height="59dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="4dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emailChatTV"
-        app:layout_constraintVertical_bias="1.0"
-        tools:fontFamily="@font/sanchez" />
+        android:id="@+id/emailChatTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="John Grady Cole"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/image_gchat_profile_other"
+        app:layout_constraintTop_toBottomOf="@+id/dateTV" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_gchat_message_other"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="#eef1f6"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="0dp"
+        app:cardPreventCornerOverlap="false"
+        app:cardUseCompatPadding="true"
+        app:layout_constraintStart_toEndOf="@+id/image_gchat_profile_other"
+        app:layout_constraintTop_toBottomOf="@+id/emailChatTV">
+
+        <LinearLayout
+            android:id="@+id/layout_gchat_container_other"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/contentChatTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:maxWidth="260dp"
+                android:paddingLeft="12dp"
+                android:paddingTop="8dp"
+                android:paddingRight="12dp"
+                android:text="Message"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+    <TextView
+        android:id="@+id/text_gchat_timestamp_other"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="44dp"
+        android:text="8:00"
+        android:textColor="#C0C0C0"
+        android:textSize="10sp"
+        app:layout_constraintStart_toEndOf="@+id/card_gchat_message_other"
+        app:layout_constraintTop_toBottomOf="@+id/dateTV" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

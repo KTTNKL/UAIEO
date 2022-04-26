@@ -5,7 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.Home.QuizActivity">
-
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.6"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg_activity" />
     <TextView
         android:id="@+id/QuizTextView"
         android:layout_width="wrap_content"
@@ -17,7 +22,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.113"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:fontFamily="@font/lobster"/>
 
     <TextView
         android:id="@+id/QuizTitleTextview"
@@ -97,6 +103,7 @@
         android:text="QUESTION 1:"
         android:textSize="16sp"
         android:textStyle="bold"
+        android:fontFamily="@font/sanchez"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.12"
         app:layout_constraintStart_toStartOf="parent"

@@ -7,7 +7,12 @@
     tools:context=".fragment.ExamFragment">
 
     <!-- TODO: Update blank fragment layout -->
-
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.6"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg_activity" />
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/examRecycleView"
         android:layout_width="354dp"

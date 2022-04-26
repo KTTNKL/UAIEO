@@ -5,7 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.Home.TipListActivity">
-
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.6"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg_activity" />
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/tipRecyclerView"
         android:layout_width="411dp"
@@ -15,6 +20,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <TextView
+        android:fontFamily="@font/sanchez"
         android:id="@+id/textView4"
         android:layout_width="405dp"
         android:layout_height="43dp"

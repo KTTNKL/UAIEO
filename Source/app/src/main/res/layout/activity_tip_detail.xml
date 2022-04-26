@@ -5,8 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.Home.TipDetailActivity">
-
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.6"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg_activity" />
     <TextView
+        android:fontFamily="@font/sanchez"
         android:id="@+id/textView8"
         android:layout_width="match_parent"
         android:layout_height="72dp"

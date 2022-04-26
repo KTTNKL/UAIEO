@@ -7,7 +7,12 @@
     tools:context=".fragment.ProfileFragment">
 
     <!-- TODO: Update blank fragment layout -->
-
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.6"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg_activity" />
     <TextView
         android:id="@+id/emailTV"
         android:layout_width="241dp"
