@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.khtn.uaieo" >
+    package="com.khtn.uaieo">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
@@ -14,7 +14,10 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.UAIEO" >
+        android:theme="@style/Theme.UAIEO">
+        <activity
+            android:name=".activity.ReadingListening.ChooseCategoryRLActivity"
+            android:exported="false" />
         <activity
             android:name=".activity.Home.ChatMenuActivity"
             android:exported="false" />
@@ -133,7 +136,7 @@
             android:exported="false" />
         <activity
             android:name=".activity.Auth.LogoutAcvitiy"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

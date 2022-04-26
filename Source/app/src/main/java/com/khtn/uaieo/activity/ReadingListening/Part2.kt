@@ -15,6 +15,9 @@ import com.khtn.uaieo.model.itemExamRL
 import com.khtn.uaieo.model.itemPartRL
 import kotlinx.android.synthetic.main.activity_part1.*
 import kotlinx.android.synthetic.main.activity_part2.*
+import java.util.*
+import kotlin.collections.ArrayList
+import kotlin.collections.HashMap
 
 class Part2 : AppCompatActivity() {
     var isOneQuestion = false
@@ -30,13 +33,16 @@ class Part2 : AppCompatActivity() {
     var media= MediaPlayer()
     var correctAnswers = 0
 
+    var choosePartOnly=false
+    var randomQuestion=false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_part2)
         val intent=intent
         isOneQuestion = intent.getBooleanExtra("isOneQuestion", false)
-
+        choosePartOnly= intent.getBooleanExtra("choosePartOnly",false)
+        randomQuestion =intent.getBooleanExtra("randomQuestion",false)
         if(isOneQuestion)
         {
             part2saveBtn.visibility = View.INVISIBLE
@@ -46,6 +52,18 @@ class Part2 : AppCompatActivity() {
             setData(0)
             clickSound()
         }
+        else if(choosePartOnly){
+            loadDataPart2PartOnly()
+            saveClick("Part")
+            clickNext()
+            clickSound()
+
+        }else if(randomQuestion){
+            loadDataPart2Random()
+            saveClick("Random")
+            clickNext()
+            clickSound()
+        }
         else
         {
             exam= intent.getSerializableExtra("exam") as itemExamRL
@@ -53,10 +71,50 @@ class Part2 : AppCompatActivity() {
             clickSound()
             clickNext()
             checkExist()
-            saveClick()
+            saveClick("")
         }
     }
-    private fun saveClick() {
+
+    private fun loadDataPart2Random() {
+        val ref= FirebaseDatabase.getInstance().getReference("question").child("part2")
+        ref.addListenerForSingleValueEvent(object: ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                for (item in snapshot.children){
+                    val question = item.getValue(itemPartRL::class.java)
+                    if (question != null) {
+                        arr.add(question)
+                    }
+                }
+                Collections.shuffle(arr)
+                setData(0)
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        })
+    }
+
+    private fun loadDataPart2PartOnly() {
+        val ref= FirebaseDatabase.getInstance().getReference("question").child("part2")
+        ref.addListenerForSingleValueEvent(object: ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                for (item in snapshot.children){
+                    val question = item.getValue(itemPartRL::class.java)
+                    if (question != null) {
+                        arr.add(question)
+                    }
+                }
+                setData(0)
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        })
+    }
+
+    private fun saveClick(type:String) {
         part2saveBtn.setOnClickListener {
             val questionid = "" + System.currentTimeMillis()
             val reference= FirebaseDatabase.getInstance().reference!!.child("profile/${curUID}/save/part2/${questionid}")
@@ -64,8 +122,18 @@ class Part2 : AppCompatActivity() {
 
             var hashMap: HashMap<String, Any> = HashMap()
             hashMap.put("idQuestion", questionid.toString())
-            hashMap.put("bookType", exam.bookType!!)
-            hashMap.put("id", exam.id!!)
+
+            if(type=="Random"){
+                hashMap.put("bookType", "Part 2")
+                hashMap.put("id", "Random")
+            }else if(type=="Part"){
+                hashMap.put("bookType", "Part 2")
+                hashMap.put("id","")
+            }else{
+                hashMap.put("bookType", exam.bookType!!)
+                hashMap.put("id", exam.id!!)
+            }
+
             hashMap.put("answer", arr[num].answer!!)
             hashMap.put("audio", arr[num].audio!!)
             hashMap.put("number", arr[num].number!!)
@@ -96,7 +164,7 @@ class Part2 : AppCompatActivity() {
     }
 
     private fun updateScore(){
-        if(!isOneQuestion)
+        if(!isOneQuestion && !choosePartOnly &&!!randomQuestion)
         {
             if(correctAnswers > currPoint)
             {

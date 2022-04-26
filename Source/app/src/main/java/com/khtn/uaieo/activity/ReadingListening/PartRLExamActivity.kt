@@ -19,11 +19,17 @@ class PartRLExamActivity : AppCompatActivity() {
     lateinit var customListView: RecyclerView
     lateinit var exam:itemExamRL
 
+    var choosePartOnly=false
+    var randomQuestion=false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_part_rlexam)
         val intent=intent
-        exam= intent.getSerializableExtra("exam") as itemExamRL
+        choosePartOnly= intent.getBooleanExtra("choosePartOnly",false)
+        randomQuestion=intent.getBooleanExtra("randomQuestion",false)
+        if(!choosePartOnly && !randomQuestion){
+            exam= intent.getSerializableExtra("exam") as itemExamRL
+        }
         setupLayout()
 
     }
@@ -35,6 +41,8 @@ class PartRLExamActivity : AppCompatActivity() {
         adapter= RLPartAdapter(PartArray)
         customListView = findViewById<RecyclerView>(R.id.partRLRV) as RecyclerView
         customListView!!.adapter = adapter
+        customListView.layoutManager = LinearLayoutManager(this)
+
         adapter.setOnItemClickListener(object: RLPartAdapter.onItemClickListener {
             lateinit var intent: Intent
             override fun onItemClick(position: Int) {
@@ -64,11 +72,16 @@ class PartRLExamActivity : AppCompatActivity() {
                     }
 
                 }
-                intent.putExtra("exam",exam)
+                if(!choosePartOnly && !randomQuestion){
+                    intent.putExtra("exam",exam)
+                }else if(choosePartOnly){
+                    intent.putExtra("choosePartOnly",true);
+                }else if(randomQuestion){
+                    intent.putExtra("randomQuestion",true);
+                }
                 startActivity(intent)
 
             }
         })
-        customListView.layoutManager = LinearLayoutManager(this)
     }
 }

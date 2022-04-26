@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.khtn.uaieo.R
 import com.khtn.uaieo.activity.Home.ScheduleScreen
+import com.khtn.uaieo.activity.ReadingListening.ChooseCategoryRLActivity
 import com.khtn.uaieo.activity.ReadingListening.ListRLExamActivity
 import com.khtn.uaieo.activity.Speaking.SpeakingExamListActivity
 import com.khtn.uaieo.activity.WritingExamListActivity
@@ -53,7 +54,7 @@ class ExamFragment : Fragment() {
             override fun onItemClick(position: Int) {
                 when(position){
                     0->{
-                        intent= Intent(context, ListRLExamActivity::class.java)
+                        intent= Intent(context, ChooseCategoryRLActivity::class.java)
                     }
                     1->{
                         intent= Intent(context, SpeakingExamListActivity::class.java)

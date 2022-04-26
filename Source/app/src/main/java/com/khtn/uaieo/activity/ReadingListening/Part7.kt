@@ -16,6 +16,9 @@ import com.khtn.uaieo.model.itemPartRL
 import kotlinx.android.synthetic.main.activity_part3.*
 import kotlinx.android.synthetic.main.activity_part6.*
 import kotlinx.android.synthetic.main.activity_part7.*
+import java.util.*
+import kotlin.collections.ArrayList
+import kotlin.collections.HashMap
 
 class Part7 : AppCompatActivity() {
     var isOneQuestion = false
@@ -28,12 +31,17 @@ class Part7 : AppCompatActivity() {
     var currPoint:Long=0
     var arr=ArrayList<itemPartRL>()
     var correctAnswers = 0
+
+    var choosePartOnly=false
+    var randomQuestion=false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_part7)
         val intent=intent
         isOneQuestion = intent.getBooleanExtra("isOneQuestion", false)
-
+        choosePartOnly= intent.getBooleanExtra("choosePartOnly",false)
+        randomQuestion =intent.getBooleanExtra("randomQuestion",false)
         if(isOneQuestion)
         {
             part7saveBtn.visibility = View.INVISIBLE
@@ -42,18 +50,74 @@ class Part7 : AppCompatActivity() {
             arr.add(question)
             setData(0)
         }
+        else if(choosePartOnly){
+            loadDataPart7PartOnly()
+            saveClick("Part")
+            clickNext()
+
+        }else if(randomQuestion){
+            loadDataPart7Random()
+            saveClick("Random")
+            clickNext()
+        }
         else
         {
             exam= intent.getSerializableExtra("exam") as itemExamRL
             loadDataPart7()
             clickNext()
             checkExist()
-            saveClick()
+            saveClick("")
         }
 
     }
 
-    private fun saveClick() {
+    private fun loadDataPart7Random() {
+        val ref= FirebaseDatabase.getInstance().getReference("question").child("part7")
+        ref.addListenerForSingleValueEvent(object: ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                var temp= ArrayList<DataSnapshot>()
+                for (item in snapshot.children){
+                    temp.add(item)
+
+                }
+                Collections.shuffle(temp)
+                for( item in temp){
+                    for( child in item.children){
+                        val question = child.getValue(itemPartRL::class.java)
+                        if (question != null) {
+                            arr.add(question)
+                        }
+                    }
+                }
+                setData(0)
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        })        }
+
+    private fun loadDataPart7PartOnly() {
+        val ref= FirebaseDatabase.getInstance().getReference("question").child("part6")
+        ref.addListenerForSingleValueEvent(object: ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                for (item in snapshot.children){
+                    for( child in item.children){
+                        val question = child.getValue(itemPartRL::class.java)
+                        if (question != null) {
+                            arr.add(question)
+                        }
+                    }
+                }
+                setData(0)
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        })    }
+
+    private fun saveClick(type: String) {
         part7saveBtn.setOnClickListener {
             val questionid = "" + System.currentTimeMillis()
             val reference= FirebaseDatabase.getInstance().reference!!.child("profile/${curUID}/save/part7/${questionid}")
@@ -61,8 +125,16 @@ class Part7 : AppCompatActivity() {
 
             var hashMap: HashMap<String, Any> = HashMap()
             hashMap.put("idQuestion", questionid.toString())
-            hashMap.put("bookType", exam.bookType!!)
-            hashMap.put("id", exam.id!!)
+            if(type=="Random"){
+                hashMap.put("bookType", "Part 1")
+                hashMap.put("id", "Random")
+            }else if(type=="Part"){
+                hashMap.put("bookType", "Part 1")
+                hashMap.put("id","")
+            }else{
+                hashMap.put("bookType", exam.bookType!!)
+                hashMap.put("id", exam.id!!)
+            }
 
             hashMap.put("answer", arr[num].answer!!)
             hashMap.put("image", arr[num].image!!)
@@ -116,7 +188,7 @@ class Part7 : AppCompatActivity() {
     }
 
     private fun updateScore(){
-        if(!isOneQuestion)
+        if(!isOneQuestion && !choosePartOnly &&!!randomQuestion)
         {
             if(correctAnswers > currPoint)
             {
