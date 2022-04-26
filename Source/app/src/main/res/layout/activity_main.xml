@@ -34,25 +34,25 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:icon="@drawable/ic_home"
-            android:text="Home" />
+            android:text="@string/home" />
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:icon="@drawable/ic_exam"
-            android:text="Exam" />
+            android:text="@string/exam" />
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:icon="@drawable/ic_analytics"
-            android:text="Analyst" />
+            android:text="@string/analyst_main" />
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:icon="@drawable/ic_profile"
-            android:text="Profile" />
+            android:text="@string/profile_main" />
     </com.google.android.material.tabs.TabLayout>
 
 </RelativeLayout>

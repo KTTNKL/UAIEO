@@ -30,7 +30,7 @@
     <string name="backBtn">Back</string>
     <string name="TipTitle">TIPS FOR TOEIC</string>
     <string name="SearchBtn">TÌM KIẾM</string>
-    <string name="exam"> Examination</string>
+    <string name="exam">KIỂM TRA</string>
     <string name="RL">Reading/Listening</string>
     <string name="notification">Thông báo</string>
     <string name="notification_title">Tiêu đề</string>
@@ -55,7 +55,13 @@
     <string name="UploadRecord">Upload record</string>
     <string name="definition">Dịch</string>
     <string name="save">SAVE</string>
-    <string name="home">HOME PAGE</string>
+
+    <string name="home">TRANG CHỦ</string>
+    <string name="analyst">BẢNG XẾP HẠNG</string>
+    <string name="profile">THÔNG TIN CÁ NHÂN</string>
+    <string name="analyst_main">XẾP HẠNG</string>
+    <string name="profile_main">THÔNG TIN</string>
+
     <string name="talk">Trò chuyện</string>
     <string name="talk_detail">Trò chuyện với người lạ</string>
 
