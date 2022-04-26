@@ -8,8 +8,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/partRLRV"
-        android:layout_width="413dp"
-        android:layout_height="652dp"
+        android:layout_width="423dp"
+        android:layout_height="634dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -17,11 +17,14 @@
 
     <TextView
         android:id="@+id/textView11"
-        android:layout_width="129dp"
-        android:layout_height="41dp"
+        android:layout_width="185dp"
+        android:layout_height="46dp"
         android:layout_marginStart="28dp"
         android:layout_marginTop="16dp"
+        android:fontFamily="@font/lobster"
         android:text="@string/RL"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
