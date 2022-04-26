@@ -15,6 +15,9 @@ import com.khtn.uaieo.R
 import com.khtn.uaieo.model.itemExamRL
 import com.khtn.uaieo.model.itemPartRL
 import kotlinx.android.synthetic.main.activity_part1.*
+import java.util.*
+import kotlin.collections.ArrayList
+import kotlin.collections.HashMap
 
 class Part1 : AppCompatActivity() {
     var isOneQuestion = false
@@ -27,12 +30,22 @@ class Part1 : AppCompatActivity() {
     var auth = FirebaseAuth.getInstance()
     var curUID= auth.uid;
     lateinit var question: itemPartRL
+
+    //THEM
+    var choosePartOnly=false
+    var randomQuestion=false
+    //THEM
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_part1)
         val intent=intent
         isOneQuestion = intent.getBooleanExtra("isOneQuestion", false)
 
+        //THEM
+        choosePartOnly= intent.getBooleanExtra("choosePartOnly",false)
+        randomQuestion =intent.getBooleanExtra("randomQuestion",false)
+        //THEM
 
         if(isOneQuestion)
         {
@@ -40,46 +53,109 @@ class Part1 : AppCompatActivity() {
             question = intent.getSerializableExtra("question") as itemPartRL
             arr.add(question)
             setData(0)
-            clickSound()
             part1saveBtn.visibility = View.INVISIBLE
             nextPart1Btn.visibility = View.INVISIBLE
         }
+
+        //THEM
+        else if(choosePartOnly){
+            loadDataPart1PartOnly()
+            saveClick("Part")
+            clickNext()
+            clickSound()
+
+        }else if(randomQuestion){
+            loadDataPart1Random()
+            saveClick("Random")
+            clickNext()
+            clickSound()
+        }
+        //THEM
+
         else
         {
              // chay binh thuong
             exam= intent.getSerializableExtra("exam") as itemExamRL
             loadDataPart1()
-            clickSound()
             clickNext()
             checkExist()
-            saveClick()
-        }
-    }
+            //THEM
+            saveClick("")
+            //THEM
+            clickSound()
 
-    private fun saveClick() {
+        }
+
+    }
+    //THEM
+    private fun saveClick(type:String) {
         part1saveBtn.setOnClickListener {
             val questionid = "" + System.currentTimeMillis()
             val reference= FirebaseDatabase.getInstance().reference!!.child("profile/${curUID}/save/part1/${questionid}")
 
-
             var hashMap: HashMap<String, Any> = HashMap()
             hashMap.put("idQuestion", questionid.toString())
-            hashMap.put("bookType", exam.bookType!!)
-            hashMap.put("id", exam.id!!)
+
+            if(type=="Random"){
+                hashMap.put("bookType", "Part 1")
+                hashMap.put("id", "Random")
+            }else if(type=="Part"){
+                hashMap.put("bookType", "Part 1")
+                hashMap.put("id","")
+            }else{
+                hashMap.put("bookType", exam.bookType!!)
+                hashMap.put("id", exam.id!!)
+            }
+
             hashMap.put("answer", arr[num].answer!!)
             hashMap.put("audio", arr[num].audio!!)
             hashMap.put("image", arr[num].image!!)
             hashMap.put("number", arr[num].number!!)
             reference.setValue(hashMap)
 
-
-
         }
-//        val reference= FirebaseDatabase.getInstance().reference!!.child("profile/${curUID}/save/part1/")
-//        reference.child("part1").setValue(0)
-//        reference.child("email").setValue(auth.currentUser?.email)
-
     }
+
+    private fun loadDataPart1PartOnly() {
+        val ref= FirebaseDatabase.getInstance().getReference("question").child("part1")
+        ref.addListenerForSingleValueEvent(object: ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                for (item in snapshot.children){
+                    val question = item.getValue(itemPartRL::class.java)
+                    if (question != null) {
+                        arr.add(question)
+                    }
+                }
+                setData(0)
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        })
+    }
+
+    private fun loadDataPart1Random(){
+        val ref= FirebaseDatabase.getInstance().getReference("question").child("part1")
+        ref.addListenerForSingleValueEvent(object: ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                for (item in snapshot.children){
+                    val question = item.getValue(itemPartRL::class.java)
+                    if (question != null) {
+                        arr.add(question)
+                    }
+                }
+                Collections.shuffle(arr)
+                setData(0)
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        })
+    }
+    //THEM
+
 
     private fun checkExist() {
         var exits = FirebaseDatabase.getInstance().getReference("analyst/${exam.id}/${curUID}").child("part1")!!
@@ -102,7 +178,9 @@ class Part1 : AppCompatActivity() {
     }
 
     private fun updateScore(){
-        if(!isOneQuestion)
+        //THEM
+        if(!isOneQuestion && !choosePartOnly &&!!randomQuestion)
+        //THEM
         {
             if(correctAnswers > currPoint)
             {

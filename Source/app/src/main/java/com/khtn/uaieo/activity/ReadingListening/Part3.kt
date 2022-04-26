@@ -19,6 +19,9 @@ import com.khtn.uaieo.model.itemPartRL
 import kotlinx.android.synthetic.main.activity_part1.*
 import kotlinx.android.synthetic.main.activity_part2.*
 import kotlinx.android.synthetic.main.activity_part3.*
+import java.util.*
+import kotlin.collections.ArrayList
+import kotlin.collections.HashMap
 
 class Part3 : AppCompatActivity() {
 
@@ -34,11 +37,25 @@ class Part3 : AppCompatActivity() {
     var media= MediaPlayer()
     var correctAnswers = 0
 
+    //THEM
+    var choosePartOnly=false
+    var randomQuestion=false
+    //THEM
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_part3)
         val intent=intent
+
         isOneQuestion = intent.getBooleanExtra("isOneQuestion", false)
+
+
+        //THEM
+        choosePartOnly= intent.getBooleanExtra("choosePartOnly",false)
+        randomQuestion =intent.getBooleanExtra("randomQuestion",false)
+        //THEM
+
 
         if(isOneQuestion)
         {
@@ -69,6 +86,20 @@ class Part3 : AppCompatActivity() {
             })
             clickSound()
         }
+        //THEM
+        else if(choosePartOnly){
+            loadDataPart3PartOnly()
+            saveClick("Part")
+            clickNext()
+            clickSound()
+
+        }else if(randomQuestion){
+            loadDataPart3Random()
+            saveClick("Random")
+            clickNext()
+            clickSound()
+        }
+        //THEM
         else
         {
             exam= intent.getSerializableExtra("exam") as itemExamRL
@@ -76,11 +107,58 @@ class Part3 : AppCompatActivity() {
             clickNext()
             clickSound()
             checkExist()
-            saveClick()
+            saveClick("")
         }
     }
+    //THEM
+    private fun loadDataPart3Random() {
+        val ref= FirebaseDatabase.getInstance().getReference("question").child("part3")
+        ref.addListenerForSingleValueEvent(object: ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                var temp= ArrayList<DataSnapshot>()
+                for (item in snapshot.children){
+                    temp.add(item)
 
-    private fun saveClick() {
+                }
+                Collections.shuffle(temp)
+                for( item in temp){
+                    for( child in item.children){
+                        val question = child.getValue(itemPartRL::class.java)
+                        if (question != null) {
+                            arr.add(question)
+                        }
+                    }
+                }
+                setData(0)
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        })
+    }
+    private fun loadDataPart3PartOnly() {
+        val ref= FirebaseDatabase.getInstance().getReference("question").child("part3")
+        ref.addListenerForSingleValueEvent(object: ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                for (item in snapshot.children){
+                    for( child in item.children){
+                        val question = child.getValue(itemPartRL::class.java)
+                        if (question != null) {
+                            arr.add(question)
+                        }
+                    }
+                }
+                setData(0)
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        })
+    }
+
+    private fun saveClick(type:String) {
         part3saveBtn.setOnClickListener {
             val questionid = "" + System.currentTimeMillis()
             val reference= FirebaseDatabase.getInstance().reference!!.child("profile/${curUID}/save/part3/${questionid}")
@@ -88,9 +166,16 @@ class Part3 : AppCompatActivity() {
 
             var hashMap: HashMap<String, Any> = HashMap()
             hashMap.put("idQuestion", questionid.toString())
-            hashMap.put("bookType", exam.bookType!!)
-            hashMap.put("id", exam.id!!)
-
+            if(type=="Random"){
+                hashMap.put("bookType", "Part 3")
+                hashMap.put("id", "Random")
+            }else if(type=="Part"){
+                hashMap.put("bookType", "Part3")
+                hashMap.put("id","")
+            }else{
+                hashMap.put("bookType", exam.bookType!!)
+                hashMap.put("id", exam.id!!)
+            }
             hashMap.put("answer", arr[num].answer!!)
             hashMap.put("audio", arr[num].audio!!)
             hashMap.put("number", arr[num].number!!)
@@ -104,8 +189,17 @@ class Part3 : AppCompatActivity() {
             hashMap.clear()
 
             hashMap.put("idQuestion", questionid.toString())
-            hashMap.put("bookType", exam.bookType!!)
-            hashMap.put("id", exam.id!!)
+
+            if(type=="Random"){
+                hashMap.put("bookType", "Part 3")
+                hashMap.put("id", "Random")
+            }else if(type=="Part"){
+                hashMap.put("bookType", "Part3")
+                hashMap.put("id","")
+            }else{
+                hashMap.put("bookType", exam.bookType!!)
+                hashMap.put("id", exam.id!!)
+            }
 
             hashMap.put("answer", arr[num+1].answer!!)
             hashMap.put("audio", arr[num+1].audio!!)
@@ -120,8 +214,16 @@ class Part3 : AppCompatActivity() {
             hashMap.clear()
 
             hashMap.put("idQuestion", questionid.toString())
-            hashMap.put("bookType", exam.bookType!!)
-            hashMap.put("id", exam.id!!)
+            if(type=="Random"){
+                hashMap.put("bookType", "Part 3")
+                hashMap.put("id", "Random")
+            }else if(type=="Part"){
+                hashMap.put("bookType", "Part3")
+                hashMap.put("id","")
+            }else{
+                hashMap.put("bookType", exam.bookType!!)
+                hashMap.put("id", exam.id!!)
+            }
 
             hashMap.put("answer", arr[num+2].answer!!)
             hashMap.put("audio", arr[num+2].audio!!)
@@ -136,6 +238,8 @@ class Part3 : AppCompatActivity() {
             hashMap.clear()
         }
     }
+
+    //THEM
     private fun checkExist() {
         var auth = FirebaseAuth.getInstance()
         var curUID= auth.uid;
@@ -159,7 +263,9 @@ class Part3 : AppCompatActivity() {
     }
 
     private fun updateScore(){
-        if(!isOneQuestion)
+        //THEM
+        if(!isOneQuestion && !choosePartOnly &&!!randomQuestion)
+        //THEM
         {
             if(correctAnswers > currPoint)
             {
