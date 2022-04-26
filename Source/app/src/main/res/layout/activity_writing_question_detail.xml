@@ -14,7 +14,6 @@
         android:src="@drawable/bg_activity" />
     <TextView
         android:id="@+id/textView9"
-        android:fontFamily="@font/lobster"
         android:layout_width="405dp"
         android:layout_height="43dp"
         android:layout_marginStart="0dp"
