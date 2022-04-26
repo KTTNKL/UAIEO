@@ -5,7 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.ReadingListening.Part6">
-
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.6"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg_activity" />
     <TextView
         android:id="@+id/titlePart6TV"
         android:layout_width="394dp"
@@ -14,6 +19,7 @@
         android:background="@drawable/border_forgotpassword"
         android:scrollbars="vertical"
         android:textSize="15dp"
+        android:fontFamily="@font/sanchez"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.47"
@@ -22,13 +28,17 @@
 
     <Button
         android:id="@+id/part6saveBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="28dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="16dp"
         android:text="@string/save"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/bg_circle"
+        android:drawableTop="@android:drawable/ic_menu_save"
+        android:paddingTop="5dp"
+        android:textColor="#fff" />
 
 
     <TextView
@@ -38,6 +48,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="28dp"
         android:text="TextView"
+        android:fontFamily="@font/sanchez"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

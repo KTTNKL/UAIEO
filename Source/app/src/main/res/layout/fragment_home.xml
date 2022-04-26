@@ -7,7 +7,12 @@
     tools:context=".fragment.HomeFragment">
 
     <!-- TODO: Update blank fragment layout -->
-
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.6"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg_activity" />
     <RelativeLayout
         android:layout_width="387dp"
         android:layout_height="640dp"

@@ -5,6 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.Speaking.ListAnswerSpeakingActivity">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.6"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg_activity" />
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/listExampleRecyclerView2"
         android:layout_width="match_parent"
@@ -21,6 +27,7 @@
         android:layout_height="61dp"
         android:layout_marginTop="24dp"
         android:text="@string/exampleAnswerBtn"
+        android:fontFamily="@font/lobster"
         app:layout_constraintStart_toStartOf="parent"
         android:gravity="center"
         android:textSize="30dp"

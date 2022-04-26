@@ -5,7 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.WritingQuestionListActivity">
-
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.6"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg_activity" />
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/writingQuestionRecyclerView"
         android:layout_width="match_parent"
@@ -25,5 +30,6 @@
         android:gravity="center"
         android:text="@string/writingTitle"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:fontFamily="@font/lobster"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,7 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.ReadingListening.Part2">
-
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.6"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg_activity" />
     <Button
         android:id="@+id/soundPart2Btn"
         android:layout_width="wrap_content"
@@ -38,6 +43,7 @@
         android:layout_marginStart="48dp"
         android:layout_marginTop="56dp"
         android:text="TextView"
+        android:fontFamily="@font/sanchez"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -77,11 +83,15 @@
 
     <Button
         android:id="@+id/part2saveBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:text="@string/save"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/bg_circle"
+        android:drawableTop="@android:drawable/ic_menu_save"
+        android:paddingTop="5dp"
+        android:textColor="#fff" />
 </androidx.constraintlayout.widget.ConstraintLayout>

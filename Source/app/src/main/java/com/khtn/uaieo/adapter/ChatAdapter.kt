@@ -33,7 +33,7 @@ class ChatAdapter(private val chatList: ArrayList<ChatMessage>):
 
         var email: TextView = itemView.findViewById(R.id.emailChatTV)
         var content: TextView = itemView.findViewById(R.id.contentChatTV)
-        var date: TextView= itemView.findViewById(R.id.dateTV)
+        var date: TextView= itemView.findViewById(R.id.text_gchat_timestamp_other)
     }
 
 }
