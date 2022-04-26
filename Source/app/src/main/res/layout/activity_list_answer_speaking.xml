@@ -8,7 +8,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/listExampleRecyclerView2"
         android:layout_width="match_parent"
-        android:layout_height="397dp"
+        android:layout_height="470dp"
         android:layout_marginStart="4dp"
         android:layout_marginTop="28dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -16,6 +16,7 @@
 
     <TextView
         android:id="@+id/titleAnswer"
+        android:fontFamily="@font/lobster"
         android:layout_width="match_parent"
         android:layout_height="61dp"
         android:layout_marginTop="24dp"

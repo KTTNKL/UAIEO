@@ -9,9 +9,8 @@
 
     <ImageView
         android:id="@+id/answerImage"
-        android:layout_width="331dp"
+        android:layout_width="match_parent"
         android:layout_height="212dp"
-        android:layout_marginStart="40dp"
         android:layout_marginTop="4dp"
         android:scaleType="fitXY"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,8 +23,8 @@
         android:layout_height="77dp"
         android:layout_marginTop="4dp"
         android:gravity="center_vertical"
-        android:textSize="20dp"
-        android:layout_marginStart="20dp"
+        android:fontFamily="@font/lobster"
+        android:textSize="25dp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -45,12 +44,15 @@
         android:hint="Enter Comment"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/commentRecyclerView" />
+
     <Button
         android:id="@+id/commentBtn"
-        android:layout_width="82dp"
+        android:layout_width="100dp"
         android:layout_height="53dp"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="12dp"
+        android:background="@drawable/bg_radius_button"
         android:text="@string/commentBtn"
+        android:textColor="@color/white"
         app:layout_constraintStart_toEndOf="@+id/commentTV"
         app:layout_constraintTop_toBottomOf="@+id/commentRecyclerView" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -18,11 +18,12 @@
 
     <TextView
         android:id="@+id/titleTV"
+        android:fontFamily="@font/lobster"
         android:layout_width="380dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
         android:text="TextView"
-        android:textSize="18dp"
+        android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="@+id/imageIV"
         app:layout_constraintStart_toStartOf="@+id/imageIV"
         app:layout_constraintTop_toBottomOf="@+id/imageIV" />

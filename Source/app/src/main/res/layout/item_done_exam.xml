@@ -7,21 +7,24 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="404dp"
-        android:layout_height="115dp"
+        app:srcCompat="@drawable/bg_item"
+        android:scaleType="fitXY"
+        android:layout_width="390dp"
+        android:layout_height="105dp"
         android:layout_marginStart="4dp"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/bg_item_exam" />
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
         android:id="@+id/exam_number_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
+        android:fontFamily="@font/lobster"
+        android:textColor="@color/white"
+        android:layout_marginStart="15dp"
         android:layout_marginTop="20dp"
         android:text="Bài 1: "
         android:textStyle="bold"
@@ -32,21 +35,27 @@
         android:id="@+id/reading_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/lobster"
         android:text="Reading: 990"
+        android:textColor="@color/white"
+        android:textSize="20dp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintStart_toEndOf="@+id/exam_number_textView"
         app:layout_constraintTop_toBottomOf="@+id/exam_number_textView" />
 
     <TextView
         android:id="@+id/listening_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/lobster"
+        android:textColor="@color/white"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="4dp"
+        android:textSize="20dp"
+        android:layout_marginTop="24dp"
         android:text="Listening: 990"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/reading_textView" />
+        app:layout_constraintStart_toEndOf="@+id/reading_textView"
+        app:layout_constraintTop_toTopOf="@+id/exam_number_textView" />
 </androidx.constraintlayout.widget.ConstraintLayout>

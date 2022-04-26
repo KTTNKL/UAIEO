@@ -9,7 +9,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/tipRecyclerView"
         android:layout_width="411dp"
-        android:layout_height="490dp"
+        android:layout_height="520dp"
         android:layout_marginTop="36dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
@@ -17,7 +17,8 @@
     <TextView
         android:id="@+id/textView4"
         android:layout_width="405dp"
-        android:layout_height="43dp"
+        android:fontFamily="@font/lobster"
+        android:layout_height="60dp"
         android:layout_marginStart="0dp"
         android:layout_marginTop="4dp"
         android:textStyle="bold"

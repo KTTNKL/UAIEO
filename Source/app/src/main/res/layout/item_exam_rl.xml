@@ -7,15 +7,16 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="404dp"
-        android:layout_height="115dp"
+        app:srcCompat="@drawable/bg_item"
+        android:scaleType="fitXY"
+        android:layout_width="390dp"
+        android:layout_height="105dp"
         android:layout_marginStart="4dp"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/bg_recycler" />
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
         android:id="@+id/testNumberTV"

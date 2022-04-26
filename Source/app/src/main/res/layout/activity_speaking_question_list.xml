@@ -9,15 +9,16 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/speakingQuestionRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="421dp"
+        android:layout_height="520dp"
         android:layout_marginTop="116dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView9"
+        android:fontFamily="@font/lobster"
         android:layout_width="405dp"
-        android:layout_height="43dp"
+        android:layout_height="60dp"
         android:layout_marginStart="0dp"
         android:layout_marginTop="4dp"
         android:textStyle="bold"

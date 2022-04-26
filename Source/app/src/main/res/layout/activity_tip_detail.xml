@@ -8,6 +8,7 @@
 
     <TextView
         android:id="@+id/textView8"
+        android:fontFamily="@font/lobster"
         android:layout_width="match_parent"
         android:layout_height="72dp"
         android:layout_marginTop="16dp"
@@ -33,7 +34,7 @@
     <TextView
         android:id="@+id/tipContentTV"
         android:layout_width="match_parent"
-        android:layout_height="355dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:background="@drawable/border_forgotpassword"
         android:text="Content"

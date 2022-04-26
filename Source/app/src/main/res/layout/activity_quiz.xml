@@ -13,6 +13,7 @@
         android:layout_marginTop="48dp"
         android:text="@string/quiz_title"
         android:textSize="34sp"
+        android:fontFamily="@font/lobster"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.113"
