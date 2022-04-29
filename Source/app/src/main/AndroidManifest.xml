@@ -29,7 +29,8 @@
             android:exported="false" />
         <activity
             android:name=".activity.Home.ChatActivity"
-            android:exported="false" />
+            android:windowSoftInputMode="adjustResize|stateHidden"
+        android:exported="false" />
         <activity
             android:name=".activity.DetailAnswerWritingActivity"
             android:exported="false" />
