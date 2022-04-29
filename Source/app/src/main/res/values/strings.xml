@@ -15,6 +15,7 @@
     <string name="profile_profile">Thông tin cá nhân</string>
     <string name="profile_saved_questions">Các câu hỏi đã lưu</string>
     <string name="profile_notification">Thông báo</string>
+    <string name="profile_change_language">Đổi ngôn ngữ</string>
     <string name="profile_change_password">Đổi mật khẩu</string>
     <string name="profile_logout">Đăng xuất</string>
     <string name="news_title">Tin tức</string>

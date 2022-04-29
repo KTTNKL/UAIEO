@@ -12,6 +12,7 @@
     <string name="profile_profile">Profile</string>
     <string name="profile_saved_questions">Saved questions</string>
     <string name="profile_notification">Notification</string>
+    <string name="profile_change_language">Change language</string>
     <string name="profile_change_password">Change password</string>
     <string name="profile_logout">Log out</string>
     <string name="news_title">News</string>
