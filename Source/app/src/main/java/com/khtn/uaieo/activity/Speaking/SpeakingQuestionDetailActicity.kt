@@ -15,6 +15,7 @@ import android.content.pm.PackageManager
 import android.media.MediaPlayer
 import android.media.MediaRecorder
 import android.net.Uri
+import android.os.CountDownTimer
 import androidx.core.app.ActivityCompat
 import kotlinx.android.synthetic.main.activity_speaking_question_detail_acticity.*
 import android.util.Log
@@ -40,7 +41,6 @@ class SpeakingQuestionDetailActicity : AppCompatActivity() {
     var mStartRecording = true
     var mStartPlaying = true
     private var fileName: String = ""
-
     private var recorder: MediaRecorder? = null
     private var player: MediaPlayer? = null
 
@@ -52,6 +52,10 @@ class SpeakingQuestionDetailActicity : AppCompatActivity() {
     private val databaseReference = FirebaseDatabase.getInstance().reference
     lateinit var auth: FirebaseAuth
     lateinit var user: FirebaseUser
+    lateinit var countDownTimer: CountDownTimer
+    var isCount: Boolean = false
+    var isPlay: Boolean = false
+    var totalTimeRecord: Long = 0
 
     var mProgress: ProgressDialog?=null
     override fun onRequestPermissionsResult(
@@ -70,8 +74,11 @@ class SpeakingQuestionDetailActicity : AppCompatActivity() {
 
     private fun onRecord(start: Boolean) = if (start) {
         startRecording()
+
     } else {
         stopRecording()
+
+
     }
 
     private fun onPlay(start: Boolean) = if (start) {
@@ -81,11 +88,13 @@ class SpeakingQuestionDetailActicity : AppCompatActivity() {
     }
 
     private fun startPlaying() {
+        isPlay = true
         player = MediaPlayer().apply {
             try {
                 setDataSource(fileName)
                 prepare()
                 start()
+                btnPlay.text = "Đang Phát..."
             } catch (e: IOException) {
                 Log.e(LOG_TAG, "prepare() failed")
             }
@@ -93,11 +102,15 @@ class SpeakingQuestionDetailActicity : AppCompatActivity() {
     }
 
     private fun stopPlaying() {
+        isPlay = false
         player?.release()
         player = null
+        btnPlay.text = "Nghe lại"
     }
 
     private fun startRecording() {
+        isCount = true
+        btnRecord.text = "Đang ghi âm..."
         recorder = MediaRecorder().apply {
             setAudioSource(MediaRecorder.AudioSource.MIC)
             setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP)
@@ -115,6 +128,10 @@ class SpeakingQuestionDetailActicity : AppCompatActivity() {
     }
 
     private fun stopRecording() {
+        isCount = false
+        totalTimeRecord+=1000
+
+        btnRecord.text = "Ghi âm"
         recorder?.apply {
             stop()
             release()
@@ -129,11 +146,12 @@ class SpeakingQuestionDetailActicity : AppCompatActivity() {
         var id = intent.getStringExtra("SpeakingID").toString()
         var question = intent.getSerializableExtra("SpeakingQuestionData") as partSW
 
-        Log.d("111111111", id)
         Glide.with(this).load(question.image).into(speakingImage)
         questionNumberTV.text = "CÂU: " + question.number.toString()
         contentQuestionTV.text = question.content
         questionTV.text = question.question
+
+
 
         // Record to the external cache directory for visibility
         fileName = "${externalCacheDir?.absolutePath}/audiorecordtest.3gp"
@@ -142,20 +160,55 @@ class SpeakingQuestionDetailActicity : AppCompatActivity() {
 
         btnRecord.setOnClickListener{ // start recording method will
             onRecord(mStartRecording)
-            btnRecord.text = when (mStartRecording) {
-                true -> "RECORDING ..."
-                false -> "NHẤN ĐỂ RECORD"
-            }
             mStartRecording = !mStartRecording
+            var totalTime: Long = 0
+
+            if (question.number == 1 || question.number == 2 || question.number == 3) totalTime = 45000
+            else if(question.number == 4 || question.number == 5 || question.number == 7 ||question.number == 8) totalTime =  15000
+            else if(question.number == 6 || question.number == 9)   totalTime = 30000
+            else totalTime = 60000
+
+            if(isCount == true){
+                countDownTimer = object : CountDownTimer(totalTime.toLong(), 1000) {
+                    override fun onTick(millisUntilFinished: Long) {
+                        countdownTV.setText("Time remaining: " + millisUntilFinished / 1000)
+                        totalTimeRecord = totalTime - millisUntilFinished
+                    }
+
+                    override fun onFinish() {
+                        totalTimeRecord+=1000
+                        countdownTV.setText("Time's Up!")
+                        mStartRecording = false
+                        onRecord(mStartRecording)
+                        mStartRecording = !mStartRecording
+                    }
+                }.start()
+            }
+            else{
+                countDownTimer.cancel()
+            }
 
         }
+
         btnPlay.setOnClickListener{ // play audio method will play
             onPlay(mStartPlaying)
-            btnPlay.text = when (mStartRecording) {
-                true -> "PLAYING..."
-                false -> "NGHE LẠI"
-            }
             mStartPlaying = !mStartPlaying
+
+            if(isPlay == true){
+                countDownTimer = object : CountDownTimer(totalTimeRecord.toLong(), 1000) {
+                    override fun onTick(millisUntilFinished: Long) {
+                        //.setText("Time remaining: " + millisUntilFinished / 1000)
+                    }
+
+                    override fun onFinish() {
+                        onPlay(mStartPlaying)
+                        mStartPlaying = !mStartPlaying
+                    }
+                }.start()
+            }
+            else{
+                countDownTimer.cancel()
+            }
 
         }
 
@@ -200,33 +253,6 @@ class SpeakingQuestionDetailActicity : AppCompatActivity() {
             }
             mProgress?.dismiss()
         }
-
-
-//        val recordID = "" + System.currentTimeMillis()
-//        val path = "speakingExam1/1/${recordID}.3gp"
-//        var uri: Uri = Uri.fromFile(File(fileName))
-//        val uploadTask = storageReference.child(path).putFile(uri)
-//        if (uploadTask != null) {
-//            uploadTask.addOnSuccessListener {
-//                val downloadURLTask = storageReference.child(path).downloadUrl
-//                downloadURLTask.addOnSuccessListener {
-//                    var hashMap: HashMap<String, Any> = HashMap()
-//                    hashMap.put("record", it.toString())
-//                    hashMap.put("id", user.uid)
-//                    user.email?.let { it1 -> hashMap.put("email", it1) }
-//                    mProgress?.dismiss()
-//                    databaseReference.child("WSquestions/speaking/speakingExam1/question1").child("example").child(user.uid).setValue(hashMap)
-//                        .addOnSuccessListener { taskSnapshot ->
-//                            Toast.makeText(this, "uploaded successfully", Toast.LENGTH_LONG)
-//                                .show()
-//                        }
-//                        .addOnFailureListener { e ->
-//                            Toast.makeText(this, "${e.message}", Toast.LENGTH_LONG).show()
-//                        }
-//                }
-//
-//            }
-//        }
     }
     override fun onStop() {
         super.onStop()
