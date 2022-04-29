@@ -15,6 +15,7 @@
         android:gravity="end"
         android:text="TextView"
         android:textSize="20sp"
+        android:fontFamily="@font/sanchez"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -25,6 +26,7 @@
         android:layout_marginStart="4dp"
         android:layout_marginTop="16dp"
         android:text="200"
+        android:fontFamily="@font/sanchez"
         android:textSize="24sp"
         app:layout_constraintStart_toEndOf="@+id/textView12"
         app:layout_constraintTop_toTopOf="parent" />
@@ -33,14 +35,15 @@
         android:id="@+id/textView16"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
+        android:fontFamily="@font/sanchez"
         android:text="Part 1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/emailUserTV" />
 
     <TextView
         android:id="@+id/textView17"
+        android:fontFamily="@font/sanchez"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -51,6 +54,7 @@
 
     <TextView
         android:id="@+id/textView18"
+        android:fontFamily="@font/sanchez"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -61,6 +65,7 @@
 
     <TextView
         android:id="@+id/textView19"
+        android:fontFamily="@font/sanchez"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -71,6 +76,7 @@
 
     <TextView
         android:id="@+id/textView20"
+        android:fontFamily="@font/sanchez"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -81,6 +87,7 @@
 
     <TextView
         android:id="@+id/textView21"
+        android:fontFamily="@font/sanchez"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -91,6 +98,7 @@
 
     <TextView
         android:id="@+id/textView22"
+        android:fontFamily="@font/sanchez"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -101,6 +109,7 @@
 
     <TextView
         android:id="@+id/p1TV"
+        android:fontFamily="@font/sanchez"
         android:layout_width="49dp"
         android:layout_height="17dp"
         android:layout_marginStart="20dp"
@@ -114,6 +123,7 @@
 
     <TextView
         android:id="@+id/p2TV"
+        android:fontFamily="@font/sanchez"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="76dp"
@@ -124,6 +134,7 @@
 
     <TextView
         android:id="@+id/p3TV"
+        android:fontFamily="@font/sanchez"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="124dp"
@@ -134,6 +145,7 @@
 
     <TextView
         android:id="@+id/p4TV"
+        android:fontFamily="@font/sanchez"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="188dp"
@@ -144,6 +156,7 @@
 
     <TextView
         android:id="@+id/p5TV"
+        android:fontFamily="@font/sanchez"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="244dp"
@@ -154,6 +167,7 @@
 
     <TextView
         android:id="@+id/p6TV"
+        android:fontFamily="@font/sanchez"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="292dp"
@@ -164,6 +178,7 @@
 
     <TextView
         android:id="@+id/p7TV"
+        android:fontFamily="@font/sanchez"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="348dp"
@@ -178,6 +193,7 @@
         android:layout_height="26dp"
         android:layout_marginStart="256dp"
         android:layout_marginTop="16dp"
+        android:fontFamily="@font/sanchez"
         android:text="@string/score"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -199,6 +215,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
+        android:fontFamily="@font/lobster"
         android:text="#"
         android:textSize="28sp"
         android:textStyle="bold"
@@ -207,6 +224,7 @@
 
     <TextView
         android:id="@+id/rankingTV"
+        android:fontFamily="@font/lobster"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"

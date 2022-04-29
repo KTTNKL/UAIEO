@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.khtn.uaieo.R
 import com.khtn.uaieo.activity.Home.ChatActivity
 import com.khtn.uaieo.activity.Home.*
+import com.khtn.uaieo.activity.NotificationDetailActivity
 import com.khtn.uaieo.adapter.MenuAdapter
 import com.khtn.uaieo.model.itemMenu
 
@@ -44,7 +45,7 @@ class HomeFragment : Fragment() {
 
         itemList.add(itemMenu(R.drawable.bg_news,"Đọc báo","Luyện tập kỹ năng đọc"))
         itemList.add(itemMenu(R.drawable.bg_sub,"Vietsub","Dịch các bài đọc mẫu"))
-        itemList.add(itemMenu(R.drawable.bg_schedule,"Lập lịch","Lâp lịch thi TOEIC"))
+        itemList.add(itemMenu(R.drawable.bg_noti,"Thông báo","Thông báo nhắc nhở"))
         itemList.add(itemMenu(R.drawable.bg_tip,"Mẹo","Mẹo TOEIC hữu ích"))
         itemList.add(itemMenu(R.drawable.bg_quiz,"Quiz","Trò chơi luyện từ vựng"))
         itemList.add(itemMenu(R.drawable.bg_dic,"Từ điển","Tra cứu từ khó"))
@@ -66,7 +67,7 @@ class HomeFragment : Fragment() {
                         intent= Intent(context, VietsubActivity::class.java)
                     }
                     2->{
-                        intent= Intent(context, ScheduleScreen::class.java)
+                        intent= Intent(context, NotificationDetailActivity::class.java)
 
                     }
                     3->{

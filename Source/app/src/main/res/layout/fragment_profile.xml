@@ -41,19 +41,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/emailTV" />
 
-    <Button
-        android:id="@+id/notificationBT"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/bg_edit_text"
-        android:fontFamily="@font/sanchez"
-        android:text="@string/profile_notification"
-        android:textAllCaps="false"
-        android:textSize="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/savedQuestionsBT" />
+
 
     <Button
         android:id="@+id/changePasswordBT"
@@ -67,7 +55,7 @@
         android:textAllCaps="false"
         android:textSize="20dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/notificationBT" />
+        app:layout_constraintTop_toBottomOf="@+id/savedQuestionsBT" />
 
     <Button
         android:id="@+id/logoutBT"

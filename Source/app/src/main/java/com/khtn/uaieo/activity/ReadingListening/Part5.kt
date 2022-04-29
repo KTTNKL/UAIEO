@@ -147,6 +147,7 @@ class Part5 : AppCompatActivity() {
             hashMap.put("title", arr[num].title!!)
             hashMap.put("number", arr[num].number!!)
             reference.setValue(hashMap)
+            Toast.makeText(this, resources.getString(R.string.save_qeustion_successfully), Toast.LENGTH_SHORT).show()
         }
     }
 
