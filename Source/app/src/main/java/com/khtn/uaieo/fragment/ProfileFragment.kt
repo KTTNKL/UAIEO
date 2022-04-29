@@ -38,7 +38,6 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         init ()
-        loadProfile()
         changePassword()
         logout()
         //setNotification()
@@ -48,21 +47,9 @@ class ProfileFragment : Fragment() {
         auth = FirebaseAuth.getInstance()
         databaseReference= FirebaseDatabase.getInstance().reference!!.child("profile")
         user= auth.currentUser!!
+        email_profile_TV.text = user.email
     }
-    fun loadProfile(){
-        val userReference= databaseReference?.child(user?.uid!!)?.child("username")?.addListenerForSingleValueEvent(
-            object: ValueEventListener {
-                override fun onDataChange(snapshot: DataSnapshot) {
-                    //infor.text=snapshot.getValue().toString()
-                }
 
-                override fun onCancelled(error: DatabaseError) {
-                    TODO("Not yet implemented")
-                }
-
-            })
-
-    }
     fun changePassword(){
         changePasswordBT.setOnClickListener{
             val dialog=LayoutInflater.from(context).inflate(R.layout.change_password_dialog,null)
