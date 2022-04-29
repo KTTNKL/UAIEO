@@ -8,6 +8,7 @@
 
 
     tools:context=".activity.Home.ChatActivity">
+
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -18,13 +19,16 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/chatRV"
         android:layout_width="match_parent"
-        android:layout_height="600dp"
+        android:layout_height="679dp"
+        android:layout_above="@+id/chatBox"
         android:layout_marginTop="4dp"
+        android:layout_marginBottom="2dp"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="0dp" />
 
 
     <RelativeLayout
+        android:id="@+id/chatBox"
         android:layout_width="match_parent"
         android:layout_height="47dp"
         android:layout_alignParentBottom="true"
