@@ -103,15 +103,15 @@
 
     <Button
         android:id="@+id/part1saveBtn"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:text="@string/save"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         android:background="@drawable/bg_circle"
         android:drawableTop="@android:drawable/ic_menu_save"
         android:paddingTop="5dp"
-        android:textColor="#fff" />
+        android:text="@string/save"
+        android:textColor="#fff"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -14,6 +14,7 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
 import com.khtn.uaieo.R
 import com.khtn.uaieo.activity.Auth.LoginActivity
+import com.khtn.uaieo.activity.Home.ScheduleScreen
 import com.khtn.uaieo.activity.NotificationDetailActivity
 import com.khtn.uaieo.activity.ReadingListening.ListRLExamActivity
 import com.khtn.uaieo.activity.ReadingListening.ListSavedPartActivity
@@ -40,7 +41,7 @@ class ProfileFragment : Fragment() {
         loadProfile()
         changePassword()
         logout()
-        setNotification()
+        //setNotification()
         saveQuestion()
     }
     fun init (){
@@ -97,13 +98,13 @@ class ProfileFragment : Fragment() {
             activity?.finish()
         }
     }
-
-    fun setNotification() {
-        notificationBT!!.setOnClickListener {
-            val intent= Intent(context, NotificationDetailActivity::class.java)
-            startActivity(intent)
-        }
-    }
+//
+//    fun setNotification() {
+//        notificationBT!!.setOnClickListener {
+//            val intent= Intent(context, ScheduleScreen::class.java)
+//            startActivity(intent)
+//        }
+//    }
 
     fun saveQuestion(){
         savedQuestionsBT!!.setOnClickListener{

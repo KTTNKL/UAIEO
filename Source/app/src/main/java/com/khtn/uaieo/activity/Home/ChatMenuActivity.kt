@@ -29,8 +29,8 @@ class ChatMenuActivity : AppCompatActivity() {
         }
         var itemList:ArrayList<itemMenu>
         itemList= ArrayList()
-        itemList.add(itemMenu(R.drawable.bg_news,getResources().getString(R.string.ask),getResources().getString(R.string.ask_detail)))
-        itemList.add(itemMenu(R.drawable.bg_sub,getResources().getString(R.string.talk),getResources().getString(R.string.talk_detail)))
+        itemList.add(itemMenu(R.drawable.bg_chat1,getResources().getString(R.string.ask),getResources().getString(R.string.ask_detail)))
+        itemList.add(itemMenu(R.drawable.bg_chat2,getResources().getString(R.string.talk),getResources().getString(R.string.talk_detail)))
         adapter= ChatMenuAdapter(itemList)
         if (recyclerView != null) {
             recyclerView.adapter=adapter

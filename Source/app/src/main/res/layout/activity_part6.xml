@@ -28,8 +28,8 @@
 
     <Button
         android:id="@+id/part6saveBtn"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="16dp"
         android:text="@string/save"
@@ -106,6 +106,7 @@
 
     <TextView
         android:id="@+id/textViewA_part6"
+        android:fontFamily="@font/sanchez"
         android:layout_width="240dp"
         android:layout_height="47dp"
         android:layout_marginStart="40dp"
@@ -116,6 +117,7 @@
 
     <TextView
         android:id="@+id/textViewB_part6"
+        android:fontFamily="@font/sanchez"
         android:layout_width="242dp"
         android:layout_height="46dp"
         android:layout_marginStart="40dp"
@@ -126,6 +128,7 @@
 
     <TextView
         android:id="@+id/textViewC_part6"
+        android:fontFamily="@font/sanchez"
         android:layout_width="241dp"
         android:layout_height="46dp"
         android:layout_marginStart="40dp"
@@ -136,6 +139,7 @@
 
     <TextView
         android:id="@+id/textViewD_part6"
+        android:fontFamily="@font/sanchez"
         android:layout_width="242dp"
         android:layout_height="48dp"
         android:layout_marginStart="40dp"

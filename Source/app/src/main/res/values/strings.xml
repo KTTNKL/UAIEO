@@ -67,5 +67,9 @@
 
     <string name="ask">Hỏi đáp</string>
     <string name="ask_detail">Hỏi đáp về từ vựng</string>
+    <string name="save_qeustion_successfully">Lưu câu hỏi thành công</string>
+    <string name="choose_category">Chọn cách luyện tập</string>
+    <string name="choose_chat">Chọn kênh chat</string>
+    <string name="set_noti">Thiết lập thông báo</string>
 
 </resources>

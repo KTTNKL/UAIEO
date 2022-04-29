@@ -138,6 +138,7 @@ class Part2 : AppCompatActivity() {
             hashMap.put("audio", arr[num].audio!!)
             hashMap.put("number", arr[num].number!!)
             reference.setValue(hashMap)
+            Toast.makeText(this, resources.getString(R.string.save_qeustion_successfully), Toast.LENGTH_SHORT).show()
         }
     }
 

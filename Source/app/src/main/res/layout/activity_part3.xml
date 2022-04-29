@@ -37,8 +37,8 @@
 
     <Button
         android:id="@+id/part3saveBtn"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="16dp"
         android:text="@string/save"
@@ -98,6 +98,8 @@
                     android:layout_width="272dp"
                     android:layout_height="wrap_content"
 
+                    android:layout_marginLeft="8dp"
+                    android:fontFamily="@font/sanchez"
                     android:text="TextView" />
             </LinearLayout>
 
@@ -114,6 +116,8 @@
 
                 <TextView
                     android:id="@+id/part3_ques1_B_TV"
+                    android:layout_marginLeft="8dp"
+                    android:fontFamily="@font/sanchez"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -134,6 +138,8 @@
 
                 <TextView
                     android:id="@+id/part3_ques1_C_TV"
+                    android:layout_marginLeft="8dp"
+                    android:fontFamily="@font/sanchez"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -154,6 +160,8 @@
 
                 <TextView
                     android:id="@+id/part3_ques1_D_TV"
+                    android:layout_marginLeft="8dp"
+                    android:fontFamily="@font/sanchez"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -183,6 +191,8 @@
 
                 <TextView
                     android:id="@+id/part3_ques2_A_TV"
+                    android:layout_marginLeft="8dp"
+                    android:fontFamily="@font/sanchez"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -202,6 +212,8 @@
 
                 <TextView
                     android:id="@+id/part3_ques2_B_TV"
+                    android:layout_marginLeft="8dp"
+                    android:fontFamily="@font/sanchez"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -222,6 +234,8 @@
 
                 <TextView
                     android:id="@+id/part3_ques2_C_TV"
+                    android:layout_marginLeft="8dp"
+                    android:fontFamily="@font/sanchez"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -242,6 +256,8 @@
 
                 <TextView
                     android:id="@+id/part3_ques2_D_TV"
+                    android:layout_marginLeft="8dp"
+                    android:fontFamily="@font/sanchez"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -270,6 +286,8 @@
 
                 <TextView
                     android:id="@+id/part3_ques3_A_TV"
+                    android:layout_marginLeft="8dp"
+                    android:fontFamily="@font/sanchez"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -289,6 +307,8 @@
 
                 <TextView
                     android:id="@+id/part3_ques3_B_TV"
+                    android:layout_marginLeft="8dp"
+                    android:fontFamily="@font/sanchez"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -303,6 +323,8 @@
 
                 <Button
                     android:id="@+id/buttonC_part3_ques3"
+                    android:layout_marginLeft="8dp"
+                    android:fontFamily="@font/sanchez"
                     android:layout_width="120dp"
                     android:layout_height="50dp"
                     android:text="@string/C" />
@@ -323,6 +345,8 @@
 
                 <Button
                     android:id="@+id/buttonD_part3_ques3"
+                    android:layout_marginLeft="8dp"
+                    android:fontFamily="@font/sanchez"
                     android:layout_width="120dp"
                     android:layout_height="50dp"
                     android:text="@string/D" />
