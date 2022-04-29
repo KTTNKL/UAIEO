@@ -1,18 +1,17 @@
 <resources>
     <string name="app_name">UAIEO</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="register">REGISTER</string>
-    <string name="confirm_password">CONFIRM PASSWORD</string>
-    <string name="next">NEXT</string>
-    <string name="forget_password_title">FORGOT PASSWORD</string>
-    <string name="confirm_email">CONFIRM EMAIL</string>
-    <string name="confirm_button">CONFIRM</string>
-    <string name="login">Log in</string>
+    <string name="register">ĐĂNG KÍ</string>
+    <string name="confirm_password">XÁC NHẬN MẬT KHẨU</string>
+    <string name="next">TIẾP TỤC</string>
+    <string name="forget_password_title">QUÊN MẬT KHẨU</string>
+    <string name="confirm_email">XÁC NHẬN EMAIL</string>
+    <string name="confirm_button">XÁC NHẬN</string>
+    <string name="login">Đăng nhập</string>
     <string name="email">EMAIL</string>
-    <string name="password">PASSWORD</string>
-    <string name="login_cap">LOG IN</string>
-    <string name="forget_password">FORGET PASSWORD?</string>
+    <string name="password">MẬT KHẨU</string>
+    <string name="login_cap">ĐĂNG NHẬP</string>
+    <string name="forget_password">QUÊN MẬT KHẨU?</string>
     <string name="profile_profile">Thông tin cá nhân</string>
     <string name="profile_saved_questions">Các câu hỏi đã lưu</string>
     <string name="profile_notification">Thông báo</string>
@@ -21,23 +20,23 @@
     <string name="news_title">Tin tức</string>
     <string name="vietsub_title">VietSub</string>
     <string name="vietsub_VI">Tiếng Việt</string>
-    <string name="vietsub_EN">English</string>
-    <string name="quiz_title">QUIZ</string>
+    <string name="vietsub_EN">Tiếng Anh</string>
+    <string name="quiz_title">Câu hỏi ngắn</string>
     <string name="your_result">KẾT QUẢ CỦA BẠN</string>
     <string name="ok">OK</string>
     <string name="dictionary">TỪ ĐIỂN</string>
-    <string name="nextBtn">Next</string>
-    <string name="backBtn">Back</string>
-    <string name="TipTitle">TIPS FOR TOEIC</string>
+    <string name="nextBtn">Tiếp tục</string>
+    <string name="backBtn">Quay lại</string>
+    <string name="TipTitle">MẸO</string>
     <string name="SearchBtn">TÌM KIẾM</string>
     <string name="exam">KIỂM TRA</string>
-    <string name="RL">Reading/Listening</string>
+    <string name="RL">Đọc/Nghe</string>
     <string name="notification">Thông báo</string>
     <string name="notification_title">Tiêu đề</string>
     <string name="notification_message">Nội dung</string>
     <string name="notification_schedule_notification">Lên lịch</string>
-    <string name="speakingTitle">SPEAKING</string>
-    <string name="RecordBtn">Nhấn để record</string>
+    <string name="speakingTitle">NÓI</string>
+    <string name="RecordBtn">Nhấn để ghi</string>
     <string name="ListenAgainBtn">Nghe lại</string>
     <string name="OtherRecordBtn">Bài làm của người khác</string>
     <string name="Next">Câu kế</string>
@@ -46,26 +45,22 @@
     <string name="B">B</string>
     <string name="C">C</string>
     <string name="D">D</string>
-    <string name="writingTitle">WRITING</string>
+    <string name="writingTitle">VIẾT</string>
     <string name="uploadBtn">Đăng Bài Làm</string>
     <string name="pickImageBtn">Chọn Hình</string>
     <string name="exampleAnswerBtn">Các Bài Làm Tham Khảo</string>
     <string name="commentBtn">Bình Luận</string>
-    <string name="score">SCORE:</string>
-    <string name="UploadRecord">Upload record</string>
+    <string name="score">ĐIỂM:</string>
+    <string name="UploadRecord">Đăng bản ghi</string>
     <string name="definition">NHẬP VÀO THANH TÌM KIẾM ĐỂ TRA CỨU</string>
     <string name="save">LƯU</string>
-
     <string name="home">TRANG CHỦ</string>
     <string name="analyst">BẢNG XẾP HẠNG</string>
     <string name="profile">THÔNG TIN CÁ NHÂN</string>
     <string name="analyst_main">XẾP HẠNG</string>
     <string name="profile_main">THÔNG TIN</string>
-
     <string name="talk">Trò chuyện</string>
     <string name="talk_detail">Trò chuyện với người lạ</string>
-
     <string name="ask">Hỏi đáp</string>
     <string name="ask_detail">Hỏi đáp về từ vựng</string>
-
 </resources>

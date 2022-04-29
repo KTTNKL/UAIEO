@@ -8,6 +8,7 @@ class ChatMessage {
     var email: String?=""
     var idSender:String?=""
     var time:String?=""
+    var type=0
 
     constructor(content: String, email: String, idSender: String){
         this.content = content
