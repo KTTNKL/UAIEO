@@ -32,10 +32,13 @@ class ChatActivity : AppCompatActivity() {
         clickChat()
         loadData()
         setupLayout()
+        input.setOnClickListener {
+            customListView.scrollToPosition(chatArray.size-1)
+        }
     }
 
     private fun setupLayout() {
-        adapter= ChatAdapter(chatArray)
+        adapter= ChatAdapter(this,chatArray)
         customListView = findViewById<RecyclerView>(R.id.chatRV) as RecyclerView
         customListView!!.adapter = adapter
 
@@ -44,15 +47,27 @@ class ChatActivity : AppCompatActivity() {
 
     private fun loadData() {
         val ref= FirebaseDatabase.getInstance().getReference("chat").child(topic)
+        auth = FirebaseAuth.getInstance()
+        val currentUser = auth.currentUser
         ref.addValueEventListener(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 chatArray.clear()
                 for (item in snapshot.children){
                     val chat = item.getValue(ChatMessage::class.java)
+                    if(chat!!.idSender==currentUser!!.uid){
+                        chat.type=1
+                    }else{
+                        chat.type=0
+                    }
                     chatArray.add(chat!!)
-                    Log.d("MyScreen",chat.time.toString())
+                }
+                for(chat in chatArray){
+                    Log.d("MyScreen",chat.idSender.toString())
+                    Log.d("MyScreen",chat.type.toString())
+
                 }
                 adapter.notifyDataSetChanged()
+                customListView.scrollToPosition(chatArray.size-1)
             }
 
 
@@ -85,6 +100,7 @@ class ChatActivity : AppCompatActivity() {
             databaseReference!!.child("chat").child(topic).child(chatID).setValue(hashMap)
             // Clear the input
             input.setText("")
-        }    }
+        }
+    }
 
 }
