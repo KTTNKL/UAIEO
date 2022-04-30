@@ -4,44 +4,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#f3f1ec">
+    android:background="#DCDCDC">
+
 
     <TextView
         android:id="@+id/authorCmtTV"
-        android:fontFamily="@font/lobster"
         android:layout_width="130dp"
-        android:layout_height="44dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/lobster"
+        android:gravity="center_vertical"
         android:textColor="@color/black"
         android:textSize="15dp"
-        android:layout_marginStart="4dp"
-        android:gravity="center_vertical"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/imageView7"
-        android:layout_width="310dp"
-        android:layout_height="56dp"
-        android:layout_marginStart="48dp"
-        android:scaleType="fitXY"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/authorCmtTV"
-        app:srcCompat="@drawable/bg_cmt" />
-
     <TextView
         android:id="@+id/contentCmtTV"
-        android:layout_width="248dp"
-        android:layout_height="41dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="8dp"
-        android:gravity="center_vertical"
-        android:text="TextView"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        app:flow_verticalAlign="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/imageView7"
-        app:layout_constraintTop_toTopOf="@+id/imageView7" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+
+        android:background="@drawable/radius_cmt"
+        android:maxWidth="260dp"
+        android:paddingLeft="12dp"
+        android:paddingTop="8dp"
+        android:paddingRight="12dp"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/authorCmtTV" />
 </androidx.constraintlayout.widget.ConstraintLayout>
