@@ -47,6 +47,16 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/bg_idea" />
 
+    <TextView
+        android:id="@+id/countdownTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/part1IV" />
+
     <Button
         android:id="@+id/buttonA"
         android:layout_width="wrap_content"
@@ -55,7 +65,7 @@
         android:layout_marginTop="32dp"
         android:text="@string/A"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/part1IV" />
+        app:layout_constraintTop_toBottomOf="@+id/countdownTV" />
 
     <Button
         android:id="@+id/buttonB"
@@ -65,7 +75,7 @@
         android:layout_marginTop="32dp"
         android:text="@string/B"
         app:layout_constraintStart_toEndOf="@+id/buttonA"
-        app:layout_constraintTop_toBottomOf="@+id/part1IV" />
+        app:layout_constraintTop_toBottomOf="@+id/countdownTV" />
 
     <Button
         android:id="@+id/buttonC"

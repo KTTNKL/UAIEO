@@ -2,6 +2,7 @@ package com.khtn.uaieo.activity.ReadingListening
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.view.View
 import android.widget.Toast
 import com.bumptech.glide.Glide
@@ -13,8 +14,7 @@ import com.google.firebase.database.ValueEventListener
 import com.khtn.uaieo.R
 import com.khtn.uaieo.model.itemExamRL
 import com.khtn.uaieo.model.itemPartRL
-import kotlinx.android.synthetic.main.activity_part3.*
-import kotlinx.android.synthetic.main.activity_part6.*
+import kotlinx.android.synthetic.main.activity_part1.*
 import kotlinx.android.synthetic.main.activity_part7.*
 import java.util.*
 import kotlin.collections.ArrayList
@@ -34,6 +34,12 @@ class Part7 : AppCompatActivity() {
 
     var choosePartOnly=false
     var randomQuestion=false
+
+    lateinit var countDownTimer: CountDownTimer
+    var totalAudioTime: Long = 1620000
+    var totalTime: Long = 30000
+    var isNext: Boolean = false
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -69,6 +75,43 @@ class Part7 : AppCompatActivity() {
             saveClick("")
         }
 
+        runTimer()
+    }
+
+    private fun runTimer() {
+        countDownTimer = object : CountDownTimer(totalTime.toLong(), 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                countdownTV7.setText("Thời gian: " + millisUntilFinished / 1000)
+                totalAudioTime = totalTime - millisUntilFinished
+            }
+
+            override fun onFinish() {
+                totalAudioTime+=1000
+                //countdownTV.setText("Time's Up!")
+                isNext = true
+                countDownTimer.cancel()
+
+                if( num<arr.size){
+                    num++
+                    if(num==arr.size){
+                        num=arr.size-1
+
+                        if (isOneQuestion == false) {
+                            Toast.makeText(this@Part7, "Part 7: " + correctAnswers.toString() + "/" + arr.size, Toast.LENGTH_SHORT).show()
+                            nextPart7Btn.setText("XEM ĐIỂM")
+                        }
+                    }
+                    else{
+                        countDownTimer.cancel()
+
+                        if (isNext == true) {
+                            countDownTimer.start()
+                        }
+                        setData(num)
+                    }
+                }
+            }
+        }.start()
     }
 
     private fun loadDataPart7Random() {
@@ -98,7 +141,7 @@ class Part7 : AppCompatActivity() {
         })        }
 
     private fun loadDataPart7PartOnly() {
-        val ref= FirebaseDatabase.getInstance().getReference("question").child("part6")
+        val ref= FirebaseDatabase.getInstance().getReference("question").child("part7")
         ref.addListenerForSingleValueEvent(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 for (item in snapshot.children){
@@ -151,6 +194,7 @@ class Part7 : AppCompatActivity() {
 
     private fun clickNext() {
         nextPart7Btn.setOnClickListener {
+            countDownTimer.cancel()
             if( num<arr.size){
                 num+=1
                 if(num==arr.size){
@@ -160,6 +204,7 @@ class Part7 : AppCompatActivity() {
                 }
                 else
                 {
+                    runTimer()
                     setData(num)
                 }
 

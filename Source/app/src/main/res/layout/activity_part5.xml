@@ -39,6 +39,18 @@
         android:textColor="#fff" />
 
     <TextView
+        android:id="@+id/countdownTV5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+
+        android:gravity="center"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <TextView
         android:id="@+id/titlePart5TV"
         android:layout_width="366dp"
         android:layout_height="65dp"

@@ -3,6 +3,7 @@ package com.khtn.uaieo.activity.ReadingListening
 import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.util.Log
 import android.view.View
 import android.widget.Toast
@@ -39,6 +40,11 @@ class Part5 : AppCompatActivity() {
     var choosePartOnly=false
     var randomQuestion=false
     //THEM
+
+    lateinit var countDownTimer: CountDownTimer
+    var totalAudioTime: Long = 300000
+    var totalTime: Long = 10000
+    var isNext: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -82,7 +88,47 @@ class Part5 : AppCompatActivity() {
             saveClick("")
         }
 
+        runTimer()
     }
+
+
+    private fun runTimer() {
+        countDownTimer = object : CountDownTimer(totalTime.toLong(), 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                countdownTV5.setText("Thời gian: " + millisUntilFinished / 1000)
+                totalAudioTime = totalTime - millisUntilFinished
+            }
+
+            override fun onFinish() {
+                totalAudioTime+=1000
+                //countdownTV.setText("Time's Up!")
+                isNext = true
+                countDownTimer.cancel()
+
+                if( num<arr.size){
+                    num++
+                    if(num==arr.size){
+                        num=arr.size-1
+
+                        if (isOneQuestion == false) {
+                            Toast.makeText(this@Part5, "Part 5: " + correctAnswers.toString() + "/" + arr.size, Toast.LENGTH_SHORT).show()
+                            nextPart5Btn.setText("XEM ĐIỂM")
+                        }
+
+                    }
+                    else{
+                        countDownTimer.cancel()
+
+                        if (isNext == true) {
+                            countDownTimer.start()
+                        }
+                        setData(num)
+                    }
+                }
+            }
+        }.start()
+    }
+
 
     private fun loadDataPart5Random() {
         val ref= FirebaseDatabase.getInstance().getReference("question").child("part5")
@@ -153,6 +199,7 @@ class Part5 : AppCompatActivity() {
 
     private fun clickNext() {
         nextPart5Btn.setOnClickListener {
+            countDownTimer.cancel()
             if( num<arr.size){
                 num+=1
                 if(num==arr.size){
@@ -162,6 +209,7 @@ class Part5 : AppCompatActivity() {
                 }
                 else
                 {
+                    runTimer()
                     setData(num)
                 }
             }

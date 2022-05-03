@@ -3,6 +3,7 @@ package com.khtn.uaieo.activity.ReadingListening
 import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.view.View
 import android.widget.Toast
 import com.bumptech.glide.Glide
@@ -15,6 +16,8 @@ import com.khtn.uaieo.R
 import com.khtn.uaieo.model.itemExamRL
 import com.khtn.uaieo.model.itemPartRL
 import kotlinx.android.synthetic.main.activity_part1.*
+import kotlinx.android.synthetic.main.activity_part1.countdownTV
+import kotlinx.android.synthetic.main.activity_speaking_question_detail_acticity.*
 import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.collections.HashMap
@@ -22,14 +25,19 @@ import kotlin.collections.HashMap
 class Part1 : AppCompatActivity() {
     var isOneQuestion = false
     lateinit var exam:itemExamRL
-    var num=0;
+    var num=0
     var currPoint:Long=0
     var arr=ArrayList<itemPartRL>()
     var media= MediaPlayer()
     var correctAnswers = 0
     var auth = FirebaseAuth.getInstance()
-    var curUID= auth.uid;
+    var curUID= auth.uid
     lateinit var question: itemPartRL
+
+    lateinit var countDownTimer: CountDownTimer
+    var totalAudioTime: Long = 120000
+    var totalTime: Long = 20000
+    var isNext: Boolean = false
 
     //THEM
     var choosePartOnly=false
@@ -86,7 +94,47 @@ class Part1 : AppCompatActivity() {
 
         }
 
+        runTimer()
     }
+
+    private fun runTimer() {
+        countDownTimer = object : CountDownTimer(totalTime.toLong(), 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                countdownTV.setText("Thời gian: " + millisUntilFinished / 1000)
+                totalAudioTime = totalTime - millisUntilFinished
+            }
+
+            override fun onFinish() {
+                totalAudioTime+=1000
+                //countdownTV.setText("Time's Up!")
+                isNext = true
+                countDownTimer.cancel()
+
+                if( num<arr.size){
+                    num++
+                    if(num==arr.size){
+                        num=arr.size-1
+
+                        if (isOneQuestion == false) {
+                            Toast.makeText(this@Part1, "Part 1: " + correctAnswers.toString() + "/" + arr.size, Toast.LENGTH_SHORT).show()
+                            nextPart1Btn.setText("XEM ĐIỂM")
+                        }
+                    }
+                    else{
+                        countDownTimer.cancel()
+
+                        if (isNext == true) {
+                            countDownTimer.start()
+                        }
+                        media.reset()
+                        clickSound()
+                        setData(num)
+                    }
+                }
+            }
+        }.start()
+    }
+
     //THEM
     private fun saveClick(type:String) {
         part1saveBtn.setOnClickListener {
@@ -195,7 +243,6 @@ class Part1 : AppCompatActivity() {
 
     }
 
-
     private fun loadDataPart1() {
         val ref= FirebaseDatabase.getInstance().getReference("RLquestions").child("${exam.id}").child("part1")
         ref.addListenerForSingleValueEvent(object: ValueEventListener {
@@ -215,11 +262,9 @@ class Part1 : AppCompatActivity() {
         })
     }
 
-
-
-
     private fun clickNext() {
         nextPart1Btn.setOnClickListener {
+            countDownTimer.cancel()
 
             if( num<arr.size){
                 num++
@@ -229,7 +274,9 @@ class Part1 : AppCompatActivity() {
                     nextPart1Btn.setText("XEM ĐIỂM")
                 }
                 else{
+                    runTimer()
                     media.reset()
+                    clickSound()
                     setData(num)
                 }
 

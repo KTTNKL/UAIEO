@@ -3,6 +3,7 @@ package com.khtn.uaieo.activity.ReadingListening
 import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.view.View
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
@@ -25,7 +26,6 @@ class Part2 : AppCompatActivity() {
     var curUID= auth.uid;
     lateinit var question: itemPartRL
 
-
     lateinit var exam: itemExamRL
     var num=0
     var currPoint:Long=0
@@ -35,6 +35,11 @@ class Part2 : AppCompatActivity() {
 
     var choosePartOnly=false
     var randomQuestion=false
+    lateinit var countDownTimer: CountDownTimer
+    var totalAudioTime: Long = 120000
+    var totalTime: Long = 20000
+    var isNext: Boolean = false
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -73,6 +78,46 @@ class Part2 : AppCompatActivity() {
             checkExist()
             saveClick("")
         }
+
+        runTimer()
+    }
+
+    private fun runTimer() {
+        countDownTimer = object : CountDownTimer(totalTime.toLong(), 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                countdownTV2.setText("Thời gian: " + millisUntilFinished / 1000)
+                totalAudioTime = totalTime - millisUntilFinished
+            }
+
+            override fun onFinish() {
+                totalAudioTime+=1000
+                //countdownTV.setText("Time's Up!")
+                isNext = true
+                countDownTimer.cancel()
+
+                if( num<arr.size){
+                    num++
+                    if(num==arr.size){
+                        num=arr.size-1
+
+                        if (isOneQuestion == false) {
+                            Toast.makeText(this@Part2, "Part 2: " + correctAnswers.toString() + "/" + arr.size, Toast.LENGTH_SHORT).show()
+                            nextPart2Btn.setText("XEM ĐIỂM")
+                        }
+                    }
+                    else{
+                        countDownTimer.cancel()
+
+                        if (isNext == true) {
+                            countDownTimer.start()
+                        }
+                        media.reset()
+                        clickSound()
+                        setData(num)
+                    }
+                }
+            }
+        }.start()
     }
 
     private fun loadDataPart2Random() {
@@ -181,6 +226,8 @@ class Part2 : AppCompatActivity() {
 
     private fun clickNext() {
         nextPart2Btn.setOnClickListener {
+            countDownTimer.cancel()
+
             if( num<arr.size){
                 num++
                 if(num==arr.size){
@@ -189,6 +236,7 @@ class Part2 : AppCompatActivity() {
                     nextPart2Btn.setText("XEM ĐIỂM")
                 }
                 else{
+                    runTimer()
                     media.reset()
                     setData(num)
                 }
