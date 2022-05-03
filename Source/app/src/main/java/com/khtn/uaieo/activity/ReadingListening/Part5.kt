@@ -406,4 +406,10 @@ class Part5 : AppCompatActivity() {
         }
 
     }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        countDownTimer.cancel()
+        finish()
+    }
 }

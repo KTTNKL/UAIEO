@@ -262,4 +262,9 @@ class SpeakingQuestionDetailActicity : AppCompatActivity() {
         player = null
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+        countDownTimer.cancel()
+        finish()
+    }
 }

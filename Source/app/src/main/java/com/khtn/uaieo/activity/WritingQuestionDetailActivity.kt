@@ -1,6 +1,7 @@
 package com.khtn.uaieo.activity
 
 import android.app.Activity
+import android.app.ProgressDialog
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
@@ -24,6 +25,8 @@ class WritingQuestionDetailActivity : AppCompatActivity() {
     lateinit var auth: FirebaseAuth
     lateinit var user: FirebaseUser
     lateinit var countDownTimer: CountDownTimer
+    lateinit var dialog: ProgressDialog
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,6 +58,11 @@ class WritingQuestionDetailActivity : AppCompatActivity() {
             if (thumbnail==null){
                 Toast.makeText(this,"Bạn cần chọn ảnh trước!", Toast.LENGTH_LONG).show()
             }else{
+                dialog = ProgressDialog.show(
+                    this, "",
+                    "Đang tải hình lên...", true
+                )
+
                 val path = "${ID}/${question.number}/${imageID}.png"
                 val uploadTask = thumbnail?.let { storageReference.child(path).putFile(it) }
                 if (uploadTask != null) {
@@ -70,6 +78,8 @@ class WritingQuestionDetailActivity : AppCompatActivity() {
                                 .addOnSuccessListener { taskSnapshot ->
                                     Toast.makeText(this, "Đăng thành công", Toast.LENGTH_LONG)
                                         .show()
+                                    dialog.dismiss()
+
                                 }
                                 .addOnFailureListener { e ->
                                     Toast.makeText(this, "${e.message}", Toast.LENGTH_LONG).show()

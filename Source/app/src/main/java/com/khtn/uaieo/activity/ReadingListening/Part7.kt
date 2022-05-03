@@ -422,4 +422,10 @@ class Part7 : AppCompatActivity() {
 
         }
     }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        countDownTimer.cancel()
+        finish()
+    }
 }

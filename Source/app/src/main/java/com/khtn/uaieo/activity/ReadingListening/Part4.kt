@@ -787,6 +787,7 @@ class Part4 : AppCompatActivity() {
 
     override fun onBackPressed() {
         super.onBackPressed()
+        countDownTimer.cancel()
         media.stop()
         media.release()
         finish()
