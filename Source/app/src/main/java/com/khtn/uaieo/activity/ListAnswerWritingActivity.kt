@@ -44,7 +44,7 @@ class ListAnswerWritingActivity : AppCompatActivity() {
 
         dialog = ProgressDialog.show(
             this, "",
-            "Loading Reading. Please wait...", true
+            "Loading, Please wait...", true
         )
 
         LoadData()

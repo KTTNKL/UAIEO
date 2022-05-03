@@ -94,7 +94,7 @@ class SpeakingQuestionDetailActicity : AppCompatActivity() {
                 setDataSource(fileName)
                 prepare()
                 start()
-                btnPlay.text = "Đang Phát..."
+                btnPlay.text = "ĐANG PHÁT..."
             } catch (e: IOException) {
                 Log.e(LOG_TAG, "prepare() failed")
             }
@@ -105,12 +105,12 @@ class SpeakingQuestionDetailActicity : AppCompatActivity() {
         isPlay = false
         player?.release()
         player = null
-        btnPlay.text = "Nghe lại"
+        btnPlay.text = "NGHE LẠI"
     }
 
     private fun startRecording() {
         isCount = true
-        btnRecord.text = "Đang ghi âm..."
+        btnRecord.text = "ĐANG GHI ÂM..."
         recorder = MediaRecorder().apply {
             setAudioSource(MediaRecorder.AudioSource.MIC)
             setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP)
@@ -131,7 +131,7 @@ class SpeakingQuestionDetailActicity : AppCompatActivity() {
         isCount = false
         totalTimeRecord+=1000
 
-        btnRecord.text = "Ghi âm"
+        btnRecord.text = "NHẤN ĐỂ GHI"
         recorder?.apply {
             stop()
             release()
