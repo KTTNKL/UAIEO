@@ -73,8 +73,8 @@ class ChatAdapter(private val mContext: Context, messageList: ArrayList<ChatMess
         }
 
         init {
-            email= itemView.findViewById(R.id.emailChatTV)
-            content= itemView.findViewById(R.id.contentChatTV)
+            email= itemView.findViewById(R.id.authorCmtTV)
+            content= itemView.findViewById(R.id.contentCmtTV)
             date= itemView.findViewById(R.id.text_gchat_timestamp_other)
         }
     }

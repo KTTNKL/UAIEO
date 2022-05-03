@@ -38,7 +38,7 @@ class DetailAnswerWritingActivity : AppCompatActivity() {
         path = intent.getStringExtra("path").toString();
 
         Glide.with(this).load(question.image).into(answerImage)
-        authorAnswerTV.text = "Làm của: " + question.email
+        authorAnswerTV.text = "Bài làm: " + question.email
 
         readingArrayList = ArrayList<Comment>()
 
@@ -64,7 +64,7 @@ class DetailAnswerWritingActivity : AppCompatActivity() {
 
             user.email?.let { it1 -> reference.child("email").setValue(it1) }
             reference.child("content").setValue("${commentTV.text}")
-
+            commentTV.setText("")
             LoadData()
         }
     }

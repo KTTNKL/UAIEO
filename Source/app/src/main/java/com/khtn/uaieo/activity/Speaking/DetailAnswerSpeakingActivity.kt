@@ -44,7 +44,7 @@ class DetailAnswerSpeakingActivity : AppCompatActivity() {
         path = intent.getStringExtra("path").toString();
 
 
-        authorSpeakingAnswerTV.text = "Làm của: " + question.email
+        authorSpeakingAnswerTV.text = "Bài làm: " + question.email
         readingArrayList = ArrayList<Comment>()
 
         newRecyclerview = findViewById(R.id.commentRecyclerView1)
@@ -69,7 +69,7 @@ class DetailAnswerSpeakingActivity : AppCompatActivity() {
 
             user.email?.let { it1 -> reference.child("email").setValue(it1) }
             reference.child("content").setValue("${commentTV.text}")
-
+            commentTV.setText("")
             LoadData()
         }
         audioBtn.setOnClickListener{

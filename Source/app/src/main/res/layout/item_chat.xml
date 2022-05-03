@@ -19,7 +19,7 @@
         tools:layout_editor_absoluteY="32dp" />
 
     <TextView
-        android:id="@+id/emailChatTV"
+        android:id="@+id/authorCmtTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -38,7 +38,7 @@
         app:cardPreventCornerOverlap="false"
         app:cardUseCompatPadding="true"
         app:layout_constraintStart_toEndOf="@+id/image_gchat_profile_other"
-        app:layout_constraintTop_toBottomOf="@+id/emailChatTV">
+        app:layout_constraintTop_toBottomOf="@+id/authorCmtTV">
 
         <LinearLayout
             android:id="@+id/layout_gchat_container_other"
@@ -47,7 +47,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/contentChatTV"
+                android:id="@+id/contentCmtTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
@@ -71,8 +71,8 @@
         android:text="8:00"
         android:textColor="#C0C0C0"
         android:textSize="10sp"
-        app:layout_constraintBottom_toBottomOf="@+id/emailChatTV"
-        app:layout_constraintStart_toEndOf="@+id/emailChatTV"
-        app:layout_constraintTop_toTopOf="@+id/emailChatTV" />
+        app:layout_constraintBottom_toBottomOf="@+id/authorCmtTV"
+        app:layout_constraintStart_toEndOf="@+id/authorCmtTV"
+        app:layout_constraintTop_toTopOf="@+id/authorCmtTV" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

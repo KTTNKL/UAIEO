@@ -5,12 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.DetailAnswerWritingActivity">
+
     <ImageView
+        android:id="@+id/backgroundIV"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:alpha="0.6"
         android:scaleType="centerCrop"
-        android:src="@drawable/bg_activity" />
+        android:src="@drawable/bg_activity"
+        tools:layout_editor_absoluteX="-3dp"
+        tools:layout_editor_absoluteY="141dp" />
 
     <ImageView
         android:id="@+id/answerImage"
@@ -35,9 +39,10 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/commentRecyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_width="406dp"
+        android:layout_height="316dp"
         android:layout_marginTop="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/answerImage" />
 
@@ -45,18 +50,23 @@
         android:id="@+id/commentTV"
         android:layout_width="296dp"
         android:layout_height="59dp"
-        android:hint="Enter Comment"
+        android:hint="Nhập bình luận"
+        app:layout_constraintBottom_toBottomOf="@id/backgroundIV"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/commentRecyclerView" />
+
+        app:layout_constraintTop_toBottomOf="@+id/commentRecyclerView"
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/commentBtn"
         android:layout_width="100dp"
         android:layout_height="53dp"
-        android:layout_marginStart="12dp"
+        android:layout_marginStart="8dp"
         android:background="@drawable/bg_radius_button"
         android:text="@string/commentBtn"
         android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/commentTV"
-        app:layout_constraintTop_toBottomOf="@+id/commentRecyclerView" />
+        app:layout_constraintTop_toTopOf="@+id/commentTV"
+        app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>

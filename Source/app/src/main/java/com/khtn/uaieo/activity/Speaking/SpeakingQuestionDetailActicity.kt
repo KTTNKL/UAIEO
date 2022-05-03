@@ -171,7 +171,7 @@ class SpeakingQuestionDetailActicity : AppCompatActivity() {
             if(isCount == true){
                 countDownTimer = object : CountDownTimer(totalTime.toLong(), 1000) {
                     override fun onTick(millisUntilFinished: Long) {
-                        countdownTV.setText("Time remaining: " + millisUntilFinished / 1000)
+                        countdownTV.setText("Thời gian: " + millisUntilFinished / 1000)
                         totalTimeRecord = totalTime - millisUntilFinished
                     }
 
@@ -244,7 +244,7 @@ class SpeakingQuestionDetailActicity : AppCompatActivity() {
 
                 databaseReference.child("WSquestions/speaking/${id}/question${number}").child("example").child(user.uid).setValue(hashMap)
                     .addOnSuccessListener { taskSnapshot ->
-                        Toast.makeText(this, "uploaded successfully", Toast.LENGTH_LONG)
+                        Toast.makeText(this, "Đăng thành công", Toast.LENGTH_LONG)
                             .show()
                     }
                     .addOnFailureListener { e ->

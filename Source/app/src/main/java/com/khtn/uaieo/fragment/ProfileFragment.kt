@@ -53,7 +53,7 @@ class ProfileFragment : Fragment() {
     fun changePassword(){
         changePasswordBT.setOnClickListener{
             val dialog=LayoutInflater.from(context).inflate(R.layout.change_password_dialog,null)
-            val builder= context?.let { it1 -> AlertDialog.Builder(it1).setView(dialog).setTitle("Change Password") }
+            val builder= context?.let { it1 -> AlertDialog.Builder(it1).setView(dialog).setTitle("Đổi mật khẩu") }
             val myDialog= builder?.show()
             dialog.changePassBT.setOnClickListener {
                 val pass=dialog.changePassET.text
@@ -64,7 +64,7 @@ class ProfileFragment : Fragment() {
                 user!!.updatePassword(pass.toString())
                     .addOnCompleteListener { task ->
                         if (task.isSuccessful) {
-                            Toast.makeText(context,"Change Password successfully",
+                            Toast.makeText(context,"Đổi mật khẩu thành công",
                                 Toast.LENGTH_LONG).show()
                         }
                     }

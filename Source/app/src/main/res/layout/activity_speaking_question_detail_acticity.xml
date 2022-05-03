@@ -31,21 +31,23 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/questionNumberTV"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:text="TextView" />
+                android:text="TextView"
+                android:fontFamily="@font/sanchez"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/contentQuestionTV"
                 android:layout_width="match_parent"
-                android:textStyle="bold"
                 android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:text="TextView"
+                android:fontFamily="@font/sanchez"
+                android:textStyle="bold" />
 
             <ImageView
                 android:id="@+id/speakingImage"
@@ -56,56 +58,59 @@
             <TextView
                 android:id="@+id/questionTV"
                 android:layout_width="match_parent"
-                android:textStyle="bold"
                 android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:text="TextView"
+                android:fontFamily="@font/sanchez"
+                android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/countdownTV"
-                android:gravity="center"
                 android:layout_width="match_parent"
-                android:textStyle="bold"
+                android:layout_height="wrap_content"
+                android:gravity="center"
 
                 android:textSize="20dp"
-                android:layout_height="wrap_content"/>
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/btnRecord"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_radius_button"
-                android:textColor="@color/white"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
-                android:text="@string/RecordBtn" />
+                android:background="@drawable/bg_radius_button"
+                android:text="@string/RecordBtn"
+                android:textColor="@color/white" />
 
             <Button
                 android:id="@+id/btnPlay"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_radius_button"
-                android:textColor="@color/white"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
-                android:text="@string/ListenAgainBtn" />
+                android:background="@drawable/bg_radius_button"
+                android:text="@string/ListenAgainBtn"
+                android:textColor="@color/white" />
 
             <Button
                 android:id="@+id/uploadRecordBtn"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_radius_button"
-                android:textColor="@color/white"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
-                android:text="@string/UploadRecord" />
+                android:background="@drawable/bg_radius_button"
+                android:text="@string/UploadRecord"
+                android:textColor="@color/white" />
+
             <Button
                 android:id="@+id/otherRecordBtn"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_radius_button"
-                android:textColor="@color/white"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
-                android:text="@string/OtherRecordBtn" />
+                android:background="@drawable/bg_radius_button"
+                android:text="@string/OtherRecordBtn"
+                android:textColor="@color/white" />
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

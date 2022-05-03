@@ -21,7 +21,7 @@ class ForgetPasswordActivity : AppCompatActivity() {
     private fun forgettPassword() {
         submitBT.setOnClickListener(){
             if(TextUtils.isEmpty(emailForgetET.text.toString())){
-                emailForgetET.error = "Please enter email"
+                emailForgetET.error = "Vui lòng nhập email!"
                 return@setOnClickListener
             }
 
@@ -30,7 +30,7 @@ class ForgetPasswordActivity : AppCompatActivity() {
                     if ( task.isSuccessful ){
                         Toast.makeText(
                             this@ForgetPasswordActivity,
-                            "Email sent successfully to reset your password!",
+                            "Vui lòng kiểm tra email!",
                             Toast.LENGTH_LONG
                         ).show()
 

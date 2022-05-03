@@ -21,7 +21,7 @@
 
     <TextView
         android:id="@+id/overallTV"
-        android:layout_width="42dp"
+        android:layout_width="wrap_content"
         android:layout_height="26dp"
         android:layout_marginStart="4dp"
         android:layout_marginTop="16dp"
@@ -191,7 +191,7 @@
         android:id="@+id/textView12"
         android:layout_width="86dp"
         android:layout_height="26dp"
-        android:layout_marginStart="256dp"
+        android:layout_marginStart="232dp"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/sanchez"
         android:text="@string/score"

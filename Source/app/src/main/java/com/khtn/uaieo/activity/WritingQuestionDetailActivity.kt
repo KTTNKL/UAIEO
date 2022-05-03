@@ -5,6 +5,7 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
@@ -22,6 +23,7 @@ class WritingQuestionDetailActivity : AppCompatActivity() {
     private val databaseReference = FirebaseDatabase.getInstance().reference
     lateinit var auth: FirebaseAuth
     lateinit var user: FirebaseUser
+    lateinit var countDownTimer: CountDownTimer
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,7 +53,7 @@ class WritingQuestionDetailActivity : AppCompatActivity() {
 
             val imageID = "" + System.currentTimeMillis()
             if (thumbnail==null){
-                Toast.makeText(this,"You must pick picture from gallery first!", Toast.LENGTH_LONG).show()
+                Toast.makeText(this,"Bạn cần chọn ảnh trước!", Toast.LENGTH_LONG).show()
             }else{
                 val path = "${ID}/${question.number}/${imageID}.png"
                 val uploadTask = thumbnail?.let { storageReference.child(path).putFile(it) }
@@ -66,7 +68,7 @@ class WritingQuestionDetailActivity : AppCompatActivity() {
 
                             databaseReference.child("WSquestions/writing/${ID}/question${question.number}").child("example").child(user.uid).setValue(hashMap)
                                 .addOnSuccessListener { taskSnapshot ->
-                                    Toast.makeText(this, "uploaded successfully", Toast.LENGTH_LONG)
+                                    Toast.makeText(this, "Đăng thành công", Toast.LENGTH_LONG)
                                         .show()
                                 }
                                 .addOnFailureListener { e ->

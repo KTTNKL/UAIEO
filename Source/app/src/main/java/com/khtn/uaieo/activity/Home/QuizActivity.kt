@@ -260,7 +260,7 @@ class QuizActivity : AppCompatActivity() {
                     questionNumber ++
                 }
                 isClicked = false
-                questionTextView.setText("QUESTION " + questionNumber.toString())
+                questionTextView.setText("CÂU " + questionNumber.toString())
                 option1Btn.setText(quizArray[questionIndex[questionNumber-1]].option1)
                 option2Btn.setText(quizArray[questionIndex[questionNumber-1]].option2)
                 option3Btn.setText(quizArray[questionIndex[questionNumber-1]].option3)
