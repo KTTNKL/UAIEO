@@ -234,7 +234,7 @@ class Part7 : AppCompatActivity() {
     }
 
     private fun updateScore(){
-        if(!isOneQuestion && !choosePartOnly &&!!randomQuestion)
+        if(!isOneQuestion && !choosePartOnly &&!randomQuestion)
         {
             if(correctAnswers > currPoint)
             {

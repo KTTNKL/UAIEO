@@ -228,7 +228,7 @@ class Part1 : AppCompatActivity() {
 
     private fun updateScore(){
         //THEM
-        if(!isOneQuestion && !choosePartOnly &&!!randomQuestion)
+        if(!isOneQuestion && !choosePartOnly &&!randomQuestion)
         //THEM
         {
             if(correctAnswers > currPoint)
