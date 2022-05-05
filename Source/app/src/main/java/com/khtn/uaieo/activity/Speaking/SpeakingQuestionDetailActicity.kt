@@ -52,7 +52,7 @@ class SpeakingQuestionDetailActicity : AppCompatActivity() {
     private val databaseReference = FirebaseDatabase.getInstance().reference
     lateinit var auth: FirebaseAuth
     lateinit var user: FirebaseUser
-    lateinit var countDownTimer: CountDownTimer
+    var countDownTimer: CountDownTimer? =null
     var isCount: Boolean = false
     var isPlay: Boolean = false
     var totalTimeRecord: Long = 0
@@ -185,7 +185,7 @@ class SpeakingQuestionDetailActicity : AppCompatActivity() {
                 }.start()
             }
             else{
-                countDownTimer.cancel()
+                countDownTimer?.cancel()
             }
 
         }
@@ -207,7 +207,7 @@ class SpeakingQuestionDetailActicity : AppCompatActivity() {
                 }.start()
             }
             else{
-                countDownTimer.cancel()
+                countDownTimer?.cancel()
             }
 
         }
@@ -264,7 +264,7 @@ class SpeakingQuestionDetailActicity : AppCompatActivity() {
 
     override fun onBackPressed() {
         super.onBackPressed()
-        countDownTimer.cancel()
+        countDownTimer?.cancel()
         finish()
     }
 }
